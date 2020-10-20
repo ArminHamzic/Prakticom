@@ -6,8 +6,8 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "STUDENT_DOCUMENTS", schema = "PRAKTICOM")
-public class StudentDocuments extends PanacheEntity {
+@Table(name = "STUDENT_DOCUMENT", schema = "PRAKTICOM")
+public class StudentDocument extends PanacheEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "DOCUMENT_ID", referencedColumnName = "id")
@@ -15,5 +15,5 @@ public class StudentDocuments extends PanacheEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "STUDENT_ID", referencedColumnName = "id")
-    public Student documentPurpose;
+    public Student student;
 }
