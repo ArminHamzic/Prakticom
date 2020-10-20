@@ -13,11 +13,11 @@ public class Company extends PanacheEntity {
     public String name;
     @Column
     public String description;
-    @Column
+    @Column(name = "CONTACT_NAME")
     public String contactName;
-    @Column(unique = true)
+    @Column(unique = true, name = "CONTACT_EMAIL")
     public String contactEmail;
-    @Column
+    @Column(name = "CONTACT_PHONE_NUMBER")
     public String contactPhoneNumber;
     @Column(unique = true)
     public String url;

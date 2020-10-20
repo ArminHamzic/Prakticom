@@ -12,11 +12,11 @@ public class Location extends PanacheEntity {
     public Company company;
     @Column
     public String country;
-    @Column
+    @Column(name = "ZIP_CODE")
     public String zipCode;
-    @Column
+    @Column(name = "STREET_NAME")
     public String streetName;
-    @Column
+    @Column(name = "STREET_NUMBER")
     public int streetNumber;
 
     public Location CopyProperties(Location other){

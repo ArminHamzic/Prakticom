@@ -16,6 +16,6 @@ public class JobApplication extends PanacheEntity {
     @JoinColumn(name = "JOB_POSTING_ID", referencedColumnName = "id")
     public JobPosting jobPosting;
 
-    @Column
+    @Column(name = "POSTING_DATE")
     public Date postingDate;
 }

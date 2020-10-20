@@ -8,17 +8,17 @@ import java.util.Date;
 @Entity
 @Table(name = "JOB_POSTING", schema = "PRAKTICOM")
 public class JobPosting extends PanacheEntity {
-    @Column
+    @Column(name = "JOB_TITLE")
     public String jobTitle;
-    @Column
+    @Column(name = "JOB_DESCRIPTION")
     public String jobDescription;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "COMPANY_ID", referencedColumnName = "id")
     public Company company;
-    @Column
+    @Column(name = "POSTING_DATE")
     public Date postingDate;
     @Column
-    public String timeSpan;
+    public String timespan;
 
     public JobPosting CopyProperties(JobPosting other){
         if(other.id != null){
@@ -26,7 +26,7 @@ public class JobPosting extends PanacheEntity {
             jobDescription = other.jobDescription;
             company = other.company;
             postingDate = other.postingDate;
-            timeSpan = other.timeSpan;
+            timespan = other.timespan;
         }
         return this;
     }

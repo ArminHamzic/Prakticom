@@ -8,11 +8,11 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "STUDENTS", schema = "PRAKTICOM")
+@Table(name = "STUDENT", schema = "PRAKTICOM")
 public class Student extends PanacheEntity {
-    @Column
+    @Column(name = "FIRST_NAME")
     public String firstName;
-    @Column
+    @Column(name = "LAST_NAME")
     public String lastName;
     @Column(unique = true)
     public String email;
