@@ -1,4 +1,4 @@
-package com.prakti.entity.DocumentEntities;
+package com.prakti.model.DocumentEntities;
 
 public enum AllowedFileFormats {
     JPG,

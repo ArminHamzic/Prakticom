@@ -1,6 +1,6 @@
-package com.prakti.entity.DocumentEntities;
+package com.prakti.model.DocumentEntities;
 
-import com.prakti.entity.JobPosting;
+import com.prakti.model.JobPosting;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import javax.persistence.*;

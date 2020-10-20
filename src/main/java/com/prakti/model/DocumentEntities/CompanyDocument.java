@@ -1,6 +1,6 @@
-package com.prakti.entity.DocumentEntities;
+package com.prakti.model.DocumentEntities;
 
-import com.prakti.entity.Company;
+import com.prakti.model.Company;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import javax.persistence.*;

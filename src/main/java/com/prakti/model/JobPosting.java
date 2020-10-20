@@ -1,4 +1,4 @@
-package com.prakti.entity;
+package com.prakti.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
