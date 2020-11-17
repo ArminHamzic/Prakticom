@@ -8,6 +8,7 @@ import java.util.Date;
 @Entity
 @Table(name = "JOB_POSTING", schema = "PRAKTICOM")
 public class JobPosting extends PanacheEntity {
+
     @Column(name = "JOB_TITLE")
     public String jobTitle;
     @Column(name = "JOB_DESCRIPTION")

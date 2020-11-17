@@ -8,6 +8,4 @@ public enum PossibleDocumentPurposes {
     Vacancy,
     CompanyPicture,
     ProfileBackground
-
-
 }
