@@ -26,7 +26,6 @@ public class CompanyEndpoint {
         return companyRepo.findAllCompanies();
     }
 
-
     @GET
     @Path("/{id}")
     public Company getCompanyById(@QueryParam("id")Long id){
@@ -45,7 +44,7 @@ public class CompanyEndpoint {
     @DELETE
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response delete(@PathParam("id") Long id) {
+    public Response deleteCompany(@PathParam("id") Long id) {
         try {
             companyRepo.deleteCompany(id);
         } catch (EntityNotFoundException e) {
@@ -72,5 +71,4 @@ public class CompanyEndpoint {
             return Response.ok(company).build();
         }
     }
-
 }
