@@ -1,4 +1,4 @@
-package com.prakti.service.control;
+package com.prakti.control;
 
 import com.prakti.model.Location;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
