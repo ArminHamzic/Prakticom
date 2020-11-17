@@ -1,4 +1,4 @@
-package com.prakti.control;
+package com.prakti.service.control;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,7 +6,6 @@ import java.util.Optional;
 import com.prakti.model.Company;
 import com.prakti.model.JobPosting;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
-import io.vertx.reactivex.ext.shell.system.Job;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;

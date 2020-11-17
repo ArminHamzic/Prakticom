@@ -1,4 +1,4 @@
-package com.prakti.control;
+package com.prakti.service.control;
 
 import java.util.List;
 import java.util.Optional;
