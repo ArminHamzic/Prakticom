@@ -23,6 +23,11 @@ public class StudentDAO implements PanacheRepository<Student> {
         return optionalStudent.orElseThrow(NotFoundException::new);
     }
 
+    public Student findStudentByUserName(String userName){
+        Optional<Student> optionalStudent = find("user_name",userName).singleResultOptional();
+        return optionalStudent.orElseThrow(NotFoundException::new);
+    }
+
     public Student findStudentByEmail(String email){
         Optional<Student> optionalStudent = find("email",email).singleResultOptional();
         return optionalStudent.orElseThrow(NotFoundException::new);
