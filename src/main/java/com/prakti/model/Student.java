@@ -3,10 +3,7 @@ package com.prakti.model;
 import com.prakti.model.DocumentEntities.StudentDocument;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,10 +24,10 @@ public class Student extends PanacheEntity {
     @Column
     public String school;
 
-    @OneToMany(mappedBy = "student_document")
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
     public List<StudentDocument> documents = new ArrayList<>();
 
-    @OneToMany(mappedBy = "job_application")
+    @OneToMany(mappedBy = "student")
     public List<JobApplication> jobApplications = new ArrayList<>();
 
 

@@ -1,5 +1,6 @@
 package com.prakti.model;
 
+import com.prakti.model.DocumentEntities.CompanyDocument;
 import com.prakti.model.DocumentEntities.StudentDocument;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
@@ -26,13 +27,10 @@ public class Company extends PanacheEntity {
     @Column(unique = true)
     public String url;
 
-    @OneToMany(mappedBy = "company_documents")
-    public List<StudentDocument> documents = new ArrayList<>();
+    @OneToMany(mappedBy = "company")
+    public List<CompanyDocument> documents = new ArrayList<>();
 
-    @OneToMany(mappedBy = "job_application")
-    public List<JobApplication> jobApplications = new ArrayList<>();
-
-    @OneToMany(mappedBy = "job_posting")
+    @OneToMany(mappedBy = "company")
     public List<JobPosting> jobPostings = new ArrayList<>();
 
 
@@ -45,7 +43,6 @@ public class Company extends PanacheEntity {
             contactPhoneNumber = other.contactPhoneNumber;
             url = other.url;
             documents = other.documents;
-            jobApplications = other.jobApplications;
             jobPostings = other.jobPostings;
         }
         return this;
