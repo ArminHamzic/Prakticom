@@ -18,4 +18,14 @@ public class JobApplication extends PanacheEntity {
 
     @Column(name = "POSTING_DATE")
     public Date postingDate;
+
+    public JobApplication CopyProperties(JobApplication other){
+        if(other.id != null){
+            student = other.student;
+            jobPosting = other.jobPosting;
+            postingDate = other.postingDate;
+        }
+        return this;
+    }
 }
+
