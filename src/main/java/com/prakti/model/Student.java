@@ -1,11 +1,15 @@
 package com.prakti.model;
 
+import com.prakti.model.DocumentEntities.StudentDocument;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "STUDENT", schema = "PRAKTICOM")
@@ -23,6 +27,13 @@ public class Student extends PanacheEntity {
     @Column
     public String school;
 
+    @OneToMany(mappedBy = "student_document")
+    public List<StudentDocument> documents = new ArrayList<>();
+
+    @OneToMany(mappedBy = "job_application")
+    public List<JobApplication> jobApplications = new ArrayList<>();
+
+
     public Student CopyProperties(Student other){
         if(other.id != null){
             firstName = other.firstName;
@@ -31,6 +42,8 @@ public class Student extends PanacheEntity {
             phoneNumber = other.phoneNumber;
             birthDate = other.birthDate;
             school = other.school;
+            documents = other.documents;
+            jobApplications = other.jobApplications;
         }
         return this;
     }
