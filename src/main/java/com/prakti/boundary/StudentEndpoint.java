@@ -19,24 +19,24 @@ import java.util.List;
 public class StudentEndpoint {
 
     @Inject
-    StudentDAO studentRepo;
+    StudentDAO studentRepository;
 
     @GET
     public List<Student> getAllStudents(){
-        return studentRepo.findAllStudents();
+        return studentRepository.findAllStudents();
     }
 
     @GET
     @Path("/{id}")
     public Student getStudentById(@QueryParam("id")Long id){
-        return studentRepo.findStudentById(id);
+        return studentRepository.findStudentById(id);
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createStudent(@Context UriInfo info, Student student) {
         if (student == null) return Response.noContent().build();
-        Student savedStudent = studentRepo.persistStudent(student);
+        Student savedStudent = studentRepository.persistStudent(student);
         URI uri = info.getAbsolutePathBuilder().path("/" + savedStudent.id).build();
         return Response.created(uri).build();
     }
@@ -46,7 +46,7 @@ public class StudentEndpoint {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response deleteStudent(@PathParam("id") Long id) {
         try {
-            studentRepo.deleteStudent(id);
+            studentRepository.deleteStudent(id);
         } catch (EntityNotFoundException e) {
             return Response
                     .status(Response.Status.BAD_REQUEST)
@@ -60,14 +60,14 @@ public class StudentEndpoint {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response put(@PathParam("id") Long id, Student student) {
-        Student s = studentRepo.findById(id);
+        Student s = studentRepository.findById(id);
         if (s == null) {
             return Response
                     .status(Response.Status.BAD_REQUEST)
                     .header("Reason", "Student with id " + id + " does not exist")
                     .build();
         } else {
-            studentRepo.updateStudent(id,student);
+            studentRepository.updateStudent(id,student);
             return Response.ok(student).build();
         }
     }
