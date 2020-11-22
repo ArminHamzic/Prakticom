@@ -4,10 +4,7 @@ import com.prakti.model.DocumentEntities.CompanyDocument;
 import com.prakti.model.DocumentEntities.StudentDocument;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,13 +24,13 @@ public class Company extends PanacheEntity {
     @Column(unique = true)
     public String url;
 
-    @OneToMany(mappedBy = "company")
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
     public List<CompanyDocument> documents = new ArrayList<>();
 
-    @OneToMany(mappedBy = "company")
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
     public List<JobPosting> jobPostings = new ArrayList<>();
 
-    @OneToMany(mappedBy = "company")
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
     public List<Location> locations = new ArrayList<>();
 
 

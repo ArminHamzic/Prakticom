@@ -27,7 +27,7 @@ public class Student extends PanacheEntity {
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
     public List<StudentDocument> documents = new ArrayList<>();
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
     public List<JobApplication> jobApplications = new ArrayList<>();
 
 

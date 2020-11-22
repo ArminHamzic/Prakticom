@@ -23,7 +23,7 @@ public class JobPosting extends PanacheEntity {
     @Column
     public String timespan;
 
-    @OneToMany(mappedBy = "jobPosting")
+    @OneToMany(mappedBy = "jobPosting", fetch = FetchType.LAZY)
     public List<JobApplication> jobApplications = new ArrayList<>();
 
     public JobPosting CopyProperties(JobPosting other){
