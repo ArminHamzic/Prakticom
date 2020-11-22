@@ -33,6 +33,9 @@ public class Company extends PanacheEntity {
     @OneToMany(mappedBy = "company")
     public List<JobPosting> jobPostings = new ArrayList<>();
 
+    @OneToMany(mappedBy = "company")
+    public List<Location> locations = new ArrayList<>();
+
 
     public Company CopyProperties(Company other){
         if(other.id != null){
