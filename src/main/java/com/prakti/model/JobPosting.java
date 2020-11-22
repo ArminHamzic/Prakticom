@@ -3,7 +3,9 @@ package com.prakti.model;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "JOB_POSTING", schema = "PRAKTICOM")
@@ -20,6 +22,9 @@ public class JobPosting extends PanacheEntity {
     public Date postingDate;
     @Column
     public String timespan;
+
+    @OneToMany(mappedBy = "jobPosting")
+    public List<JobApplication> jobApplications = new ArrayList<>();
 
     public JobPosting CopyProperties(JobPosting other){
         if(other.id != null){
