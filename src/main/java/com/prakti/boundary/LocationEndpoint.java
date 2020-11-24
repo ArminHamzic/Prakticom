@@ -1,6 +1,7 @@
 package com.prakti.boundary;
 
 import com.prakti.control.LocationDAO;
+import com.prakti.model.JobApplication;
 import com.prakti.model.Location;
 
 import javax.inject.Inject;
@@ -23,13 +24,21 @@ public class LocationEndpoint {
 
     @GET
     public List<Location> getAllLocations(){
+
         return locationRepository.findAllLocations();
     }
 
     @GET
-    @Path("/{id}")
-    public Location getLocationById(@QueryParam("id")Long id){
+    @Path("{id}")
+    public Location getLocationById(@PathParam("id") Long id){
+
         return locationRepository.findLocationById(id);
+    }
+
+    @GET
+    @Path("/{company}")
+    public List<Location> getLocationByCompanyId(@QueryParam("id") Long companyId){
+        return locationRepository.findLocationsByCompanyId(companyId);
     }
 
     @POST
