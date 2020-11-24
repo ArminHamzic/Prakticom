@@ -1,0 +1,26 @@
+<div  style="" class=" ui card">
+  <div class="image" style="padding: 0.3em">
+    <ng-content  select=".job-image"></ng-content>
+  </div>
+  <div class="content">
+    <div class="header">
+      <ng-content select=".job-title"></ng-content>
+    </div>
+    <div class="meta">
+      <a><ng-content select=".job-length"></ng-content> </a>
+    </div>
+    <div class="description">
+      <ng-content select=".job-description"></ng-content>
+    </div>
+  </div>
+  <div class="extra content">
+    <span class="right floated">
+      vor <ng-content select=".job-date"></ng-content>
+    </span>
+    <span>
+      <i class="briefcase icon"></i>
+      <ng-content select=".business-name"></ng-content>
+    </span>
+  </div>
+</div>
+

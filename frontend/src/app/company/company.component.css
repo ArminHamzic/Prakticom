@@ -1,0 +1,13 @@
+.example-card {
+    max-width: 400px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://avatars1.githubusercontent.com/u/6412311?s=280&v=4');
+    background-size: cover;
+  }
+
+  .example-header-image2 {
+    background-image: url('https://www.designyourway.net/blog/wp-content/uploads/2019/10/s1-7-1.jpg');
+    background-size: cover;
+  }
