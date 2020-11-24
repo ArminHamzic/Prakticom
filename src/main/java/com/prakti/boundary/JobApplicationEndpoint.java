@@ -2,6 +2,7 @@ package com.prakti.boundary;
 
 import com.prakti.control.JobApplicationDAO;
 import com.prakti.model.JobApplication;
+import com.prakti.model.JobPosting;
 
 import javax.inject.Inject;
 import javax.persistence.EntityNotFoundException;
@@ -31,6 +32,13 @@ public class JobApplicationEndpoint {
     public JobApplication getJobApplicationById(@QueryParam("id")Long id){
         return jobApplicationRepository.findJobApplicationById(id);
     }
+
+    @GET
+    @Path("/{jobPosting}")
+    public JobApplication getJobApplicationById(@QueryParam("id") JobPosting jobPosting){
+        return jobApplicationRepository.findJobApplicationByJobPosting(jobPosting);
+    }
+
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
