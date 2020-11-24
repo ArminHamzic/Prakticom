@@ -35,7 +35,7 @@ public class JobApplicationEndpoint {
 
     @GET
     @Path("/{jobPosting}")
-    public JobApplication getJobApplicationById(@QueryParam("id") JobPosting jobPosting){
+    public JobApplication getJobApplicationById(JobPosting jobPosting){
         return jobApplicationRepository.findJobApplicationByJobPosting(jobPosting);
     }
 
