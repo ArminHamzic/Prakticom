@@ -34,13 +34,13 @@ public class StudentEndpoint {
 
     @GET
     @Path("/{userName}")
-    public Student getStudentByUserName(@QueryParam("id")String userName){
+    public Student getStudentByUserName(@QueryParam("userName")String userName){
         return studentRepository.findStudentByUserName(userName);
     }
 
     @GET
     @Path("/{email}")
-    public Student getStudentByEmail(@QueryParam("id")String email){
+    public Student getStudentByEmail(@QueryParam("email")String email){
         return studentRepository.findStudentByEmail(email);
     }
 
