@@ -8,12 +8,16 @@ import com.prakti.model.JobPosting;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.NotFoundException;
 
 @Transactional
 @ApplicationScoped
 public class JobPostingDAO implements PanacheRepository<JobPosting> {
+
+    @Inject
+    CompanyDAO companyRepository;
 
     public List<JobPosting> findAllJobPostings(){
         return JobPosting.findAll().list();
@@ -25,7 +29,8 @@ public class JobPostingDAO implements PanacheRepository<JobPosting> {
     }
 
 
-    public JobPosting findJobPostingByCompanyId(Company company){
+    public JobPosting findJobPostingByCompanyId(Long companyId){
+        Company company = companyRepository.findCompanyById(companyId);
         Optional<JobPosting> optionalJobPosting = find("company_id",company.id).singleResultOptional();
         return optionalJobPosting.orElseThrow(NotFoundException::new);
     }
