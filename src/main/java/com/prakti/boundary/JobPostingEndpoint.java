@@ -1,6 +1,8 @@
 package com.prakti.boundary;
 
 import com.prakti.control.JobPostingDAO;
+import com.prakti.model.Company;
+import com.prakti.model.JobApplication;
 import com.prakti.model.JobPosting;
 
 import javax.inject.Inject;
@@ -27,9 +29,15 @@ public class JobPostingEndpoint {
     }
 
     @GET
-    @Path("/{id}")
-    public JobPosting getJobPostingById(@QueryParam("id")Long id){
+    @Path("{id}")
+    public JobPosting getJobPostingById(@PathParam("id")Long id){
         return jobPostingRepository.findJobPostingById(id);
+    }
+
+    @GET
+    @Path("/{company}")
+    public JobPosting getJobPostingByCompanyId(@QueryParam("id") Long companyId){
+        return jobPostingRepository.findJobPostingByCompanyId(companyId);
     }
 
     @POST
@@ -57,10 +65,10 @@ public class JobPostingEndpoint {
     }
 
     @PUT
-    @Path("/{id}")
+    @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response put(@PathParam("id") Long id, JobPosting jobPosting) {
-        JobPosting j = jobPosting.findById(id);
+        JobPosting j = jobPostingRepository.findJobPostingById(id);
         if (j == null) {
             return Response
                     .status(Response.Status.BAD_REQUEST)

@@ -28,15 +28,15 @@ public class JobApplicationEndpoint {
     }
 
     @GET
-    @Path("/{id}")
-    public JobApplication getJobApplicationById(@QueryParam("id")Long id){
+    @Path("{id}")
+    public JobApplication getJobApplicationById(@PathParam("id")Long id){
         return jobApplicationRepository.findJobApplicationById(id);
     }
 
     @GET
     @Path("/{jobPosting}")
-    public JobApplication getJobApplicationById(@QueryParam("id") JobPosting jobPosting){
-        return jobApplicationRepository.findJobApplicationByJobPosting(jobPosting);
+    public JobApplication getJobApplicationByJobPostingId(@QueryParam("id") Long jobPostingId){
+        return jobApplicationRepository.findJobApplicationByJobPosting(jobPostingId);
     }
 
 
@@ -65,7 +65,7 @@ public class JobApplicationEndpoint {
     }
 
     @PUT
-    @Path("/{id}")
+    @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response put(@PathParam("id") Long id, JobApplication jobApplication) {
         JobApplication j = jobApplicationRepository.findById(id);

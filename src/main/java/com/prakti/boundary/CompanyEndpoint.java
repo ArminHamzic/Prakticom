@@ -28,8 +28,8 @@ public class CompanyEndpoint {
     }
 
     @GET
-    @Path("/{id}")
-    public Company getCompanyById(@QueryParam("id")Long id){
+    @Path("{id}")
+    public Company getCompanyById(@PathParam("id")Long id){
         return companyRepository.findCompanyById(id);
     }
 
