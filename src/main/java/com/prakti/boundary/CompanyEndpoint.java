@@ -12,7 +12,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 @Path("/company")
 @Produces(MediaType.APPLICATION_JSON)
