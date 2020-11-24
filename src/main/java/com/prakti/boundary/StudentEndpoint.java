@@ -32,6 +32,18 @@ public class StudentEndpoint {
         return studentRepository.findStudentById(id);
     }
 
+    @GET
+    @Path("/{userName}")
+    public Student getStudentByUserName(@QueryParam("userName")String userName){
+        return studentRepository.findStudentByUserName(userName);
+    }
+
+    @GET
+    @Path("/{email}")
+    public Student getStudentByEmail(@QueryParam("email")String email){
+        return studentRepository.findStudentByEmail(email);
+    }
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createStudent(@Context UriInfo info, Student student) {

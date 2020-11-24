@@ -12,6 +12,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @Path("/company")
 @Produces(MediaType.APPLICATION_JSON)
@@ -30,6 +31,12 @@ public class CompanyEndpoint {
     @Path("/{id}")
     public Company getCompanyById(@QueryParam("id")Long id){
         return companyRepository.findCompanyById(id);
+    }
+
+    @GET
+    @Path("/{url}")
+    public Company getCompanyByUrl(@QueryParam("url")String url){
+        return companyRepository.findCompanyByUrl(url);
     }
 
     @POST
