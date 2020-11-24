@@ -2,7 +2,6 @@ package com.prakti.boundary;
 
 import com.prakti.control.JobApplicationDAO;
 import com.prakti.model.JobApplication;
-import com.prakti.model.JobPosting;
 
 import javax.inject.Inject;
 import javax.persistence.EntityNotFoundException;
