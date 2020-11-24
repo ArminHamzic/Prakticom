@@ -11,6 +11,7 @@ import java.util.List;
 @Entity
 @Table(name = "COMPANY", schema = "PRAKTICOM")
 public class Company extends PanacheEntity {
+
     @Column(unique = true)
     public String name;
     @Column
