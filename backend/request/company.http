@@ -1,0 +1,31 @@
+### Get all Companys
+
+GET http://localhost:8080/company
+
+### Post Company
+
+POST http://localhost:8080/company
+Content-Type: application/json
+
+{
+  "name": "Test2 GmbH",
+  "description": "test test test",
+  "contactName": "Hr. Franz Josef Leitner",
+  "contactEmail": "leitner2@gmx.at",
+  "contactPhoneNumber": "06602233445434",
+  "url": "google2.at",
+  "location": [
+    {
+      "streetName": "Bindermichl 35",
+      "city": "Linz",
+      "zipCode": "4020",
+      "country": "Austria"
+    },
+    {
+      "streetName": "Bindermichl 40",
+      "city": "Linz",
+      "zipCode": "4020",
+      "country": "Austria"
+    }
+  ]
+}

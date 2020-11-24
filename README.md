@@ -1,47 +1,19 @@
-# prakticom project
+# Prakticom
+Das SYP Projekt für das Jahr 2020/21
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+## Team mitglieder
++ Projektleiter: Elias Röbl
++ Mitglieder: Armin Hamzic, Haris Jusic und Alexander Kirchmair-Undesser
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+## Projekt
+Die Suche nach einem Praktikum oder einem Ferialjob ist in den meisten Fällen eher aufwendig. Schüler mit Kontakten in der Wirtschaft oder mit guten Noten finden schneller und einfacher ein Praktikum als ihre Mitschüler.
 
-## Running the application in dev mode
+Trotz des angeblichen Mangels an Praktikumsstellen, gibt es Unternehmen die sich nicht präsentieren können ,aber Interesse an einem oder mehrere Praktikanten haben, allerdings von diesen nicht wahrgenommen werden.
 
-You can run your application in dev mode that enables live coding using:
-```shell script
-./mvnw compile quarkus:dev
-```
+## Projekt Struktur
 
-## Packaging and running the application
++ Backend: 
++ Frontend: 
 
-The application can be packaged using:
-```shell script
-./mvnw package
-```
-It produces the `prakticom-1.0.0-SNAPSHOT-runner.jar` file in the `/target` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/lib` directory.
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./mvnw package build -Dquarkus.package.type=uber-jar
-```
-
-The application is now runnable using `java -jar target/prakticom-1.0.0-SNAPSHOT-runner.jar`.
-
-## Creating a native executable
-
-You can create a native executable using: 
-```shell script
-./mvnw package -Pnative
-```
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Pnative -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./target/prakticom-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.html.
-
-# Command Mode
-
-Guide: https://quarkus.io/guides/command-mode-reference
+## Build
+To be done
