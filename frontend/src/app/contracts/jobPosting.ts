@@ -1,6 +1,6 @@
 import {ICompany} from './company';
 
-export interface JobPosting{
+export interface IJobPosting{
     id: number;
     jobDescription: string;
     jobTitle: string;
