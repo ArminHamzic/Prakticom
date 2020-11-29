@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 
-import {GenericHttpService} from './GenericHttpService';
-import {IStudent} from '../../app/contracts/student';
-import {environment} from '../../environments/environment';
+import {GenericHttpService} from './GenericHttpService/GenericHttpService';
+import {IStudent} from '../app/contracts/student';
+import {environment} from '../environments/environment';
 
 
 @Injectable({
