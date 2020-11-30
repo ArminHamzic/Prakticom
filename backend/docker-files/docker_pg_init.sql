@@ -1,2 +1,2 @@
-create schema keycloak
-create schema prakticom
+create schema keycloak;
+create schema prakticom;
