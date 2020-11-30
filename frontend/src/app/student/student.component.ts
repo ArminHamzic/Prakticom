@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {StudentService} from '../../services/StudentService';
+import {IStudent} from '../contracts/student';
 
 
 @Component({
@@ -10,7 +12,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class StudentComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(public studentService: StudentService) { }
 
   ngOnInit(): void {
   }
