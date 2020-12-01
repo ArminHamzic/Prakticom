@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {WelcomeComponent} from './welcome/welcome.component';
 import {NotFoundComponent} from './not-found/not-found.component';
-import {StudentComponent} from './student/student.component';
+import {StudentComponent} from './prakticom/components/student/student.component';
 import {CompanyComponent} from './company/company.component';
 
 
