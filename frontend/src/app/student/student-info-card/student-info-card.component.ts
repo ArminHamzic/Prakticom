@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {StudentService} from '../../../services/StudentService';
+import {IStudent} from '../../contracts/student';
 
 @Component({
   selector: 'app-student-info-card',
@@ -6,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./student-info-card.component.css']
 })
 export class StudentInfoCardComponent implements OnInit {
+  students?: IStudent[];
+  editStudent?: IStudent;
+  deleteStudent?: IStudent;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private router: Router, private studentService: StudentService) { }
 
   ngOnInit(): void {
   }
+
 
 }
