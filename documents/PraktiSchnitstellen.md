@@ -14,11 +14,11 @@
 
 ## Company
 
-| Pfad                                 | RückgabeDatentyp  | Schnittstellen                                         | HTTP-Request |Required Roles|
-| ------------------------------------ | ----------------- | ------------------------------------------------------ | ------------ |---|
-| localhost:8080/api/company           | List<Company>     | Erhalte alle Companies                                 | GET          ||
-| localhost:8080/api/company/{id}      | Company           | Erhalte Company durch die Id {id}                      | GET          ||
-| localhost:8080/api/company/url/{url} | Company           | Erhalte Company durch die URL {url}                    | GET          ||
-| localhost:8080/api/company           | Response: 201     | Erzeuge neue Company                                   | POST         ||
-| localhost:8080/api/company/{id}      | Response(Student) | Updated beliebige Felder einer Company mit der Id {id} | PUT          ||
-| localhost:8080/api/company/{id}      | Response: 202     | Löscht Company mit der Id {id}                         | DELETE       ||
+| Pfad                                 | RückgabeDatentyp  | Schnittstellen                                         | HTTP-Request | Required Roles |
+| ------------------------------------ | ----------------- | ------------------------------------------------------ | ------------ | -------------- |
+| localhost:8080/api/company           | List<Company>     | Erhalte alle Companies                                 | GET          |                |
+| localhost:8080/api/company/{id}      | Company           | Erhalte Company durch die Id {id}                      | GET          |                |
+| localhost:8080/api/company/url/{url} | Company           | Erhalte Company durch die URL {url}                    | GET          |                |
+| localhost:8080/api/company           | Response: 201     | Erzeuge neue Company                                   | POST         |                |
+| localhost:8080/api/company/{id}      | Response(Student) | Updated beliebige Felder einer Company mit der Id {id} | PUT          |                |
+| localhost:8080/api/company/{id}      | Response: 202     | Löscht Company mit der Id {id}                         | DELETE       |                |
