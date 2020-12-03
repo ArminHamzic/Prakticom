@@ -1,10 +1,17 @@
 package com.prakti.boundary;
 
 import com.prakti.control.CompanyDAO;
+import com.prakti.control.CompanyDocumentDAO;
+import com.prakti.control.LocationDAO;
 import com.prakti.model.Company;
+import com.prakti.model.DocumentEntities.CompanyDocument;
+import com.prakti.model.Location;
 
+import javax.annotation.security.RolesAllowed;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -16,14 +23,21 @@ import java.util.List;
 @Path("/api/company")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+
 public class CompanyEndpoint {
 
     @Inject
     CompanyDAO companyRepository;
 
+    @Inject
+    LocationDAO locationRepository;
+
+    @Inject
+    CompanyDocumentDAO companyDocumentDAO;
+
     @GET
     public List<Company> getAllCompanies(){
-        return companyRepository.findAllCompanies();
+        return companyRepository.listAll();
     }
 
     @GET
@@ -42,7 +56,25 @@ public class CompanyEndpoint {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createCompany(@Context UriInfo info, Company company) {
         if (company == null) return Response.noContent().build();
-        Company savedCompany = companyRepository.persistCompany(company);
+        Company newCompany = new Company();
+        companyRepository.persist(newCompany);
+        company.locations.forEach(l ->{
+            Location location = new Location();
+            location.CopyProperties(l);
+            location.company = newCompany;
+            location = locationRepository.persistLocation(location);
+            newCompany.locations.add(location);
+        });
+        // TODO: Implement Documents or Serialization Error
+        /*company.documents.forEach(d -> {
+            CompanyDocument document = new CompanyDocument();
+            document.company = newCompany;
+            document.document = d.document;
+            document = companyDocumentDAO.persistDocument(document);
+            newCompany.documents.add(document);
+        });*/
+        newCompany.CopyProperties(company);
+        Company savedCompany = companyRepository.persistCompany(newCompany);
         URI uri = info.getAbsolutePathBuilder().path("/" + savedCompany.id).build();
         return Response.created(uri).build();
     }
@@ -74,7 +106,7 @@ public class CompanyEndpoint {
                     .build();
         } else {
             companyRepository.updateCompany(id,company);
-            return Response.ok(company).build();
+            return Response.ok().build();
         }
     }
 }
