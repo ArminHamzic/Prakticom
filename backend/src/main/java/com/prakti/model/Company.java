@@ -4,6 +4,7 @@ import com.prakti.model.DocumentEntities.CompanyDocument;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import org.hibernate.validator.constraints.URL;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -41,13 +42,14 @@ public class Company extends PanacheEntityBase implements Serializable {
     public String url;
 
 
-    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
-    public List<CompanyDocument> documents = new ArrayList<>();
+    /*@OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
+    public List<CompanyDocument> documents = new ArrayList<>();*/
 
-    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
+    @Transient
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public List<JobPosting> jobPostings = new ArrayList<>();
 
-    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "company", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public List<Location> locations = new ArrayList<>();
 
 
