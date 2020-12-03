@@ -43,6 +43,8 @@ public class JobPosting extends PanacheEntityBase implements Serializable {
     public Date postingDate;
     @Column
     public String timespan;
+    @Column
+    public FieldOfWork fieldOfWork;
 
     @OneToMany(mappedBy = "jobPosting", fetch = FetchType.LAZY)
     public List<JobApplication> jobApplications = new ArrayList<>();
