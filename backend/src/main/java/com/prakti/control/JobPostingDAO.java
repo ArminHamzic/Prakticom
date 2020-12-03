@@ -29,10 +29,9 @@ public class JobPostingDAO implements PanacheRepository<JobPosting> {
         return optionalJobPosting.orElseThrow(NotFoundException::new);
     }
 
-    public JobPosting findJobPostingByCompanyId(Long companyId){
+    public List<JobPosting> findJobPostingByCompanyId(Long companyId){
         Company company = companyRepository.findCompanyById(companyId);
-        Optional<JobPosting> optionalJobPosting = find("company_id",company.id).singleResultOptional();
-        return optionalJobPosting.orElseThrow(NotFoundException::new);
+        return list("company_id",company.id);
     }
 
     public List<JobPosting> findJobPostingsByFieldOfWork(FieldOfWork fieldOfWork){
@@ -40,14 +39,15 @@ public class JobPostingDAO implements PanacheRepository<JobPosting> {
     }
 
     public JobPosting persistJobPosting(JobPosting jobPosting){
-        persist(jobPosting);
-        return jobPosting;
+        return this.getEntityManager().merge(jobPosting);
     }
 
     public void updateJobPosting(Long id, JobPosting jobPosting){
         JobPosting updateJobPosting = findJobPostingById(id);
         updateJobPosting.CopyProperties(jobPosting);
-        persist(updateJobPosting);
+        if(jobPosting.company!=null) updateJobPosting.company = jobPosting.company;
+        if(jobPosting.jobApplications!=null) updateJobPosting.jobApplications = jobPosting.jobApplications;
+        persistJobPosting(updateJobPosting);
     }
 
     public void deleteJobPosting(Long id){

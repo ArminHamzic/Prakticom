@@ -1,5 +1,6 @@
 package com.prakti.boundary;
 
+import com.prakti.control.CompanyDAO;
 import com.prakti.control.JobPostingDAO;
 import com.prakti.model.Company;
 import com.prakti.model.FieldOfWork;
@@ -24,6 +25,9 @@ public class JobPostingEndpoint {
     @Inject
     JobPostingDAO jobPostingRepository;
 
+    @Inject
+    CompanyDAO companyRepository;
+
     @GET
     public List<JobPosting> getAllJobPostings(){
         return jobPostingRepository.findAllJobPostings();
@@ -36,22 +40,27 @@ public class JobPostingEndpoint {
     }
 
     @GET
-    @Path("/{company}")
-    public JobPosting getJobPostingByCompanyId(@QueryParam("id") Long companyId){
+    @Path("/company/{company_id}")
+    public List<JobPosting> getJobPostingByCompanyId(@PathParam("company_id") Long companyId){
         return jobPostingRepository.findJobPostingByCompanyId(companyId);
     }
 
     @GET
-    @Path("/fieldOfWork/{fieldOfWork}")
-    public List<JobPosting> getJobPostingsByFieldOfWork(@PathParam("fieldOfWork")FieldOfWork fieldOfWork){
+    @Path("/{fieldOfWork}")
+    public List<JobPosting> getJobPostingsByFieldOfWork(@QueryParam("fieldOfWork")FieldOfWork fieldOfWork){
         return jobPostingRepository.findJobPostingsByFieldOfWork(fieldOfWork);
     }
 
     @POST
+    @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createJobPosting(@Context UriInfo info, JobPosting jobPosting) {
+    public Response createJobPosting(@PathParam("id") Long companyId, @Context UriInfo info, JobPosting jobPosting) {
         if (jobPosting == null) return Response.noContent().build();
-        JobPosting savedJobPosting = jobPostingRepository.persistJobPosting(jobPosting);
+        Company company = companyRepository.findCompanyById(companyId);
+        JobPosting newJobPosting = new JobPosting();
+        newJobPosting.company = company;
+        newJobPosting.CopyProperties(jobPosting);
+        JobPosting savedJobPosting = jobPostingRepository.persistJobPosting(newJobPosting);
         URI uri = info.getAbsolutePathBuilder().path("/" + savedJobPosting.getId()).build();
         return Response.created(uri).build();
     }
@@ -68,7 +77,7 @@ public class JobPostingEndpoint {
                     .header("Reason", "Job Posting with id " + id + " does not exist")
                     .build();
         }
-        return Response.noContent().build();
+        return Response.ok().build();
     }
 
     @PUT
