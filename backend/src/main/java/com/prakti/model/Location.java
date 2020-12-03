@@ -2,12 +2,14 @@ package com.prakti.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "LOCATION", schema = "PRAKTICOM")
 public class Location extends PanacheEntity {
 
+    @JsonbTransient
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "COMPANY_ID", referencedColumnName = "ID")
     public Company company;
@@ -24,15 +26,11 @@ public class Location extends PanacheEntity {
     @Column(name = "COUNTRY")
     public String country;
 
-    public Location CopyProperties(Location other){
-        if(other.id != null){
-            company = other.company;
-            streetName = other.streetName;
-            city = other.city;
-            zipCode = other.zipCode;
-            country = other.country;
-        }
-        return this;
+    public void CopyProperties(Location other){
+        this.streetName = other.streetName;
+        this.city = other.city;
+        this.zipCode = other.zipCode;
+        this.country = other.country;
     }
 
 }
