@@ -9,6 +9,8 @@ Content-Type: application/json
   "fieldOfWork": "Design"
 }
 ###
+GET localhost:8080/api/jobPosting
+###
 GET localhost:8080/api/jobPosting/3
 ###
 GET localhost:8080/api/jobPosting/company/2
