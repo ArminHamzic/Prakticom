@@ -43,5 +43,9 @@ public class JobApplication extends PanacheEntityBase {
         this.jobPosting = other.jobPosting;
         this.postingDate = other.postingDate;
     }
+
+    public Long getId() {
+        return id;
+    }
 }
 

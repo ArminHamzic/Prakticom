@@ -60,4 +60,8 @@ public class Company extends PanacheEntityBase implements Serializable {
         this.contactPhoneNumber = other.contactPhoneNumber;
         this.url = other.url;
     }
+
+    public Long getId() {
+        return id;
+    }
 }

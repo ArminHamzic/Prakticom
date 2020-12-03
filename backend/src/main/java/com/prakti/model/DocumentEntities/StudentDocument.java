@@ -32,4 +32,8 @@ public class StudentDocument extends PanacheEntityBase {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "STUDENT_ID", referencedColumnName = "id")
     public Student student;
+
+    public Long getId() {
+        return id;
+    }
 }

@@ -54,4 +54,7 @@ public class JobPosting extends PanacheEntityBase implements Serializable {
         this.timespan = other.timespan;
     }
 
+    public Long getId() {
+        return id;
+    }
 }

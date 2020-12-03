@@ -61,4 +61,8 @@ public class Student extends PanacheEntityBase implements Serializable {
         this.birthDate = other.birthDate;
         this.school = other.school;
     }
+
+    public Long getId() {
+        return id;
+    }
 }

@@ -31,4 +31,8 @@ public class JobPostingDocument extends PanacheEntityBase {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "JOB_POSTING_ID", referencedColumnName = "id")
     public JobPosting jobPosting;
+
+    public Long getId() {
+        return id;
+    }
 }

@@ -24,4 +24,8 @@ public class DocumentPurpose extends PanacheEntityBase {
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "DOCUMENT_PURPOSE")
     public PossibleDocumentPurposes DocumentPurpose;
+
+    public Long getId() {
+        return id;
+    }
 }

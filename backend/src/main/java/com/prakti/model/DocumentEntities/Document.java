@@ -37,4 +37,7 @@ public class Document extends PanacheEntityBase {
     @JoinColumn(name = "DOCUMENT_PURPOSE_ID", referencedColumnName = "id")
     public DocumentPurpose documentPurpose;
 
+    public Long getId() {
+        return id;
+    }
 }

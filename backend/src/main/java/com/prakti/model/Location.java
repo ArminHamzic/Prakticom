@@ -45,4 +45,7 @@ public class Location extends PanacheEntityBase {
         this.country = other.country;
     }
 
+    public Long getId() {
+        return id;
+    }
 }

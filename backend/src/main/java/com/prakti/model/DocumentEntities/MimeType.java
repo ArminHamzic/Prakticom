@@ -22,4 +22,8 @@ public class MimeType extends PanacheEntityBase {
 
     @Enumerated(EnumType.ORDINAL)
     public AllowedFileFormats MimeType;
+
+    public Long getId() {
+        return id;
+    }
 }
