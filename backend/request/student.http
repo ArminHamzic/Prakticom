@@ -1,0 +1,45 @@
+POST http://localhost:8080/api/student
+//Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+  {
+    "birthDate": "2001-01-10",
+    "email": "elias@gmail.com",
+    "firstName": "Elias",
+    "lastName": "Röbl",
+    "phoneNumber": "06604886586",
+    "school": "HTBLA Leonding",
+    "userName": "eliasroebl0"
+  }
+
+###
+GET http://localhost:8080/api/student
+###
+GET http://localhost:8080/api/student/1
+###
+GET http://localhost:8080/api/student/username/eliasroebl0
+###
+GET http://localhost:8080/api/student/email/elias@gmail.com
+###
+PUT localhost:8080/api/student/2
+Content-Type: application/json
+
+{
+  "birthDate": "2001-11-10",
+  "email": "eliasroebl3@gmail.com",
+  "firstName": "Elias",
+  "lastName": "Röbl",
+  "phoneNumber": "123456789",
+  "school": "HTBLA Leonding",
+  "userName": "elias"
+}
+###
+PUT localhost:8080/api/student/3
+Content-Type: application/json
+
+{
+  "userName": "elias124"
+}
+###
+DELETE localhost:8080/api/student/2
+
