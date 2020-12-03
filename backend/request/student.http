@@ -4,42 +4,42 @@ Content-Type: application/json
 
   {
     "birthDate": "2001-01-10",
-    "email": "elias@gmail.com",
+    "email": "elias1@gmail.com",
     "firstName": "Elias",
     "lastName": "Röbl",
-    "phoneNumber": "06604886586",
+    "phoneNumber": "066048865816",
     "school": "HTBLA Leonding",
-    "userName": "eliasroebl0"
+    "userName": "eliasroebl10"
   }
 
 ###
 GET http://localhost:8080/api/student
 ###
-GET http://localhost:8080/api/student/1
+GET http://localhost:8080/api/student/4
 ###
-GET http://localhost:8080/api/student/username/eliasroebl0
+GET http://localhost:8080/api/student/username/eliasroebl10
 ###
-GET http://localhost:8080/api/student/email/elias@gmail.com
+GET http://localhost:8080/api/student/email/elias1@gmail.com
 ###
-PUT localhost:8080/api/student/2
+PUT localhost:8080/api/student/4
 Content-Type: application/json
 
 {
   "birthDate": "2001-11-10",
-  "email": "eliasroebl3@gmail.com",
+  "email": "eliasroeb123l3@gmail.com",
   "firstName": "Elias",
   "lastName": "Röbl",
-  "phoneNumber": "123456789",
+  "phoneNumber": "123123456789",
   "school": "HTBLA Leonding",
-  "userName": "elias"
+  "userName": "elia123s"
 }
 ###
-PUT localhost:8080/api/student/3
+PUT localhost:8080/api/student/4
 Content-Type: application/json
 
 {
-  "userName": "elias124"
+  "userName": "elias1251"
 }
 ###
-DELETE localhost:8080/api/student/2
+DELETE localhost:8080/api/student/4
 
