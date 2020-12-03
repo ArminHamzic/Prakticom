@@ -1,9 +1,10 @@
 package com.prakti.boundary;
 
 import com.prakti.control.StudentDAO;
-import com.prakti.model.Student;
+import com.prakti.control.StudentDocumentDAO;
+import com.prakti.model.*;
+import com.prakti.model.DocumentEntities.StudentDocument;
 
-import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.persistence.EntityNotFoundException;
 import javax.ws.rs.*;
@@ -21,6 +22,9 @@ public class StudentEndpoint {
 
     @Inject
     StudentDAO studentRepository;
+
+    @Inject
+    StudentDocumentDAO studentDocumentRepository;
 
     @GET
     public List<Student> getAllStudents(){
@@ -50,10 +54,20 @@ public class StudentEndpoint {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createStudent(@Context UriInfo info, Student student) {
         if (student == null) return Response.noContent().build();
+        Student newStudent = new Student();
+        studentRepository.persist(newStudent);
+        student.documents.forEach(d ->{
+            StudentDocument document = new StudentDocument();
+            document.student = newStudent;
+            document.document = d.document;
+            document = studentDocumentRepository.persistDocument(document);
+            newStudent.documents.add(document);
+        });
         Student savedStudent = studentRepository.persistStudent(student);
         URI uri = info.getAbsolutePathBuilder().path("/" + savedStudent.getId()).build();
         return Response.created(uri).build();
     }
+
 
     @DELETE
     @Path("{id}")
