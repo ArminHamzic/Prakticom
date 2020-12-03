@@ -39,10 +39,11 @@ public class Location extends PanacheEntityBase {
     public String country;
 
     public void CopyProperties(Location other){
-        this.streetName = other.streetName;
-        this.city = other.city;
-        this.zipCode = other.zipCode;
-        this.country = other.country;
+        if(other.company != null) this.company = other.company;
+        if(other.streetName != null) this.streetName = other.streetName;
+        if(other.city != null) this.city = other.city;
+        if(other.zipCode != null) this.zipCode = other.zipCode;
+        if(other.country != null) this.country = other.country;
     }
 
     public Long getId() {
