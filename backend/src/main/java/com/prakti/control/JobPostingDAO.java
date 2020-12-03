@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.prakti.model.Company;
+import com.prakti.model.FieldOfWork;
 import com.prakti.model.JobPosting;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
@@ -28,11 +29,14 @@ public class JobPostingDAO implements PanacheRepository<JobPosting> {
         return optionalJobPosting.orElseThrow(NotFoundException::new);
     }
 
-
     public JobPosting findJobPostingByCompanyId(Long companyId){
         Company company = companyRepository.findCompanyById(companyId);
         Optional<JobPosting> optionalJobPosting = find("company_id",company.id).singleResultOptional();
         return optionalJobPosting.orElseThrow(NotFoundException::new);
+    }
+
+    public List<JobPosting> findJobPostingsByFieldOfWork(FieldOfWork fieldOfWork){
+        return list("field_of_work", fieldOfWork.ordinal());
     }
 
     public JobPosting persistJobPosting(JobPosting jobPosting){

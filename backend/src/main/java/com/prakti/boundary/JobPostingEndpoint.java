@@ -2,6 +2,7 @@ package com.prakti.boundary;
 
 import com.prakti.control.JobPostingDAO;
 import com.prakti.model.Company;
+import com.prakti.model.FieldOfWork;
 import com.prakti.model.JobApplication;
 import com.prakti.model.JobPosting;
 
@@ -38,6 +39,12 @@ public class JobPostingEndpoint {
     @Path("/{company}")
     public JobPosting getJobPostingByCompanyId(@QueryParam("id") Long companyId){
         return jobPostingRepository.findJobPostingByCompanyId(companyId);
+    }
+
+    @GET
+    @Path("/fieldOfWork/{fieldOfWork}")
+    public List<JobPosting> getJobPostingsByFieldOfWork(@PathParam("fieldOfWork")FieldOfWork fieldOfWork){
+        return jobPostingRepository.findJobPostingsByFieldOfWork(fieldOfWork);
     }
 
     @POST
