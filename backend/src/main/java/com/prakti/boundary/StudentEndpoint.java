@@ -3,6 +3,7 @@ package com.prakti.boundary;
 import com.prakti.control.StudentDAO;
 import com.prakti.model.Student;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.persistence.EntityNotFoundException;
 import javax.ws.rs.*;
@@ -28,19 +29,20 @@ public class StudentEndpoint {
 
     @GET
     @Path("/{id}")
-    public Student getStudentById(@QueryParam("id")Long id){
+    public Student getStudentById(@PathParam("id") Long id){
+
         return studentRepository.findStudentById(id);
     }
 
     @GET
-    @Path("/{userName}")
-    public Student getStudentByUserName(@QueryParam("userName")String userName){
+    @Path("/username/{userName}")
+    public Student getStudentByUserName(@PathParam("userName")String userName){
         return studentRepository.findStudentByUserName(userName);
     }
 
     @GET
-    @Path("/{email}")
-    public Student getStudentByEmail(@QueryParam("email")String email){
+    @Path("/email/{email}")
+    public Student getStudentByEmail(@PathParam("email")String email){
         return studentRepository.findStudentByEmail(email);
     }
 
@@ -49,7 +51,7 @@ public class StudentEndpoint {
     public Response createStudent(@Context UriInfo info, Student student) {
         if (student == null) return Response.noContent().build();
         Student savedStudent = studentRepository.persistStudent(student);
-        URI uri = info.getAbsolutePathBuilder().path("/" + savedStudent.id).build();
+        URI uri = info.getAbsolutePathBuilder().path("/" + savedStudent.getId()).build();
         return Response.created(uri).build();
     }
 
@@ -65,7 +67,10 @@ public class StudentEndpoint {
                     .header("Reason", "Student with id " + id + " does not exist")
                     .build();
         }
-        return Response.noContent().build();
+        return Response
+                .status(Response.Status.ACCEPTED)
+                .header("Reason", "Student with id " + id + " has been deleted")
+                .build();
     }
 
     @PUT
