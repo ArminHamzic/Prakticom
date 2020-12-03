@@ -1,20 +1,14 @@
-### Get all Companys
-
-GET http://localhost:8080/company
-
-### Post Company
-
-POST http://localhost:8080/company
+POST http://localhost:8080/api/company
 Content-Type: application/json
 
 {
-  "name": "Test2 GmbH",
-  "description": "test test test",
+  "name": "Test22 GmbH",
+  "description": "tes1t test test",
   "contactName": "Hr. Franz Josef Leitner",
-  "contactEmail": "leitner2@gmx.at",
-  "contactPhoneNumber": "06602233445434",
-  "url": "google2.at",
-  "location": [
+  "contactEmail": "leitner3@gmx.at",
+  "contactPhoneNumber": "066042233445435",
+  "url": "google.at",
+  "locations": [
     {
       "streetName": "Bindermichl 35",
       "city": "Linz",
@@ -29,3 +23,22 @@ Content-Type: application/json
     }
   ]
 }
+###
+GET http://localhost:8080/api/company
+###
+GET http://localhost:8080/api/company/1
+###
+PUT http://localhost:8080/api/company/1
+Content-Type: application/json
+
+{
+  "name": "Test23 GmbH",
+  "description": "test1 test2 test3",
+  "contactName": "Hr. Franzi",
+  "contactEmail": "leitner4@gmx.at",
+  "contactPhoneNumber": "066042212333445435",
+  "url": "google2.at",
+  "locations": []
+}
+###
+DELETE http://localhost:8080/api/company/1
