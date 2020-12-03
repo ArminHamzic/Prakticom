@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.prakti.model.Student;
-import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
@@ -12,14 +12,14 @@ import javax.ws.rs.NotFoundException;
 
 @Transactional
 @ApplicationScoped
-public class StudentDAO implements PanacheRepository<Student> {
+public class StudentDAO implements PanacheRepositoryBase<Student, Long> {
 
     public List<Student> findAllStudents(){
         return Student.findAll().list();
     }
 
     public Student findStudentById(Long id){
-        Optional<Student> optionalStudent = Student.findByIdOptional(id);
+        Optional<Student> optionalStudent = Student.find("id", id).singleResultOptional();
         return optionalStudent.orElseThrow(NotFoundException::new);
     }
 
@@ -33,20 +33,22 @@ public class StudentDAO implements PanacheRepository<Student> {
         return optionalStudent.orElseThrow(NotFoundException::new);
     }
 
+    /*  Not using this one so far
     public Student findStudentByPhoneNumber(String phoneNumber){
         Optional<Student> optionalStudent = find("phoneNumber",phoneNumber).singleResultOptional();
         return optionalStudent.orElseThrow(NotFoundException::new);
-    }
+    }*/
 
     public Student persistStudent(Student student){
-        persist(student);
-        return student;
+        return this.getEntityManager().merge(student);
     }
 
     public void updateStudent(Long id, Student student){
         Student updateStudent = findStudentById(id);
         updateStudent.CopyProperties(student);
-        persist(updateStudent);
+        updateStudent.documents = student.documents;
+        updateStudent.jobApplications = student.jobApplications;
+        persistStudent(updateStudent);
     }
 
     public void deleteStudent(Long id){
