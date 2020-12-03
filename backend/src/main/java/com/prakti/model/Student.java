@@ -2,25 +2,44 @@ package com.prakti.model;
 
 import com.prakti.model.DocumentEntities.StudentDocument;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import org.hibernate.validator.constraints.Email;
 
+import javax.json.bind.annotation.JsonbDateFormat;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "STUDENT", schema = "PRAKTICOM")
-public class Student extends PanacheEntity {
+public class Student extends PanacheEntityBase implements Serializable {
+
+    @Id
+    @SequenceGenerator(
+            name ="studentSequence",
+            sequenceName = "student_id_seq",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY,
+            generator = "studentSequence"
+    )
+    Long id;
+
     @Column(name = "USER_NAME", unique = true)
     public String userName;
     @Column(name = "FIRST_NAME")
     public String firstName;
     @Column(name = "LAST_NAME")
     public String lastName;
+    @Email
     @Column(unique = true)
     public String email;
     @Column(unique = true)
     public String phoneNumber;
+    @JsonbDateFormat(value = "yyyy-MM-dd")
     @Column
     public Date birthDate;
     @Column
@@ -33,17 +52,13 @@ public class Student extends PanacheEntity {
     public List<JobApplication> jobApplications = new ArrayList<>();
 
 
-    public Student CopyProperties(Student other){
-        if(other.id != null){
-            firstName = other.firstName;
-            lastName = other.lastName;
-            email = other.email;
-            phoneNumber = other.phoneNumber;
-            birthDate = other.birthDate;
-            school = other.school;
-            documents = other.documents;
-            jobApplications = other.jobApplications;
-        }
-        return this;
+    public void CopyProperties(Student other){
+        this.userName = other.userName;
+        this.firstName = other.firstName;
+        this.lastName = other.lastName;
+        this.email = other.email;
+        this.phoneNumber = other.phoneNumber;
+        this.birthDate = other.birthDate;
+        this.school = other.school;
     }
 }

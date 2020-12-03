@@ -2,6 +2,7 @@ package com.prakti.model;
 
 import com.prakti.model.DocumentEntities.CompanyDocument;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -35,7 +36,7 @@ public class Company extends PanacheEntityBase implements Serializable {
     public String contactEmail;
     @Column(name = "CONTACT_PHONE_NUMBER")
     public String contactPhoneNumber;
-    //@URL
+    @URL
     @Column(unique = true)
     public String url;
 
