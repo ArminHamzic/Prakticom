@@ -7,6 +7,7 @@ import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,20 +41,22 @@ public class JobPosting extends PanacheEntityBase implements Serializable {
 
     @JsonbDateFormat(value = "yyyy-MM-dd")
     @Column(name = "POSTING_DATE")
-    public Date postingDate;
+    public LocalDate postingDate;
     @Column
     public String timespan;
     @Column(name = "field_of_work")
     public FieldOfWork fieldOfWork;
 
+    @Transient
     @OneToMany(mappedBy = "jobPosting", fetch = FetchType.LAZY)
     public List<JobApplication> jobApplications = new ArrayList<>();
 
     public void CopyProperties(JobPosting other){
-        this.jobTitle = other.jobTitle;
-        this.jobDescription = other.jobDescription;
-        this.postingDate = other.postingDate;
-        this.timespan = other.timespan;
+        if(other.jobTitle != null)this.jobTitle = other.jobTitle;
+        if(other.jobDescription != null)this.jobDescription = other.jobDescription;
+        if(other.postingDate != null)this.postingDate = other.postingDate;
+        if(other.timespan != null)this.timespan = other.timespan;
+        if(other.fieldOfWork != null)this.fieldOfWork = other.fieldOfWork;
     }
 
     public Long getId() {
