@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.Email;
 import javax.json.bind.annotation.JsonbDateFormat;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -41,25 +42,27 @@ public class Student extends PanacheEntityBase implements Serializable {
     public String phoneNumber;
     @JsonbDateFormat(value = "yyyy-MM-dd")
     @Column
-    public Date birthDate;
+    public LocalDate birthDate;
     @Column
     public String school;
 
+    @Transient
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
     public List<StudentDocument> documents = new ArrayList<>();
 
+    @Transient
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
     public List<JobApplication> jobApplications = new ArrayList<>();
 
 
     public void CopyProperties(Student other){
-        this.userName = other.userName;
-        this.firstName = other.firstName;
-        this.lastName = other.lastName;
-        this.email = other.email;
-        this.phoneNumber = other.phoneNumber;
-        this.birthDate = other.birthDate;
-        this.school = other.school;
+        if (other.userName != null) this.userName = other.userName;
+        if (other.firstName != null) this.firstName = other.firstName;
+        if (other.lastName != null) this.lastName = other.lastName;
+        if (other.email != null) this.email = other.email;
+        if (other.phoneNumber != null) this.phoneNumber = other.phoneNumber;
+        if (other.birthDate != null) this.birthDate = other.birthDate;
+        if (other.school != null) this.school = other.school;
     }
 
     public Long getId() {
