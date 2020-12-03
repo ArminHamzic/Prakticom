@@ -20,5 +20,18 @@
 | localhost:8080/api/company/{id}      | Company           | Erhalte Company durch die Id {id}                      | GET          |                |
 | localhost:8080/api/company/url/{url} | Company           | Erhalte Company durch die URL {url}                    | GET          |                |
 | localhost:8080/api/company           | Response: 201     | Erzeuge neue Company                                   | POST         |                |
-| localhost:8080/api/company/{id}      | Response(Company) | Updated beliebige Felder einer Company mit der Id {id} | PUT          |                |
+| localhost:8080/api/company/{id}      | Response(Student) | Updated beliebige Felder einer Company mit der Id {id} | PUT          |                |
 | localhost:8080/api/company/{id}      | Response: 202     | Löscht Company mit der Id {id}                         | DELETE       |                |
+
+## JobPosting
+
+| Pfad                                                         | RückgabeDatentyp  | Schnittstellen                                              | HTTP-Request | Required Roles |
+| ------------------------------------------------------------ | ----------------- | ----------------------------------------------------------- | ------------ | -------------- |
+| localhost:8080/api/jobPosting                                | List<JobPosting>  | Erhalte alle Stellenausschreibungen                         | GET          |                |
+| localhost:8080/api/jobPosting/{id}                           | JobPosting        | Erhalte JobPosting durch die Id {id}                        | GET          |                |
+| localhost:8080/api/jobPosting/company/{id}                   | List<JobPosting>  | Erhalte alle JobPostings einer Company durch CompanyId {id} | GET          |                |
+| localhost:8080/api/jobPosting/fieldOfWork?fieldOfWork= {fOW} | List<JobPosting>  | Erhalte alle JobPostings, welche das Berufsfeld {fOW} haben |              |                |
+| localhost:8080/api/jobPosting                                | Response: 201     | Erzeuge neue Stellenausschreibung                           | POST         |                |
+| localhost:8080/api/jobPosting/{id}                           | Response(Student) | Updated beliebige Felder eines JobPosting mit der Id {id}   | PUT          |                |
+| localhost:8080/api/jobPosting/{id}                           | Response: 202     | Löscht JobPosting mit der Id {id}                           | DELETE       |                |
+
