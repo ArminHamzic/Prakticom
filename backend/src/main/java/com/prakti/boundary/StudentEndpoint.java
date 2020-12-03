@@ -55,15 +55,8 @@ public class StudentEndpoint {
     public Response createStudent(@Context UriInfo info, Student student) {
         if (student == null) return Response.noContent().build();
         Student newStudent = new Student();
-        studentRepository.persist(newStudent);
-        student.documents.forEach(d ->{
-            StudentDocument document = new StudentDocument();
-            document.student = newStudent;
-            document.document = d.document;
-            document = studentDocumentRepository.persistDocument(document);
-            newStudent.documents.add(document);
-        });
-        Student savedStudent = studentRepository.persistStudent(student);
+        newStudent.CopyProperties(student);
+        Student savedStudent = studentRepository.persistStudent(newStudent);
         URI uri = info.getAbsolutePathBuilder().path("/" + savedStudent.getId()).build();
         return Response.created(uri).build();
     }
@@ -82,7 +75,7 @@ public class StudentEndpoint {
                     .build();
         }
         return Response
-                .status(Response.Status.ACCEPTED)
+                .status(Response.Status.OK)
                 .header("Reason", "Student with id " + id + " has been deleted")
                 .build();
     }
@@ -99,7 +92,10 @@ public class StudentEndpoint {
                     .build();
         } else {
             studentRepository.updateStudent(id,student);
-            return Response.ok(student).build();
+            return Response
+                    .status(Response.Status.ACCEPTED)
+                    .header("Reason", "Student with id " + id + " has been updated")
+                    .build();
         }
     }
 }
