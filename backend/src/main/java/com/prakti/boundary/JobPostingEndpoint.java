@@ -45,7 +45,7 @@ public class JobPostingEndpoint {
     public Response createJobPosting(@Context UriInfo info, JobPosting jobPosting) {
         if (jobPosting == null) return Response.noContent().build();
         JobPosting savedJobPosting = jobPostingRepository.persistJobPosting(jobPosting);
-        URI uri = info.getAbsolutePathBuilder().path("/" + savedJobPosting.id).build();
+        URI uri = info.getAbsolutePathBuilder().path("/" + savedJobPosting.getId()).build();
         return Response.created(uri).build();
     }
 
