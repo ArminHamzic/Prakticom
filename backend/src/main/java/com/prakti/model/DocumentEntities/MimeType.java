@@ -1,13 +1,25 @@
 package com.prakti.model.DocumentEntities;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "MIME_TYPE", schema = "PRAKTICOM")
-public class MimeType extends PanacheEntity {
+public class MimeType extends PanacheEntityBase {
+
+    @Id
+    @SequenceGenerator(
+            name ="mimeTypeSequence",
+            sequenceName = "mime_type_id_seq",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY,
+            generator = "mimeTypeSequence"
+    )
+    public Long id;
+
     @Enumerated(EnumType.ORDINAL)
-    @Column(name = "MIME_TYPE")
     public AllowedFileFormats MimeType;
 }
