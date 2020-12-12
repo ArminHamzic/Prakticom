@@ -6,9 +6,10 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import {RouterModule} from '@angular/router';
 import {MaterialModule} from '../material.module';
 import { MemberCardComponent } from './member-card/member-card.component';
+import { InfoCardComponent } from './info-card/info-card.component';
 
 @NgModule({
-  declarations: [HeaderComponent, HomeComponent, LandingPageComponent, MemberCardComponent],
+  declarations: [HeaderComponent, HomeComponent, LandingPageComponent, MemberCardComponent, InfoCardComponent],
   imports: [
     CommonModule,
     RouterModule,
