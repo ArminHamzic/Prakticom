@@ -1,42 +1,10 @@
-<mat-sidenav-container class="sidenav-container">
-    <mat-sidenav
-        #drawer
-        class="sidenav"
-        fixedInViewport="true"
-        [ngClass]="{ hidden: !(isHandset$ | async) }"
-        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-        [mode]="(isHandset$ | async) ? 'over' : 'side'"
-        [opened]="!(isHandset$ | async)">
-        <mat-toolbar>PRAKTICOM</mat-toolbar>
-        <mat-nav-list>
-            <a mat-list-item routerLink="">Home</a>
-            <a mat-list-item routerLink="/company">Company</a>
-            <a mat-list-item routerLink="/jobs">Job Ads</a>
-            <a mat-list-item routerLink="/student">Student</a>
-        </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <p>
-            <mat-toolbar color="primary">
-                <button
-                        type="button"
-                        aria-label="Toggle sidenav"
-                        mat-icon-button
-                        (click)="drawer.toggle()"
-                        *ngIf="isHandset$ | async"
-                >
-                    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-                </button>
-                <span>PRAKTICOM</span>
-                <span class="example-spacer"></span>
-                <div *ngIf="!(isHandset$ | async)" class="navbar-links">
-                    <a mat-button routerLink="">Home</a>
-                    <a mat-button routerLink="/company">Company</a>
-                    <a mat-button routerLink="/jobs">Job Ads</a>
-                    <a mat-button routerLink="/student">Student</a>
-                </div>
-            </mat-toolbar>
-        </p>
-        <ng-content></ng-content>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+<mat-toolbar color="primary">
+    <span style="margin-left: 15px">PRAKTICOM</span>
+
+
+    <span class="example-spacer"></span>
+    <button mat-button routerLink="">Home</button>
+    <button mat-button routerLink="/company">Company</button>
+    <button mat-button routerLink="/jobs">Job Ads</button>
+    <button mat-button routerLink="/student">Student</button>
+</mat-toolbar>

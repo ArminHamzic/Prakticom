@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map} from 'rxjs/operators';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +11,8 @@ import {map} from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit {
 
-  isHandset$: Observable<boolean> = this.breakpointObserver
-      .observe(Breakpoints.Handset)
-      .pipe(map((result) => result.matches));
-
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private route: ActivatedRoute,
+              private router: Router) {}
 
   ngOnInit(): void {
   }
