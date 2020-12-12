@@ -1,19 +1,13 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import {StudentService} from '../../../shared/services/StudentService';
-import {IStudent} from '../../../shared/contracts/student';
-
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
-  styleUrls: ['./student.component.css'
-  ],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./student.component.scss']
 })
 export class StudentComponent implements OnInit {
 
-
-  constructor(public studentService: StudentService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
