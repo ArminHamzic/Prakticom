@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {WelcomeComponent} from './welcome/welcome.component';
-import {NotFoundComponent} from './not-found/not-found.component';
+import {HomeComponent} from './layout/home/home.component';
+import {LandingPageComponent} from './layout/landing-page/landing-page.component';
 import {StudentComponent} from './prakticom/components/student/student.component';
-import {CompanyComponent} from './company/company.component';
 
 
 const routes: Routes = [
-  {path: 'jobs', loadChildren: () => import('./job-ads/job-ads.module').then((m) => m.JobAdsModule)},
-  {path: 'student', component: StudentComponent},
-  {path: 'company', component: CompanyComponent},
-  {path: '', component: WelcomeComponent},
-  {path: '**', component: NotFoundComponent}
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'home', component: HomeComponent, children: [
+      {path: '', component: LandingPageComponent},
+      {path: 'student', component: StudentComponent}]},
+  {path: '**', component: HomeComponent},
 ];
 
 @NgModule({
