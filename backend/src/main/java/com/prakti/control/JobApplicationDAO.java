@@ -31,7 +31,7 @@ public class JobApplicationDAO implements PanacheRepository<JobApplication> {
 
     public JobApplication findJobApplicationByJobPosting(Long jobPostingId){
         JobPosting jobPosting = jobPostingRepository.findJobPostingById(jobPostingId);
-        Optional<JobApplication> optionalJobApplication = find("job_posting_id",jobPosting.id).singleResultOptional();
+        Optional<JobApplication> optionalJobApplication = find("job_posting_id",jobPosting.getId()).singleResultOptional();
         return optionalJobApplication.orElseThrow(NotFoundException::new);
     }
 

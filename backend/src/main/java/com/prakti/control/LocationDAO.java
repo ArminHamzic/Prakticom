@@ -4,6 +4,7 @@ import com.prakti.model.Company;
 import com.prakti.model.Location;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -14,14 +15,10 @@ import java.util.Optional;
 
 @Transactional
 @ApplicationScoped
-public class LocationDAO implements PanacheRepository<Location> {
+public class LocationDAO implements PanacheRepositoryBase<Location, Long> {
 
     @Inject
     CompanyDAO companyRepository;
-
-    public List<Location> findAllLocations(){
-        return Location.findAll().list();
-    }
 
     public Location findLocationById(Long id){
         Optional<Location> optionalLocation = Location.findByIdOptional(id);
@@ -36,13 +33,13 @@ public class LocationDAO implements PanacheRepository<Location> {
     }
 
     public Location persistLocation(Location location){
-        persist(location);
-        return location;
+        return this.getEntityManager().merge(location);
     }
 
     public void updateLocation(Long id, Location location){
         Location updateLocation = findLocationById(id);
         updateLocation.CopyProperties(location);
+
         persist(updateLocation);
     }
 

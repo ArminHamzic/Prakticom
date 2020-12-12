@@ -1,13 +1,27 @@
 package com.prakti.model;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "LOCATION", schema = "PRAKTICOM")
-public class Location extends PanacheEntity {
+public class Location extends PanacheEntityBase {
 
+    @Id
+    @SequenceGenerator(
+            name ="locationSequence",
+            sequenceName = "location_id_seq",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY,
+            generator = "locationSequence"
+    )
+    Long id;
+
+    @JsonbTransient
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "COMPANY_ID", referencedColumnName = "ID")
     public Company company;
@@ -24,15 +38,15 @@ public class Location extends PanacheEntity {
     @Column(name = "COUNTRY")
     public String country;
 
-    public Location CopyProperties(Location other){
-        if(other.id != null){
-            company = other.company;
-            streetName = other.streetName;
-            city = other.city;
-            zipCode = other.zipCode;
-            country = other.country;
-        }
-        return this;
+    public void CopyProperties(Location other){
+        if(other.company != null) this.company = other.company;
+        if(other.streetName != null) this.streetName = other.streetName;
+        if(other.city != null) this.city = other.city;
+        if(other.zipCode != null) this.zipCode = other.zipCode;
+        if(other.country != null) this.country = other.country;
     }
 
+    public Long getId() {
+        return id;
+    }
 }

@@ -22,10 +22,11 @@ public class LocationEndpoint {
     @Inject
     LocationDAO locationRepository;
 
+    //TODO: Not really necessary
     @GET
     public List<Location> getAllLocations(){
 
-        return locationRepository.findAllLocations();
+        return locationRepository.listAll();
     }
 
     @GET
@@ -46,7 +47,7 @@ public class LocationEndpoint {
     public Response createLocation(@Context UriInfo info, Location location) {
         if (location == null) return Response.noContent().build();
         Location savedLocation = locationRepository.persistLocation(location);
-        URI uri = info.getAbsolutePathBuilder().path("/" + savedLocation.id).build();
+        URI uri = info.getAbsolutePathBuilder().path("/" + savedLocation.getId()).build();
         return Response.created(uri).build();
     }
 

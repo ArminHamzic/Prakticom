@@ -14,12 +14,9 @@ import javax.ws.rs.NotFoundException;
 @ApplicationScoped
 public class CompanyDAO implements PanacheRepository<Company> {
 
-    public List<Company> findAllCompanies(){
-        return Company.findAll().list();
-    }
 
     public Company findCompanyById(Long id){
-        Optional<Company> optionalCompany = Company.findByIdOptional(id);
+        Optional<Company> optionalCompany = Company.find("id", id).singleResultOptional();
         return optionalCompany.orElseThrow(NotFoundException::new);
     }
 
@@ -34,14 +31,15 @@ public class CompanyDAO implements PanacheRepository<Company> {
     }
 
     public Company persistCompany(Company company){
-        persist(company);
-        return company;
+        return this.getEntityManager().merge(company);
     }
 
     public void updateCompany(Long id, Company company){
         Company updateCompany = findCompanyById(id);
         updateCompany.CopyProperties(company);
-        persist(updateCompany);
+        if(company.jobPostings != null) updateCompany.jobPostings = company.jobPostings;
+        if(company.locations != null) updateCompany.locations = company.locations;
+        persistCompany(updateCompany);
     }
 
     public void deleteCompany(Long id){
