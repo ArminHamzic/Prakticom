@@ -5,11 +5,10 @@ import { HomeComponent } from './home/home.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import {RouterModule} from '@angular/router';
 import {MaterialModule} from '../material.module';
-import { MemberCardComponent } from './member-card/member-card.component';
 import { InfoCardComponent } from './info-card/info-card.component';
 
 @NgModule({
-  declarations: [HeaderComponent, HomeComponent, LandingPageComponent, MemberCardComponent, InfoCardComponent],
+  declarations: [HeaderComponent, HomeComponent, LandingPageComponent, InfoCardComponent],
   imports: [
     CommonModule,
     RouterModule,
