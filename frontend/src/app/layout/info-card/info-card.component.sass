@@ -1,0 +1,67 @@
+.outer-block
+  width: 100%
+  height: 100%
+
+.inner-block
+  width: 100%
+  text-align: center
+  -webkit-transition: all 0.3s ease
+  transition: all 0.3s ease
+
+.inner-block .icon-holder
+  position: relative
+  top: 70px
+  display: inline-block
+  padding: 10px
+  -webkit-transition: all 0.3s ease
+  transition: all 0.3s ease
+  background-color: #fff
+
+.inner-block .heading
+  position: relative
+  top: 60px
+  -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55)
+  transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55)
+
+.outer-block:hover
+  border: 1px solid #835aeb
+
+.inner-block .icon-holder > img.icon
+  width: 40px
+
+.inner-block:hover .icon-holder
+  top: -30px
+
+.inner-block:hover .heading
+  top: -30px
+
+.inner-block .description
+  width: 80%
+  margin: 0 auto
+  opacity: 0
+  padding-bottom: 40px
+  font-size: 14px
+  line-height: 20px
+  font-weight: 200
+  -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55)
+  transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55)
+  -webkit-transform: scale(0)
+  -ms-transform: scale(0)
+  transform: scale(0)
+
+.inner-block:hover .description
+  opacity: 1
+  -webkit-transform: scale(1)
+  -ms-transform: scale(1)
+  transform: scale(1)
+
+.outer-block .inner-block
+  background-color: transparent
+  color: #333
+  text-align: center
+  border: 1px solid #dedede
+
+.inner-block h4
+  font-size: 16px
+  font-weight: 700
+  text-transform: uppercase
