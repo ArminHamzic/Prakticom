@@ -17,27 +17,28 @@
 </div>
 <div class="centerScrollContainer">
   <cdk-virtual-scroll-viewport itemSize="100" class="scrollContainer">
-    <div *cdkVirtualFor="let company of companies">
-      <mat-card class="containerCustomCard">
-        <mat-card-header class="vertical-center">
-          <mat-card-title>Hallo</mat-card-title>
-        </mat-card-header>
-        <div class="vertical-center">
-          <h3>Bauherr: batsrad</h3>
+    <div class="content">
+      <div fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div [fxFlex]="(100/4) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let company of companies">
+          <mat-card class="mat-elevation-z4">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>{{company.name}}</mat-card-title>
+              <mat-card-subtitle>{{company.contactEmail}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src='./assets/lp-bg.jpg'>
+            <mat-card-content>
+              <p>
+                {{company.description}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button>BEWERBEN</button>
+              <button mat-button>ANSEHEN</button>
+            </mat-card-actions>
+          </mat-card>
         </div>
-        <div class="vertical-center">
-          <h3>Adresse: hallo</h3>
-        </div>
-        <div class="vertical-center">
-          <h3>Status:</h3>
-        </div>
-        <hr width="20%">
-        <mat-card-actions class="vertical-center">
-          <button class="iconBut" mat-icon-button color="primary"><mat-icon>description</mat-icon></button>
-          <button class="iconBut" mat-icon-button><mat-icon>edit</mat-icon></button>
-          <button class="iconBut" mat-icon-button color="warn"><mat-icon>delete_outline</mat-icon></button>
-        </mat-card-actions>
-      </mat-card>
+      </div>
     </div>
   </cdk-virtual-scroll-viewport>
 </div>
