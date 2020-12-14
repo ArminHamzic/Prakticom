@@ -2,12 +2,12 @@ POST http://localhost:8080/api/company
 Content-Type: application/json
 
 {
-  "name": "Test22 GmbH",
+  "name": "Te3245 GmbH",
   "description": "tes1t test test",
   "contactName": "Hr. Franz Josef Leitner",
-  "contactEmail": "leitner3@gmx.at",
-  "contactPhoneNumber": "066042233445435",
-  "url": "google.at",
+  "contactEmail": "leitner20@gmx.at",
+  "contactPhoneNumber": "044323343445435",
+  "url": "google12.at",
   "locations": [
     {
       "streetName": "Bindermichl 35",
