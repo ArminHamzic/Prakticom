@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {ICompany} from '../../../shared/contracts/company';
 import {CompanyService} from '../../../shared/services/CompanyService';
+import {LinkedList} from '@angular-devkit/schematics/src/utility/linked-list';
 
 @Component({
   selector: 'app-company-search-list',
@@ -10,13 +11,15 @@ import {CompanyService} from '../../../shared/services/CompanyService';
 })
 export class CompanySearchListComponent implements OnInit {
 
-  companies: MatTableDataSource<ICompany>;
-
+  // @ts-ignore
+  companies: LinkedList<ICompany>;
   constructor(private companyService: CompanyService) { }
 
-  async ngOnInit(): Promise<void> {
+  // tslint:disable-next-line:typedef
+  async ngOnInit() {
     const rawCompanies = await this.companyService.getAll().toPromise();
-    this.companies = new MatTableDataSource<ICompany>(rawCompanies);
+    // @ts-ignore
+    this.companies = rawCompanies;
     console.log(rawCompanies);
   }
 
