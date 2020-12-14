@@ -11,8 +11,7 @@ import {LinkedList} from '@angular-devkit/schematics/src/utility/linked-list';
 })
 export class CompanySearchListComponent implements OnInit {
 
-  // @ts-ignore
-  companies: LinkedList<ICompany>;
+  companies: ICompany[] = [];
   constructor(private companyService: CompanyService) { }
 
   // tslint:disable-next-line:typedef
