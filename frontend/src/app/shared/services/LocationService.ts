@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 
 
 import {GenericHttpService} from './GenericHttpService/GenericHttpService';
-import {environment} from '../../../../../../../Desktop/frontend/src/environments/environment';
 import {ILocation} from '../contracts/location';
+import {environment} from '../../../environments/environment';
 
 
 @Injectable({

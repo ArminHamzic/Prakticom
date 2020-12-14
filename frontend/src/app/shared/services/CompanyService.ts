@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import {GenericHttpService} from './GenericHttpService/GenericHttpService';
 import {ICompany} from '../contracts/company';
 import {Observable} from 'rxjs';
-import {environment} from '../../../../../../../Desktop/frontend/src/environments/environment';
+import {environment} from '../../../environments/environment';
 
 
 @Injectable({

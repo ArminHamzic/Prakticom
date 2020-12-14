@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 import {GenericHttpService} from './GenericHttpService/GenericHttpService';
 import {IStudent} from '../contracts/student';
-import {environment} from '../../../../../../../Desktop/frontend/src/environments/environment';
+import {environment} from '../../../environments/environment';
 
 
 @Injectable({
