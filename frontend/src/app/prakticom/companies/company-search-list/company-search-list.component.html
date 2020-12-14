@@ -1,0 +1,45 @@
+<div class="vertical-center">
+  <mat-toolbar color="primary" style="width: 60%">
+    <mat-toolbar-row>
+      <mat-form-field class="field" style="width: 40%">
+        <mat-label>Beruf, Begriff</mat-label>
+        <mat-icon matSuffix>search</mat-icon>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field class="field" style="width: 50%">
+        <mat-label>Ort, Region, Bundesland</mat-label>
+        <mat-icon matSuffix>location_on</mat-icon>
+        <input matInput>
+      </mat-form-field>
+      <button mat-raised-button color="basic" class="buttonClass" style="width: 25%">Jobs finden</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+<div class="centerScrollContainer">
+  <cdk-virtual-scroll-viewport itemSize="100" class="scrollContainer">
+    <div *cdkVirtualFor="let company of companies">
+      <mat-card class="containerCustomCard">
+        <mat-card-header class="vertical-center">
+          <mat-card-title>Hallo</mat-card-title>
+        </mat-card-header>
+        <div class="vertical-center">
+          <h3>Bauherr: batsrad</h3>
+        </div>
+        <div class="vertical-center">
+          <h3>Adresse: hallo</h3>
+        </div>
+        <div class="vertical-center">
+          <h3>Status:</h3>
+        </div>
+        <hr width="20%">
+        <mat-card-actions class="vertical-center">
+          <button class="iconBut" mat-icon-button color="primary"><mat-icon>description</mat-icon></button>
+          <button class="iconBut" mat-icon-button><mat-icon>edit</mat-icon></button>
+          <button class="iconBut" mat-icon-button color="warn"><mat-icon>delete_outline</mat-icon></button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </cdk-virtual-scroll-viewport>
+</div>
+
+
