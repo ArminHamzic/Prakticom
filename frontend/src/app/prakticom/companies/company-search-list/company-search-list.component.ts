@@ -11,15 +11,33 @@ import {LinkedList} from '@angular-devkit/schematics/src/utility/linked-list';
 })
 export class CompanySearchListComponent implements OnInit {
 
-  companies: ICompany[] = [];
+  companies: MatTableDataSource<ICompany>;
   constructor(private companyService: CompanyService) { }
 
   // tslint:disable-next-line:typedef
   async ngOnInit() {
     const rawCompanies = await this.companyService.getAll().toPromise();
+
+
     // @ts-ignore
-    this.companies = rawCompanies;
-    console.log(rawCompanies);
+    this.companies = new MatTableDataSource<ICompany>(rawCompanies);
+    console.log(this.companies);
+    this.companies.filterPredicate = (data, filter: string)  => {
+      const accumulator = (currentTerm, key) => {
+        return this.nestedFilterCheck(currentTerm, data, key);
+      };
+      const dataStr = Object.keys(data).reduce(accumulator, '').toLowerCase();
+      // Transform the filter by converting it to lowercase and removing whitespace.
+      const transformedFilter = filter.trim().toLowerCase();
+      return dataStr.indexOf(transformedFilter) !== -1;
+    };
+  }
+
+  
+
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.companies.filter = filterValue.trim().toLowerCase();
   }
 
 }
