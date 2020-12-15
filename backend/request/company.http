@@ -2,12 +2,12 @@ POST http://localhost:8080/api/company
 Content-Type: application/json
 
 {
-  "name": "Te3245 GmbH",
-  "description": "tes1t test test",
+  "name": "Dynatrace GmbH",
+  "description": "A amazing company. Our employees are the happiest.",
   "contactName": "Hr. Franz Josef Leitner",
-  "contactEmail": "leitner20@gmx.at",
-  "contactPhoneNumber": "044323343445435",
-  "url": "google12.at",
+  "contactEmail": "human.ressources@dynatrace.at",
+  "contactPhoneNumber": "06604332131",
+  "url": "dynatrace.com",
   "locations": [
     {
       "streetName": "Bindermichl 35",
@@ -23,6 +23,114 @@ Content-Type: application/json
     }
   ]
 }
+###
+POST http://localhost:8080/api/company
+Content-Type: application/json
+
+{
+  "name": "Google GmbH",
+  "description": "I guess we don't have to introduce ourselves. We are Google",
+  "contactName": "Hr. Tom Leitner",
+  "contactEmail": "human.ressources@google.at",
+  "contactPhoneNumber": "066012355677",
+  "url": "google.at",
+  "locations": [
+    {
+      "streetName": "Bindermichl 35",
+      "city": "Linz",
+      "zipCode": "4020",
+      "country": "Austria"
+    },
+    {
+      "streetName": "Bindermichl 40",
+      "city": "Linz",
+      "zipCode": "4020",
+      "country": "Austria"
+    }
+  ]
+}
+
+###
+POST http://localhost:8080/api/company
+Content-Type: application/json
+
+{
+  "name": "Facebook GmbH",
+  "description": "We are the largest social media platform in the world.",
+  "contactName": "Hr. Mark Zuckerberg",
+  "contactEmail": "human.ressources@facebook.at",
+  "contactPhoneNumber": "06601234456",
+  "url": "facebook.com",
+  "locations": [
+    {
+      "streetName": "Bindermichl 35",
+      "city": "Linz",
+      "zipCode": "4020",
+      "country": "Austria"
+    },
+    {
+      "streetName": "Bindermichl 40",
+      "city": "Linz",
+      "zipCode": "4020",
+      "country": "Austria"
+    }
+  ]
+}
+
+###
+POST http://localhost:8080/api/company
+Content-Type: application/json
+
+{
+  "name": "Twitter",
+  "description": "As one of the largest social media platforms, we always new employees",
+  "contactName": "Hr. Mark Zuckerberg",
+  "contactEmail": "human.ressources@twitter.at",
+  "contactPhoneNumber": "066031234456",
+  "url": "twitter.com",
+  "locations": [
+    {
+      "streetName": "Bindermichl 35",
+      "city": "Linz",
+      "zipCode": "4020",
+      "country": "Austria"
+    },
+    {
+      "streetName": "Bindermichl 40",
+      "city": "Linz",
+      "zipCode": "4020",
+      "country": "Austria"
+    }
+  ]
+}
+
+###
+POST http://localhost:8080/api/company
+Content-Type: application/json
+
+{
+  "name": "Porsche GMBH",
+  "description": "We probably produce the best cars for the richest people",
+  "contactName": "Hr. Dude Dudenberg",
+  "contactEmail": "human.ressources@porsche.at",
+  "contactPhoneNumber": "066013234456",
+  "url": "porsche.com",
+  "locations": [
+    {
+      "streetName": "Bindermichl 35",
+      "city": "Linz",
+      "zipCode": "4020",
+      "country": "Austria"
+    },
+    {
+      "streetName": "Bindermichl 40",
+      "city": "Linz",
+      "zipCode": "4020",
+      "country": "Austria"
+    }
+  ]
+}
+
 ###
 GET http://localhost:8080/api/company
 ###
