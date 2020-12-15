@@ -9,5 +9,6 @@ export interface ICompany{
     name: string;
     jobPostings: string[];
     locations: ILocation[];
+    sectors: string[]
     url: string;
 }
