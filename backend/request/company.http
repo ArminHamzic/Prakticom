@@ -78,6 +78,60 @@ Content-Type: application/json
 }
 
 ###
+POST http://localhost:8080/api/company
+Content-Type: application/json
+
+{
+  "name": "Twitter",
+  "description": "As one of the largest social media platforms, we always new employees",
+  "contactName": "Hr. Mark Zuckerberg",
+  "contactEmail": "human.ressources@facebook.at",
+  "contactPhoneNumber": "06601234456",
+  "url": "facebook.com",
+  "locations": [
+    {
+      "streetName": "Bindermichl 35",
+      "city": "Linz",
+      "zipCode": "4020",
+      "country": "Austria"
+    },
+    {
+      "streetName": "Bindermichl 40",
+      "city": "Linz",
+      "zipCode": "4020",
+      "country": "Austria"
+    }
+  ]
+}
+
+###
+POST http://localhost:8080/api/company
+Content-Type: application/json
+
+{
+  "name": "Porsche GMBH",
+  "description": "We probably produce the best cars for the richest people",
+  "contactName": "Hr. Mark Zuckerberg",
+  "contactEmail": "human.ressources@facebook.at",
+  "contactPhoneNumber": "06601234456",
+  "url": "facebook.com",
+  "locations": [
+    {
+      "streetName": "Bindermichl 35",
+      "city": "Linz",
+      "zipCode": "4020",
+      "country": "Austria"
+    },
+    {
+      "streetName": "Bindermichl 40",
+      "city": "Linz",
+      "zipCode": "4020",
+      "country": "Austria"
+    }
+  ]
+}
+
+###
 GET http://localhost:8080/api/company
 ###
 GET http://localhost:8080/api/company/1
