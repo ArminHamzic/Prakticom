@@ -4,6 +4,7 @@ import {HomeComponent} from './layout/home/home.component';
 import {LandingPageComponent} from './layout/landing-page/landing-page.component';
 import {StudentComponent} from './prakticom/student/student.component';
 import {CompaniesComponent} from './prakticom/companies/companies.component';
+import {CompanyProfilePageComponent} from './prakticom/companies/company-profile-page/company-profile-page.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home/landing-page', pathMatch: 'full'},
@@ -11,6 +12,7 @@ const routes: Routes = [
       {path: '', component: LandingPageComponent},
       {path: 'landing-page', component: LandingPageComponent},
       {path: 'companies', component: CompaniesComponent},
+      {path: 'company-profile-page', component: CompanyProfilePageComponent},
       {path: 'student', component: StudentComponent}],
     },
   {path: '**', component: HomeComponent},
