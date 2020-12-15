@@ -20,5 +20,8 @@ export class CompanyService extends GenericHttpService<ICompany, number> {
     getByEmail(url: string): Observable<ICompany> {
         return this.http.get<ICompany>(this.base + '/url/' + url);
     }
+    getByName(url: string): Observable<ICompany> {
+      return this.http.get<ICompany>(this.base + '/url' + url);
+    }
 
 }
