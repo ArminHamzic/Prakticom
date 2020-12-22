@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { StudentService} from '../../shared/services/StudentService';
+import {IStudent} from '../../shared/contracts/student';
 
 @Component({
   selector: 'app-student',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
   }
 
+
+  ngOnInit(): void {
+
+  }
+
+  //region Code für Eingabe von Skills
+
+  // skills: string[] = ['Angular'];
+  /*onClick(skill: string): void{
+    const index = this.skills.indexOf(skill);
+    if (index > -1) {
+      this.skills.splice(index, 1);
+    }
+  }
+
+  onEnter(input: any): void {
+    if (input !== '') {
+      this.skills.push(input.value);
+    }
+    input.value = '';
+  }*/
+  //endregion
 }

@@ -6,13 +6,17 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import {RouterModule} from '@angular/router';
 import {MaterialModule} from '../material.module';
 import { InfoCardComponent } from './info-card/info-card.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
-  declarations: [HeaderComponent, HomeComponent, LandingPageComponent, InfoCardComponent],
-  imports: [
-    CommonModule,
-    RouterModule,
-    MaterialModule
-  ]
+    declarations: [HeaderComponent, HomeComponent, LandingPageComponent, InfoCardComponent, CardComponent],
+    exports: [
+        CardComponent
+    ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        MaterialModule
+    ]
 })
 export class LayoutModule { }
