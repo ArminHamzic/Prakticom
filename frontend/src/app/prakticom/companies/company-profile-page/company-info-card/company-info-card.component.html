@@ -1,0 +1,46 @@
+<html>
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
+<body>
+<div fxFlex="60" class="company-info-card">
+  <mat-card>
+    <mat-card-header>
+      <!--<div mat-card-avatar class="example-header-image"></div>-->
+      <div class="company-logo">
+        <img mat-card-image src="assets/logo.png">
+      </div>
+      <div class="company-description">
+        <mat-card-title>{{company.name}}</mat-card-title>
+        <mat-card-content>
+          <h3>{{company.description}}</h3>
+          <div class="flex-container">
+            <mat-icon>account_circle</mat-icon>
+            <p>{{company.contactName}}</p>
+          </div>
+          <div class="flex-container">
+            <mat-icon>email</mat-icon>
+            <p>{{company.contactEmail}}</p>
+          </div>
+          <div class="flex-container">
+            <mat-icon>call</mat-icon>
+            <p>{{company.contactPhoneNumber}}</p>
+          </div>
+          <div class="flex-container">
+            <mat-icon>language</mat-icon>
+            <a href="https://{{company.url}}">Hier kommen sie zu unserer Website</a>
+          </div>
+        </mat-card-content>
+      </div>
+    </mat-card-header>
+    <mat-card-footer>
+      <div class="social-icons">
+        <a href="https://twitter.com" class="icon-button twitter"><i class="icon-twitter"></i><span>
+        <img mat-card-image></span></a>
+        <a href="https://facebook.com" class="icon-button facebook"><i class="icon-facebook"></i><span></span></a>
+        <a href="https://plus.google.com" class="icon-button google-plus"><i
+          class="icon-google-plus"></i><span></span></a>
+      </div>
+    </mat-card-footer>
+  </mat-card>
+</div>
+</body>
+</html>
