@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swiper from 'swiper';
+import {CompanyService} from '../../../../shared/services/CompanyService';
+import {ICompany} from '../../../../shared/contracts/company';
 
 @Component({
   selector: 'app-company-job-ads-swiper',
@@ -7,9 +9,12 @@ import Swiper from 'swiper';
   styleUrls: ['./company-job-ads-swiper.component.sass']
 })
 export class CompanyJobAdsSwiperComponent implements OnInit {
-  constructor() { }
+  companies: ICompany[];
 
-  ngOnInit(): void {
+  constructor(private companyService: CompanyService) { }
+
+  async ngOnInit(): Promise<void> {
+    this.companies = await this.companyService.getAll().toPromise();
     const swiper = new Swiper('.swiper-container', {
       slidesPerView: 3,
       spaceBetween: 30,

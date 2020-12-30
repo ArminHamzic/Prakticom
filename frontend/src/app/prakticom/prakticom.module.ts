@@ -8,14 +8,18 @@ import {CompanyProfilePageComponent} from './companies/company-profile-page/comp
 import {CompanyInfoCardComponent} from './companies/company-profile-page/company-info-card/company-info-card.component';
 import {CompanyJobAdsSwiperComponent} from './companies/company-profile-page/company-job-ads-swiper/company-job-ads-swiper.component';
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
+import {LayoutModule} from '../layout/layout.module';
+import { MapComponent } from './companies/company-profile-page/map/map.component';
+
 
 @NgModule({
   declarations: [StudentComponent, CompaniesComponent, CompanySearchListComponent, CompanyProfilePageComponent,
-    CompanyInfoCardComponent, CompanyJobAdsSwiperComponent],
+    CompanyInfoCardComponent, CompanyJobAdsSwiperComponent, MapComponent],
   imports: [
     CommonModule,
     MaterialModule,
     NgxUsefulSwiperModule,
+    LayoutModule,
   ]
 })
 export class PrakticomModule {

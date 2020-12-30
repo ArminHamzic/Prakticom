@@ -43,7 +43,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {CarouselModule} from 'primeng/carousel';
 
 @NgModule({
   exports: [
@@ -98,7 +97,6 @@ import {CarouselModule} from 'primeng/carousel';
     OverlayModule,
     PortalModule,
     ScrollingModule,
-    CarouselModule
   ]
 })
 export class MaterialModule { }
