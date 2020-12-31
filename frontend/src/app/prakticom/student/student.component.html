@@ -1,22 +1,101 @@
+<mat-list>
+  <mat-list-item>
+      <h1>User Profile</h1>
+  </mat-list-item>
+  <mat-divider style="margin-bottom: 2%"></mat-divider>
+</mat-list>
 
 
-<!--<ng-container>
-  <div *ngFor="let skill of skills">
-    <button mat-flat-button
-            color="primary"
-            style="border-radius: 20px"
-            matTooltip="Remove this skill"
-            matTooltipPosition="above"
-            (click)="onClick(skill)"
-    >{{skill}}
-    </button>
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
+
+      <mat-card class="mat-elevation-z4" >
+        <img mat-card-image src="assets/bast1.jpg" class="rounded">
+
+        <div class="b">
+
+            <mat-card-header>
+              <mat-card-title>Max Mustermann</mat-card-title>
+            </mat-card-header>
+
+            
+
+
+            <mat-card-content>
+              <mat-card-header>
+                <h2>Standort:</h2>
+                <a>Linz</a>
+              </mat-card-header>
+              <mat-card-header>
+                <h2>Email:</h2>
+                <a>Max.Mustermann@gmail.com</a>
+              </mat-card-header>
+              <mat-card-header>
+                <h2>Geburtsdatum:</h2>
+                <a>01.01.2000</a>
+              </mat-card-header>
+            </mat-card-content>
+
+            <mat-card-actions>
+            </mat-card-actions>
+
+      </div>
+
+      </mat-card>
+    </div>
+
+    <div fxFlex="75%" fxFlex.xs="100%" fxFlex.sm="33%">
+      <mat-card class="mat-elevation-z4" >
+        
+        <mat-card-header>
+          <mat-card-title >Beschreibung</mat-card-title>
+          
+        </mat-card-header>
+
+        <p>Hi! Mein Name ist Max und ich begeistere mich bereits mein ganzes Leben für's Programmieren! Schon als ich
+          ein kleiner Junger war, war ich immer sehr interessiert an allem möglichen Technischen Kram. Vom Gameboy bis
+          hin zum Computer. Daher entschloss ich mich mein Wissen weiter aus zu bauen und ging an die HTBLA-Leonding.
+          Diese Schule hat es mir ermöglicht nicht nur Grundkenntnisee zu erlangen, sondern auch detalliertes Wissen
+          in einigen Fachgebieten.
+        </p>
+
+        <mat-card-header>
+          <mat-card-title >Skills</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            <ng-container>
+              <div *ngFor="let skill of skills">
+                <button mat-flat-button color="primary" style="border-radius: 20px">
+                  {{skill}}
+                </button>
+              </div>
+              <a> </a>
+
+              <button mat-raised-button>Lebenslauf</button>
+
+            </ng-container>
+
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
   </div>
-</ng-container>
-<ng-container>
-  <mat-form-field class="example-full-width">
-    <mat-label>Skill</mat-label>
-    <input #input matInput placeholder="Java"(keyup.enter)="onEnter(input)">
-  </mat-form-field>
-</ng-container>-->
-<div>student works!</div>
+  </div>
 
+
+  
+
+
+  
+
+
+
+  
+
+
+  
