@@ -12,6 +12,6 @@ export class StudentComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  skills: string[] = ['Angular' ,'', 'Quarkus', '', 'Java', '', 'C#'];
+  skills: string[] = ['Angular', 'Quarkus', '', 'Java', '', 'C#'];
 
 }
