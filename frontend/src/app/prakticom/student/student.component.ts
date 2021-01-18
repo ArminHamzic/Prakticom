@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentService} from '../../shared/services/StudentService';
-import {IStudent} from '../../shared/contracts/student';
 
 @Component({
   selector: 'app-student',
@@ -13,6 +11,7 @@ export class StudentComponent implements OnInit {
   }
   skills: string[] = ['Angular', 'Quarkus', '', 'Java', '', 'C#'];
 
+  skills: string[] = ['Angular', 'Quarkus', '', 'Java', '', 'C#'];
 
   ngOnInit(): void {
 
