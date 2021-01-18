@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ICompany} from '../../../../shared/contracts/company';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CompanyService} from '../../../../shared/services/CompanyService';
@@ -10,6 +10,8 @@ import {CompanyService} from '../../../../shared/services/CompanyService';
 })
 export class CompanyInfoCardComponent implements OnInit {
 
+  // tslint:disable-next-line:no-input-rename
+  @Input('companyId') companyId: number;
   companies: ICompany[];
   company: ICompany;
 
@@ -17,8 +19,7 @@ export class CompanyInfoCardComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     await this.onLoadCompanies();
-    this.company = await this.getFirstCompany();
-    console.log('test');
+    this.company = this.companies.find(i => i.id === 1);
     console.log(this.company);
   }
 
@@ -27,7 +28,5 @@ export class CompanyInfoCardComponent implements OnInit {
     console.log(this.companies);
   }
 
-  async getFirstCompany(): Promise<ICompany> {
-    return this.companies.shift();
-  }
+
 }

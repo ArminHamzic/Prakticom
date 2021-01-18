@@ -10,7 +10,12 @@ import {ICompany} from '../../../shared/contracts/company';
 })
 export class CompanyProfilePageComponent implements OnInit {
 
-  ngOnInit(): void {
+  company: ICompany;
+  constructor(private route: ActivatedRoute, private router: Router, private companyService: CompanyService) {}
+
+  async ngOnInit(): Promise<void> {
+    const companyId = this.route.snapshot.paramMap.get('id');
+    this.company = await this.companyService.get(Number(companyId)).toPromise();
   }
 
 }

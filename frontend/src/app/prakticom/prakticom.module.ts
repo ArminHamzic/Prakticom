@@ -10,17 +10,19 @@ import {CompanyJobAdsSwiperComponent} from './companies/company-profile-page/com
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import {LayoutModule} from '../layout/layout.module';
 import { MapComponent } from './companies/company-profile-page/map/map.component';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
   declarations: [StudentComponent, CompaniesComponent, CompanySearchListComponent, CompanyProfilePageComponent,
     CompanyInfoCardComponent, CompanyJobAdsSwiperComponent, MapComponent],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    NgxUsefulSwiperModule,
-    LayoutModule,
-  ]
+    imports: [
+        CommonModule,
+        MaterialModule,
+        NgxUsefulSwiperModule,
+        LayoutModule,
+        RouterModule,
+    ]
 })
 export class PrakticomModule {
 }
