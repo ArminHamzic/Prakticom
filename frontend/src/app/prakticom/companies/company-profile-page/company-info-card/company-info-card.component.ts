@@ -18,13 +18,10 @@ export class CompanyInfoCardComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     await this.onLoadCompanies();
     this.company = await this.getFirstCompany();
-    console.log('test');
-    console.log(this.company);
   }
 
   async onLoadCompanies(): Promise<void> {
     this.companies = await this.companyApiService.getAll().toPromise();
-    console.log(this.companies);
   }
 
   async getFirstCompany(): Promise<ICompany> {
