@@ -42,16 +42,20 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {CarouselModule} from 'ngx-carousel-lib';
 
 @NgModule({
   exports: [
     A11yModule,
     ClipboardModule,
     CdkStepperModule,
+    IvyCarouselModule,
     CdkTableModule,
     CdkTreeModule,
     DragDropModule,
+    CarouselModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,

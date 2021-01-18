@@ -55,5 +55,55 @@
   </div>
 </div>
 
+<!--
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 py-3">
+      <h2 class="pb-2">Current Events</h2>
+      <ngb-carousel>
+        <ng-template ngbSlide *ngFor="let comany of companies">
+          <div class="carousel-caption">
+            <h3>{{ comany.name }}</h3>
+            <p [innerText]="comany.name"></p>
+          </div>
+        </ng-template>
+      </ngb-carousel>
+    </div>
+  </div>
+</div>
+-->
 
 
+<!--
+
+<div class="vertical-center">
+  <div style="width: 60%">
+    <carousel>
+      <div>
+        <div class="carousel-cell" *ngFor="let company of companies.filteredData">
+          <mat-card class="mat-elevation-z4">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>{{company.name}}</mat-card-title>
+              <mat-card-subtitle>{{company.contactEmail}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src='./assets/lp-bg.jpg'>
+            <mat-card-content>
+              <p>
+                {{company.description}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <div>
+                <button mat-button>WEBSITE</button>
+                <button routerLink="/home/company/{{company.id}}" mat-button>ANSEHEN</button>
+              </div>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </carousel>
+  </div>
+</div>
+
+-->

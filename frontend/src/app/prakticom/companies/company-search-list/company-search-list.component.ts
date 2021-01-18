@@ -14,8 +14,7 @@ export class CompanySearchListComponent implements OnInit {
   companies: MatTableDataSource<ICompany>;
   constructor(private companyService: CompanyService) { }
 
-  // tslint:disable-next-line:typedef
-  async ngOnInit() {
+  async ngOnInit(): Promise<void> {
     const rawCompanies = await this.companyService.getAll().toPromise();
 
 

@@ -12,7 +12,7 @@ const routes: Routes = [
       {path: '', component: LandingPageComponent},
       {path: 'landing-page', component: LandingPageComponent},
       {path: 'companies', component: CompaniesComponent},
-      {path: 'company-profile-page/:id', component: CompanyProfilePageComponent},
+      {path: 'company/:id', component: CompanyProfilePageComponent},
       {path: 'student', component: StudentComponent}],
     },
   {path: '**', component: HomeComponent},
