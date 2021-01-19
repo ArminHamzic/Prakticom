@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {CompanyService} from '../../shared/services/CompanyService';
+import {ICompany} from '../../shared/contracts/company';
+import {IStudent} from '../../shared/contracts/student';
+import {StudentService} from '../../shared/services/StudentService';
 
 @Component({
   selector: 'app-student',
@@ -7,11 +12,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute, private studentService: StudentService) { }
 
-  skills: string[] = ['Angular', 'Quarkus', '', 'Java', '', 'C#'];
+  studentId: number;
+  student: IStudent;
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.studentId = +this.activatedRoute.snapshot.paramMap.get('id');
+    this.student = await this.studentService.get(this.studentId).toPromise();
   }
 
 }
