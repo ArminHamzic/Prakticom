@@ -21,6 +21,7 @@ export class CompanySearchListComponent implements OnInit {
     // @ts-ignore
     this.companies = new MatTableDataSource<ICompany>(rawCompanies);
     console.log(this.companies);
+
     this.companies.filterPredicate = (data, filter: string)  => {
       const accumulator = (currentTerm, key) => {
         return this.nestedFilterCheck(currentTerm, data, key);
