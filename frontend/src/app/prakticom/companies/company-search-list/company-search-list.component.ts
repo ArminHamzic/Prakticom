@@ -14,14 +14,14 @@ export class CompanySearchListComponent implements OnInit {
   companies: MatTableDataSource<ICompany>;
   constructor(private companyService: CompanyService) { }
 
-  // tslint:disable-next-line:typedef
-  async ngOnInit() {
+  async ngOnInit(): Promise<void> {
     const rawCompanies = await this.companyService.getAll().toPromise();
 
 
     // @ts-ignore
     this.companies = new MatTableDataSource<ICompany>(rawCompanies);
     console.log(this.companies);
+
     this.companies.filterPredicate = (data, filter: string)  => {
       const accumulator = (currentTerm, key) => {
         return this.nestedFilterCheck(currentTerm, data, key);

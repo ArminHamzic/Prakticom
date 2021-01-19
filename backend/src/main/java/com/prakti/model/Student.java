@@ -35,7 +35,6 @@ public class Student extends PanacheEntityBase implements Serializable {
     public String firstName;
     @Column(name = "LAST_NAME")
     public String lastName;
-    @Email
     @Column(unique = true)
     public String email;
     @Column(unique = true)
@@ -45,6 +44,10 @@ public class Student extends PanacheEntityBase implements Serializable {
     public LocalDate birthDate;
     @Column
     public String school;
+    @Lob
+    @Column
+    public String description;
+
 
     @Transient
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
@@ -53,6 +56,10 @@ public class Student extends PanacheEntityBase implements Serializable {
     @Transient
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
     public List<JobApplication> jobApplications = new ArrayList<>();
+
+    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
+    public List<StudentSkill> skills = new ArrayList<>();
+
 
 
     public void CopyProperties(Student other){
@@ -63,6 +70,8 @@ public class Student extends PanacheEntityBase implements Serializable {
         if (other.phoneNumber != null) this.phoneNumber = other.phoneNumber;
         if (other.birthDate != null) this.birthDate = other.birthDate;
         if (other.school != null) this.school = other.school;
+        if (other.description != null) this.description = other.description;
+        if (other.skills != null) this.skills = other.skills;
     }
 
     public Long getId() {

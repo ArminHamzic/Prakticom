@@ -13,7 +13,7 @@ const routes: Routes = [
       {path: 'landing-page', component: LandingPageComponent},
       {path: 'companies', component: CompaniesComponent},
       {path: 'company/:id', component: CompanyProfilePageComponent},
-      {path: 'student', component: StudentComponent}],
+      {path: 'student/:id', component: StudentComponent}],
     },
   {path: '**', component: HomeComponent},
 ];

@@ -17,9 +17,5 @@ export class JobPostingService extends GenericHttpService<IJobPosting, number> {
         super(http, `${environment.api.baseUrl}/jobPosting`);
     }
 
-    getByCompanyId(companyId: number): Observable<IJobPosting> {
-        return this.http.get<IJobPosting>(this.base + '/company/' + companyId);
-    }
-
     // TODO: JobPosting POST
 }
