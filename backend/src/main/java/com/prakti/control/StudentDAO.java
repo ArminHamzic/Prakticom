@@ -48,6 +48,7 @@ public class StudentDAO implements PanacheRepositoryBase<Student, Long> {
         updateStudent.CopyProperties(student);
         if(student.documents != null) updateStudent.documents = student.documents;
         if(student.jobApplications != null) updateStudent.jobApplications = student.jobApplications;
+        if(student.skills != null) updateStudent.skills = student.skills;
         persistStudent(updateStudent);
     }
 
