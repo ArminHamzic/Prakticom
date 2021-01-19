@@ -12,6 +12,7 @@ import {JobPostingService} from '../../shared/services/JobPostingService';
 export class LandingPageComponent implements OnInit {
 
   matCompanies: MatTableDataSource<ICompany>;
+  matJobPostings: MatTableDataSource<ICompany>;
   companies: ICompany[] = [];
 
   constructor(private companyService: CompanyService,
