@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {ICompany} from '../../shared/contracts/company';
 import {CompanyService} from '../../shared/services/CompanyService';
+import {JobPostingService} from '../../shared/services/JobPostingService';
 
 @Component({
   selector: 'app-landing-page',
@@ -13,9 +14,11 @@ export class LandingPageComponent implements OnInit {
   matCompanies: MatTableDataSource<ICompany>;
   companies: ICompany[] = [];
 
-  constructor(private companyService: CompanyService) { }
+  constructor(private companyService: CompanyService,
+              private jobPostingService: JobPostingService) { }
 
   async ngOnInit(): Promise<void> {
+
     const rawCompanies = await this.companyService.getAll().toPromise();
     this.companies = rawCompanies;
     this.matCompanies = new MatTableDataSource<ICompany>(rawCompanies);
@@ -57,4 +60,11 @@ export class LandingPageComponent implements OnInit {
     this.matCompanies.filter = filterValue.trim().toLowerCase();
   }
 
+  filterCompanies() {
+
+  }
+
+  filterJobs() {
+
+  }
 }
