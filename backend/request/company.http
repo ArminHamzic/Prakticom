@@ -85,7 +85,7 @@ Content-Type: application/json
 
 {
   "name": "Twitter",
-  "description": "As one of the largest social media platforms, we always new employees",
+  "description": "We probably produce the best cars for the ricLorem ipsum dolor sit amet, consetetur sadipscing elitr",
   "contactName": "Hr. Mark Zuckerberg",
   "contactEmail": "human.ressources@twitter.at",
   "contactPhoneNumber": "066031234456",
@@ -112,7 +112,7 @@ Content-Type: application/json
 
 {
   "name": "Porsche GMBH",
-  "description": "We probably produce the best cars for the richest people",
+  "description": "We probably produce the best cars for the ricLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed dfdfdsfdsfsdsdsdsdsdsdsddfs",
   "contactName": "Hr. Dude Dudenberg",
   "contactEmail": "human.ressources@porsche.at",
   "contactPhoneNumber": "066013234456",
