@@ -36,3 +36,16 @@ Content-Type: application/json
 }
 ###
 DELETE localhost:8080/api/jobPosting/4
+
+###
+POST localhost:8080/api/jobPosting/4
+Content-Type: application/json
+
+{
+  "jobDescription": "This is a  job. You should apply",
+  "jobTitle": "Interesting Job",
+  "postingDate": "2020-12-02",
+  "timespan": "2 months",
+  "fieldOfWork": "IT"
+}
+###

@@ -46,12 +46,6 @@ public class CompanyEndpoint {
         return companyRepository.findCompanyById(id);
     }
 
-    @GET
-    @Path("/{url}")
-    public Company getCompanyByUrl(@QueryParam("url")String url){
-        return companyRepository.findCompanyByUrl(url);
-    }
-
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createCompany(@Context UriInfo info, Company company) {

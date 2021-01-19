@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ICompany} from '../../../../shared/contracts/company';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CompanyService} from '../../../../shared/services/CompanyService';
@@ -10,21 +10,10 @@ import {CompanyService} from '../../../../shared/services/CompanyService';
 })
 export class CompanyInfoCardComponent implements OnInit {
 
-  companies: ICompany[];
-  company: ICompany;
+  @Input() company: ICompany;
 
-  constructor(private route: ActivatedRoute, private router: Router, private companyApiService: CompanyService) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
-    await this.onLoadCompanies();
-    this.company = await this.getFirstCompany();
-  }
-
-  async onLoadCompanies(): Promise<void> {
-    this.companies = await this.companyApiService.getAll().toPromise();
-  }
-
-  async getFirstCompany(): Promise<ICompany> {
-    return this.companies.shift();
   }
 }
