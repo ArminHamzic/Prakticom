@@ -37,20 +37,22 @@ public class CompanyEndpoint {
 
     @GET
     public List<Company> getAllCompanies(){
+
         return companyRepository.listAll();
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     public Company getCompanyById(@PathParam("id")Long id){
+
         return companyRepository.findCompanyById(id);
     }
 
-    @GET
+    /*@GET
     @Path("/{url}")
     public Company getCompanyByUrl(@QueryParam("url")String url){
         return companyRepository.findCompanyByUrl(url);
-    }
+    }*/
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
