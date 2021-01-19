@@ -3,6 +3,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {ICompany} from '../../shared/contracts/company';
 import {CompanyService} from '../../shared/services/CompanyService';
 import {JobPostingService} from '../../shared/services/JobPostingService';
+import {IJobPosting} from '../../shared/contracts/jobPosting';
 
 @Component({
   selector: 'app-landing-page',
@@ -12,8 +13,9 @@ import {JobPostingService} from '../../shared/services/JobPostingService';
 export class LandingPageComponent implements OnInit {
 
   matCompanies: MatTableDataSource<ICompany>;
-  matJobPostings: MatTableDataSource<ICompany>;
+  matJobPostings: MatTableDataSource<IJobPosting>;
   companies: ICompany[] = [];
+  jobPostings: IJobPosting[] = [];
 
   constructor(private companyService: CompanyService,
               private jobPostingService: JobPostingService) { }
@@ -23,7 +25,11 @@ export class LandingPageComponent implements OnInit {
     const rawCompanies = await this.companyService.getAll().toPromise();
     this.companies = rawCompanies;
     this.matCompanies = new MatTableDataSource<ICompany>(rawCompanies);
-    console.log(this.companies);
+    const rawJobPostings = await this.jobPostingService.getAll().toPromise();
+    console.log(rawJobPostings);
+    this.jobPostings = rawJobPostings;
+    this.matJobPostings = new MatTableDataSource<IJobPosting>(rawJobPostings);
+
     this.matCompanies.filterPredicate = (data, filter: string)  => {
       const accumulator = (currentTerm, key) => {
         return this.nestedFilterCheck(currentTerm, data, key);
