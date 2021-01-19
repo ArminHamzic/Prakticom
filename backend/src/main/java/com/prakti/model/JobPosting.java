@@ -44,7 +44,7 @@ public class JobPosting extends PanacheEntityBase implements Serializable {
     public LocalDate postingDate;
     @Column
     public String timespan;
-    @Column(name = "field_of_work")
+    @Column(name = "FIELD_OF_WORK")
     public FieldOfWork fieldOfWork;
 
     @Transient
