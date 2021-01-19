@@ -1,5 +1,6 @@
-GET http://localhost:8080/api/company/1
+GET http://localhost:8080/api/company/7
 
+###
 POST http://localhost:8080/api/company
 Content-Type: application/json
 

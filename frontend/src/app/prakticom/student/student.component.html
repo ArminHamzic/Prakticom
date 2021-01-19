@@ -33,7 +33,7 @@
     <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
 
       <mat-card class="mat-elevation-z4" >
-        <img mat-card-image src="assets/bast1.jpg" class="rounded">
+        <img mat-card-image src="assets/kindpng_2855863.png" class="rounded">
 
         <div class="b">
 
@@ -46,16 +46,16 @@
 
             <mat-card-content>
               <mat-card-header>
-                <h2>Standort:</h2>
-                <a>Linz</a>
+                <h2>Email:</h2>
+                <a>{{student.email}}</a>
               </mat-card-header>
               <mat-card-header>
-                <h2>Email:</h2>
-                <a>Max.Mustermann@gmail.com</a>
+                <h2>Schule</h2>
+                <a>{{student.school}}:</a>
               </mat-card-header>
               <mat-card-header>
                 <h2>Geburtsdatum:</h2>
-                <a>01.01.2000</a>
+                <a>{{student.birthDate | date}}</a>
               </mat-card-header>
             </mat-card-content>
 
@@ -75,11 +75,8 @@
 
         </mat-card-header>
 
-        <p>Hi! Mein Name ist Max und ich begeistere mich bereits mein ganzes Leben für's Programmieren! Schon als ich
-          ein kleiner Junger war, war ich immer sehr interessiert an allem möglichen Technischen Kram. Vom Gameboy bis
-          hin zum Computer. Daher entschloss ich mich mein Wissen weiter aus zu bauen und ging an die HTBLA-Leonding.
-          Diese Schule hat es mir ermöglicht nicht nur Grundkenntnisee zu erlangen, sondern auch detalliertes Wissen
-          in einigen Fachgebieten.
+        <p>
+          {{student.description}}
         </p>
 
         <mat-card-header>
@@ -88,9 +85,9 @@
         <mat-card-content>
           <p>
             <ng-container>
-              <div *ngFor="let skill of skills">
+              <div *ngFor="let skill of student.skills">
                 <button mat-flat-button color="primary" style="border-radius: 20px">
-                  {{skill}}
+                  {{skill.skill | titlecase}}
                 </button>
               </div>
               <a> </a>

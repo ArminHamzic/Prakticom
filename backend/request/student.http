@@ -9,11 +9,12 @@ Content-Type: application/json
     "lastName": "Röbl",
     "phoneNumber": "066048865816",
     "school": "HTBLA Leonding",
-    "userName": "eliasroebl10"
+    "userName": "eliasroebl10",
+    "description": "Ich bin ein super Schüler"
   }
 
 ###
-GET http://localhost:8080/api/student
+GET http://localhost:8080/api/student/3
 ###
 GET http://localhost:8080/api/student/4
 ###
