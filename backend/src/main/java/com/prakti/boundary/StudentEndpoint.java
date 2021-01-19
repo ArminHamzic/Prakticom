@@ -34,7 +34,6 @@ public class StudentEndpoint {
     @GET
     @Path("/{id}")
     public Student getStudentById(@PathParam("id") Long id){
-
         return studentRepository.findStudentById(id);
     }
 

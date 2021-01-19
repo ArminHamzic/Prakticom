@@ -44,7 +44,8 @@ public class Student extends PanacheEntityBase implements Serializable {
     public LocalDate birthDate;
     @Column
     public String school;
-    @Column(length = 4095)
+    @Lob
+    @Column
     public String description;
 
 

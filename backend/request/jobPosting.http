@@ -1,9 +1,9 @@
-POST localhost:8080/api/jobPosting/8
+POST localhost:8080/api/jobPosting/9
 Content-Type: application/json
 
 
   {
-    "fieldOfWork": 7,
+    "fieldOfWork": "IT",
     "jobDescription": "Du suchst eine neue Herausforderung in der Entwicklung von Frontends im Dynatrace-Umfeld? Dann bist du bei uns genau richtig.",
     "jobTitle": "Frontend Entwickler",
     "postingDate": "2021-01-19",
@@ -12,12 +12,12 @@ Content-Type: application/json
 
 ###
 
-POST localhost:8080/api/jobPosting/8
+POST localhost:8080/api/jobPosting/10
 Content-Type: application/json
 
 
 {
-  "fieldOfWork": 7,
+  "fieldOfWork": "IT",
   "jobDescription": "Du suchst eine neue Herausforderung in der Entwicklung von Backend Services im Dynatrace-Umfeld? Dann bist du bei uns genau richtig.",
   "jobTitle": "Software Engineer",
   "postingDate": "2021-01-19",
@@ -26,12 +26,12 @@ Content-Type: application/json
 
 ###
 
-POST localhost:8080/api/jobPosting/8
+POST localhost:8080/api/jobPosting/10
 Content-Type: application/json
 
 
 {
-  "fieldOfWork": 7,
+  "fieldOfWork": "IT",
   "jobDescription": "Du suchst eine neue Herausforderung. Willst all unseren Code testen?",
   "jobTitle": "Software Tester",
   "postingDate": "2021-01-19",
@@ -45,7 +45,7 @@ Content-Type: application/json
 
 
 {
-  "fieldOfWork": 6,
+  "fieldOfWork": "Design",
   "jobDescription": "Du bist ein Nerd, wenn es um Graphik Desing angeht. Dann bewirb dich jetzt.",
   "jobTitle": "Designer",
   "postingDate": "2021-01-19",
@@ -57,7 +57,7 @@ Content-Type: application/json
 
 
 {
-  "fieldOfWork": 3,
+  "fieldOfWork": "Finances",
   "jobDescription": "Du suchst eine neue Herausforderung in der Entwicklung von SAP Extensions im Banken-Umfeld? Dann bist du bei uns genau richtig.",
   "jobTitle": "SAP Guru",
   "postingDate": "2021-01-19",
@@ -91,3 +91,16 @@ Content-Type: application/json
 }
 ###
 DELETE localhost:8080/api/jobPosting/4
+
+###
+POST localhost:8080/api/jobPosting/4
+Content-Type: application/json
+
+{
+  "jobDescription": "This is a  job. You should apply",
+  "jobTitle": "Interesting Job",
+  "postingDate": "2020-12-02",
+  "timespan": "2 months",
+  "fieldOfWork": "IT"
+}
+###

@@ -5,12 +5,15 @@
     <h2></h2>
   </div>
 </div>-->
-<div class="row">
-  <div class="info-card">
-    <app-company-info-card></app-company-info-card>
+
+<ng-container *ngIf="company">
+  <div class="row">
+    <div class="info-card">
+      <app-company-info-card [company]="company"></app-company-info-card>
+    </div>
+    <div class="location-map">
+      <app-company-map [company]="company"></app-company-map>
+    </div>
   </div>
-  <div class="location-map">
-    <app-map></app-map>
-  </div>
-</div>
-<app-company-job-ads-swiper></app-company-job-ads-swiper>
+  <app-company-job-ads-swiper [company]="company"></app-company-job-ads-swiper>
+</ng-container>

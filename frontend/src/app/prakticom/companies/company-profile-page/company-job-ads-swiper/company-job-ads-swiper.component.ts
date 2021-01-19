@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import Swiper from 'swiper';
 import {CompanyService} from '../../../../shared/services/CompanyService';
 import {ICompany} from '../../../../shared/contracts/company';
@@ -10,6 +10,7 @@ import {ICompany} from '../../../../shared/contracts/company';
 })
 export class CompanyJobAdsSwiperComponent implements OnInit {
   companies: ICompany[];
+  @Input() company: ICompany;
 
   constructor(private companyService: CompanyService) { }
 
@@ -18,7 +19,6 @@ export class CompanyJobAdsSwiperComponent implements OnInit {
     const swiper = new Swiper('.swiper-container', {
       slidesPerView: 3,
       spaceBetween: 30,
-      slidesPerGroup: 1,
       loop: true,
       loopFillGroupWithBlank: true,
       pagination: {
