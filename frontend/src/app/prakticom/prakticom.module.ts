@@ -11,10 +11,13 @@ import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import {LayoutModule} from '../layout/layout.module';
 import {RouterModule} from '@angular/router';
 import { CompanyMapComponent } from './companies/company-profile-page/company-map/company-map.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterStudentComponent } from './login/register-student/register-student.component';
+import { RegisterCompanyComponent } from './login/register-company/register-company.component';
 
 @NgModule({
   declarations: [StudentComponent, CompaniesComponent, CompanySearchListComponent, CompanyProfilePageComponent,
-    CompanyInfoCardComponent, CompanyJobAdsSwiperComponent, CompanyMapComponent],
+    CompanyInfoCardComponent, CompanyJobAdsSwiperComponent, CompanyMapComponent, LoginComponent, RegisterStudentComponent, RegisterCompanyComponent],
   imports: [
     CommonModule,
     MaterialModule,
