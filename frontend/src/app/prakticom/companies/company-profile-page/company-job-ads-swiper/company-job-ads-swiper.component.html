@@ -11,8 +11,8 @@
 <!-- Swiper -->
 <div class="swiper-container">
   <div class="swiper-wrapper">
-    <!--<div fxLayout="row wrap" fxLayoutGap="16px grid">
-      <div *ngFor="let company of companies">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div [fxFlex]="(100/5) +'%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let company of companies">
         <app-card>
           <i mat-card-avatar class="example-header-image"></i>
           <ng-container title>Software Developer</ng-container>
@@ -25,8 +25,8 @@
           </ng-container>
         </app-card>
       </div>
-    </div>-->
-    <div class="swiper-slide" *ngFor="let company of companies">Slide 1</div>
+    </div>
+<!--    <div class="swiper-slide" *ngFor="let company of companies">Slide 1</div>-->
   </div>
   <div class="swiper-pagination"></div>
   <div class="swiper-button-next"></div>
