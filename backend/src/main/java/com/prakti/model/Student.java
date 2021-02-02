@@ -29,8 +29,6 @@ public class Student extends PanacheEntityBase implements Serializable {
     )
     Long id;
 
-    @Column(name = "USER_NAME", unique = true)
-    public String userName;
     @Column(name = "FIRST_NAME")
     public String firstName;
     @Column(name = "LAST_NAME")
@@ -47,6 +45,11 @@ public class Student extends PanacheEntityBase implements Serializable {
     @Lob
     @Column
     public String description;
+
+    @Column(name = "USER_NAME", unique = true)
+    public String userName;
+    @Column(name = "PASSWORD")
+    public String password;
 
 
     @Transient
@@ -72,6 +75,8 @@ public class Student extends PanacheEntityBase implements Serializable {
         if (other.school != null) this.school = other.school;
         if (other.description != null) this.description = other.description;
         if (other.skills != null) this.skills = other.skills;
+        if (other.userName != null) this.userName = userName;
+        if (other.password != null) this.password = password;
     }
 
     public Long getId() {

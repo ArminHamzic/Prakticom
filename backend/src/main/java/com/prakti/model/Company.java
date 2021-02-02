@@ -40,6 +40,11 @@ public class Company extends PanacheEntityBase implements Serializable {
     @URL
     @Column(unique = true)
     public String url;
+    @Column(name = "USER_NAME", unique = true)
+    public String userName;
+    @Column(name = "PASSWORD")
+    public String password;
+
 
 
     /*@OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
@@ -61,6 +66,8 @@ public class Company extends PanacheEntityBase implements Serializable {
         this.contactEmail = other.contactEmail;
         this.contactPhoneNumber = other.contactPhoneNumber;
         this.url = other.url;
+        this.userName = userName;
+        this.password = password;
     }
 
     public Long getId() {
