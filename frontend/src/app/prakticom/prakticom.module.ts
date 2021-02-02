@@ -14,19 +14,21 @@ import { CompanyMapComponent } from './companies/company-profile-page/company-ma
 import { LoginComponent } from './login/login.component';
 import { RegisterStudentComponent } from './login/register-student/register-student.component';
 import { RegisterCompanyComponent } from './login/register-company/register-company.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [StudentComponent, CompaniesComponent, CompanySearchListComponent, CompanyProfilePageComponent,
+    // tslint:disable-next-line:max-line-length
     CompanyInfoCardComponent, CompanyJobAdsSwiperComponent, CompanyMapComponent, LoginComponent, RegisterStudentComponent, RegisterCompanyComponent],
-    imports: [
-        CommonModule,
-        MaterialModule,
-        NgxUsefulSwiperModule,
-        LayoutModule,
-        RouterModule,
-        FormsModule,
-    ]
+  imports: [
+    CommonModule,
+    MaterialModule,
+    NgxUsefulSwiperModule,
+    LayoutModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ]
 })
 export class PrakticomModule {
 }

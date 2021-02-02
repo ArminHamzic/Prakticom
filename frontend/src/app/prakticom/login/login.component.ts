@@ -16,4 +16,8 @@ export class LoginComponent implements OnInit {
   onRegisterStudent(): void {
     this.router.navigate(['/home/register-student']);
   }
+
+  onRegisterCompany(): void {
+    this.router.navigate(['/home/register-company']);
+  }
 }

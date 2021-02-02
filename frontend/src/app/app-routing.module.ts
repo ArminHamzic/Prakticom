@@ -7,6 +7,7 @@ import {CompaniesComponent} from './prakticom/companies/companies.component';
 import {CompanyProfilePageComponent} from './prakticom/companies/company-profile-page/company-profile-page.component';
 import {LoginComponent} from './prakticom/login/login.component';
 import {RegisterStudentComponent} from './prakticom/login/register-student/register-student.component';
+import {RegisterCompanyComponent} from './prakticom/login/register-company/register-company.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home/landing-page', pathMatch: 'full'},
@@ -14,6 +15,7 @@ const routes: Routes = [
       {path: '', component: LandingPageComponent},
       {path: 'landing-page', component: LandingPageComponent},
       {path: 'register-student', component: RegisterStudentComponent},
+      {path: 'register-company', component: RegisterCompanyComponent},
       {path: 'login', component: LoginComponent},
       {path: 'companies', component: CompaniesComponent},
       {path: 'company/:id', component: CompanyProfilePageComponent},

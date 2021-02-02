@@ -1,1 +1,88 @@
-<p>register-company works!</p>
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <div>
+      <mat-card-header>
+        <mat-card-title>Bitte Registrieren Sie Ihre Firma</mat-card-title>
+      </mat-card-header>
+      <form class="example-form">
+        <mat-card-content>
+          <div class="row">
+            <mat-form-field class="example-full-width">
+              <input matInput name="companyName" placeholder="Firmenname" required>
+              <mat-icon matSuffix>home</mat-icon>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" style="margin-left: 5vw">
+              <input matInput placeholder="Kontaktname">
+              <mat-icon matSuffix>account_circle</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Email" [formControl]="email" required>
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" style="margin-left: 5vw">
+              <mat-label>Telefon</mat-label>
+              <span matPrefix>+43 &nbsp;</span>
+              <input type="tel" matInput placeholder="555-555-1234" required>
+              <mat-icon matSuffix>local_phone</mat-icon>
+            </mat-form-field>
+          </div>
+          <mat-form-field style="width: 30vw; margin-top: 0.5vw">
+            <mat-label>Beschreibung</mat-label>
+            <textarea matInput required></textarea>
+            <mat-icon matSuffix>mode</mat-icon>
+          </mat-form-field>
+          <mat-form-field class="example-full-width" style="width: 100%">
+            <mat-label>In folgende Branchen tätig</mat-label>
+            <mat-select [formControl]="workingField" multiple required>
+              <mat-option *ngFor="let fieldOfWork of workingFields" [value]="fieldOfWork">{{fieldOfWork}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <p>
+            <mat-form-field class="example-full-width">
+              <mat-label>Addresse des Hauptstandortes</mat-label>
+              <input matInput required>
+              <mat-icon matSuffix>place</mat-icon>
+            </mat-form-field>
+            <!--<mat-form-field class="example-full-width" style="margin-left: 5vw">
+              <mat-label>Addresse 2</mat-label>
+              <input matInput>
+            </mat-form-field>-->
+          </p>
+          <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Stadt</mat-label>
+                  <input matInput placeholder="San Francisco">
+                  <mat-icon matSuffix>place</mat-icon>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="example-full-width" style="margin-left: 5vw">
+                  <mat-label>Postleitzahl</mat-label>
+                  <input matInput #postalCode maxlength="5">
+                  <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+                  <mat-icon matSuffix>place</mat-icon>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+          <div class="row" style="margin-top: 1.5vw; text-align: center">
+            <mat-form-field class="example-full-width">
+              <mat-label>Enter your password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" required>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                      [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+            <button mat-raised-button color="accent" style="margin-left: 5vw" (click)="onRegisterButtonClicked()">Register</button>
+          </div>
+        </mat-card-content>
+      </form>
+    </div>
+  </mat-card>
+</div>
