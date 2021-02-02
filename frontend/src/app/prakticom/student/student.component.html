@@ -38,7 +38,7 @@
         <div class="b">
 
             <mat-card-header>
-              <mat-card-title>Max Mustermann</mat-card-title>
+              <mat-card-title>{{student.firstName}} {{student.lastName}}</mat-card-title>
             </mat-card-header>
 
 
@@ -83,20 +83,15 @@
           <mat-card-title >Skills</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <p>
-            <ng-container>
-              <div *ngFor="let skill of student.skills">
-                <button mat-flat-button color="primary" style="border-radius: 20px">
+            <div>
+              <div>
+                <button *ngFor="let skill of student.skills" mat-flat-button color="primary" style="border-radius: 20px; margin: 0.5vw">
                   {{skill.skill | titlecase}}
                 </button>
               </div>
               <a> </a>
-
-              <button mat-raised-button>Lebenslauf</button>
-
-            </ng-container>
-
-          </p>
+              <button style="margin: 1vw" mat-raised-button>Lebenslauf</button>
+            </div>
         </mat-card-content>
         <mat-card-actions>
         </mat-card-actions>
