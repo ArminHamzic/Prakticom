@@ -22,6 +22,9 @@ export class StudentComponent implements OnInit {
     this.student = await this.studentService.get(this.studentId).toPromise();
   }
 
+  openTab(pdf: string): void {
+    window.open(pdf, '_blank');
+  }
 }
 
 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {IStudent} from "../../../shared/contracts/student";
-import {StudentService} from "../../../shared/services/StudentService";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {Router} from "@angular/router";
+import {IStudent} from '../../../shared/contracts/student';
+import {StudentService} from '../../../shared/services/StudentService';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register-student',
@@ -11,16 +11,11 @@ import {Router} from "@angular/router";
 })
 export class RegisterStudentComponent implements OnInit {
 
-  student: IStudent;
-
   constructor(private studentService: StudentService,
               private snackBar: MatSnackBar,
               private router: Router) { }
 
-
-  ngOnInit(): void {
-    this.studentService.getAll();
-  }
+  student: IStudent;
 
   /*
   async onSubmit(): Promise<void> {
@@ -35,11 +30,15 @@ export class RegisterStudentComponent implements OnInit {
   }
    */
 
+
+  ngOnInit(): void {
+    this.studentService.getAll();
+  }
+
   onClose(): void {
     this.router.navigate(['/home/login']);
   }
 
-  onSubmit() {
+  onSubmit(): void {}
 
-  }
 }
