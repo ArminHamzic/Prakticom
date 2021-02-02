@@ -3,83 +3,68 @@
   <div class="place-left">
     <mat-form-field class="field">
       <input id="firstName" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Vorname" [(ngModel)]="student.firstName">
+      <mat-icon matSuffix>person</mat-icon>
       <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
     </mat-form-field>
     <mat-form-field class="field">
       <input id="lastName" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Nachname" [(ngModel)]="student.lastName">
+      <mat-icon matSuffix>person</mat-icon>
       <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
     </mat-form-field>
   </div>
   <div class="place-left">
     <mat-form-field class="field">
       <input id="userName" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Username" [(ngModel)]="student.userName">
+      <mat-icon matSuffix>person</mat-icon>
       <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
     </mat-form-field>
     <mat-form-field class="field">
       <input id="email" type="email" required [ngModelOptions] ="{standalone: true}" matInput placeholder="E-Mail" [(ngModel)]="student.email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" >
+      <mat-icon matSuffix>mail</mat-icon>
       <mat-error>Ungültige E-Mail-Adresse!</mat-error>
     </mat-form-field>
   </div>
   <div class="place-left">
     <mat-form-field class="field">
       <input id="school" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Derzeitige Schule" [(ngModel)]="student.school">
+      <mat-icon matSuffix>school</mat-icon>
       <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
     </mat-form-field>
     <mat-form-field class="field">
       <input id="phoneNumber" type="text" [ngModelOptions] ="{standalone: true}" matInput placeholder="Telefonnummer (optional)" [(ngModel)]="student.phoneNumber" >
+      <mat-icon matSuffix>phone_enabled</mat-icon>
     </mat-form-field>
   </div>
-  <div class="place-left">
-    <mat-form-field class="field">
-      <input id="password" type="password" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Passwort" [(ngModel)]="student.password">
-      <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
-    </mat-form-field>
-  </div>
-  <div class="place-left">
-    <mat-form-field class="field" style="width: 63.5%">
-            <textarea id="description" type="text" [ngModelOptions] ="{standalone: true}" cdkTextareaAutosize matInput cdkAutosizeMinRows="1"
-                      placeholder="Was zeichnet deine Persönlichkeit aus? Was sind deine Stärken? " [(ngModel)]="student.description"></textarea>
-    </mat-form-field>
-  </div>
-  <div style="width: 63.5%; margin: 20px">
+  <mat-form-field appearance="fill" style="margin-left: 20px">
+    <mat-label>Geburtsdatum</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker [(ngModel)]="student.birthDate" #picker startView="year" [startAt]="startDate"></mat-datepicker>
+  </mat-form-field>
+
+  <div style="width: 63.5%; margin: 20px; margin-top: 30px">
     <div class="mat-elevation-z8" style="margin-bottom: 3%">
       <table mat-table [dataSource]="student.skills" matSort >
 
         <!-- Position Column -->
 
-        <ng-container matColumnDef="username">
-          <th (click)="filter='username'" [ngClass]="{'error': filter === 'username'}" mat-header-cell *matHeaderCellDef mat-sort-header> Username </th>
-          <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+        <ng-container matColumnDef="skill">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Skill </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="firstName">
-          <th (click)="filter='firstName'" [ngClass]="{'error': filter === 'firstName'}" mat-header-cell *matHeaderCellDef mat-sort-header> Vorname </th>
-          <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
-        </ng-container>
-
-        <!-- Name Column -->
-        <ng-container matColumnDef="lastName">
-          <th (click)="filter='lastName'" [ngClass]="{'error': filter === 'lastName'}" mat-header-cell *matHeaderCellDef mat-sort-header> Nachname </th>
-          <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="groups">
-          <th (click)="filter='groups'" [ngClass]="{'error': filter === 'groups'}" mat-header-cell *matHeaderCellDef mat-sort-header> Rolle </th>
-          <td mat-cell *matCellDef="let element"> {{element.groups}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="email">
-          <th (click)="filter='email'" [ngClass]="{'error': filter === 'email'}" mat-header-cell *matHeaderCellDef mat-sort-header> E-Mail </th>
-          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        <ng-container matColumnDef="rating">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Rating </th>
+          <td mat-cell *matCellDef="let element"> {{element.rating}} </td>
         </ng-container>
 
         <ng-container matColumnDef="settings">
-          <th mat-header-cell *matHeaderCellDef>
-            Bearbeiten
+          <th mat-header-cell *matHeaderCellDef width="3%">
+            <button class="iconBut" color="accent" mat-icon-button (click)="onAddingSkill()"><mat-icon>add</mat-icon></button>
           </th>
           <td mat-cell *matCellDef="let element">
-            <button class="iconBut" mat-icon-button (click)="onDetailView(element)"><mat-icon>edit</mat-icon></button>
-            <button class="iconBut" mat-icon-button color="warn" (click)="onDelete(element.id)"><mat-icon>delete_outline</mat-icon></button>
+            <button class="iconBut" mat-icon-button (click)="onSkillEdit(element)"><mat-icon>edit</mat-icon></button>
+            <button class="iconBut" mat-icon-button color="warn" (click)="onSkillDelete(element.id)"><mat-icon>delete_outline</mat-icon></button>
           </td>
         </ng-container>
 
@@ -88,8 +73,23 @@
       </table>
     </div>
   </div>
+
+  <mat-form-field class="field">
+    <input id="password" type="password" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Passwort" [(ngModel)]="student.password">
+    <mat-icon matSuffix>vpn_key</mat-icon>
+    <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+  </mat-form-field>
+  <mat-form-field class="field">
+    <input id="passwordSafe" type="passwordSafe" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Passwort bestätigen" [(ngModel)]="passwordSafe">
+    <mat-icon matSuffix>vpn_key</mat-icon>
+    <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+  </mat-form-field>
+  <mat-form-field class="field" style="width: 63.5%">
+            <textarea id="description" type="text" [ngModelOptions] ="{standalone: true}" cdkTextareaAutosize matInput cdkAutosizeMinRows="1"
+                      placeholder="Was zeichnet deine Persönlichkeit aus? Was sind deine Stärken? " [(ngModel)]="student.description"></textarea>
+  </mat-form-field>
   <div class="safeButtons">
     <button class="buttonSelf" mat-raised-button color="warn" type="submit" (click)="onClose()">Zurück</button>
-    <button class="buttonSelf" mat-raised-button color="primary" type="submit" [disabled]="!form.checkValidity()" (click)="onSubmit()">Speichern und zurück</button>
+    <button class="buttonSelf" mat-raised-button color="primary" type="submit" [disabled]="!form.checkValidity()" (click)="onSubmit()">Profil erstellen</button>
   </div>
 </form>
