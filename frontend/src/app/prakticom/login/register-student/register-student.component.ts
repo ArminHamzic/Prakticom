@@ -39,4 +39,7 @@ export class RegisterStudentComponent implements OnInit {
     this.router.navigate(['/home/login']);
   }
 
+  onSubmit() {
+
+  }
 }
