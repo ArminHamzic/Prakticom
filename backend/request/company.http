@@ -137,7 +137,7 @@ Content-Type: application/json
 ###
 GET http://localhost:8080/api/company
 ###
-GET http://localhost:8080/api/company/1
+GET http://localhost:8080/api/company/5
 ###
 PUT http://localhost:8080/api/company/1
 Content-Type: application/json

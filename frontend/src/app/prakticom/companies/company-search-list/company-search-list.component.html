@@ -27,12 +27,12 @@
                 <mat-card-subtitle>{{company.contactEmail}}</mat-card-subtitle>
             </mat-card-header>
             <img mat-card-image src='./assets/lp-bg.jpg'>
-            <mat-card-content>
+            <mat-card-content style="height: 55px">
               <p>
                 {{company.description}}
               </p>
             </mat-card-content>
-            <mat-card-actions>
+            <mat-card-actions algin="end">
               <div>
                 <button mat-button>WEBSITE</button>
                 <button routerLink="/home/company/{{company.id}}" mat-button>ANSEHEN</button>

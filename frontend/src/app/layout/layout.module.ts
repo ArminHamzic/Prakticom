@@ -7,16 +7,18 @@ import {RouterModule} from '@angular/router';
 import {MaterialModule} from '../material.module';
 import { InfoCardComponent } from './info-card/info-card.component';
 import { CardComponent } from './card/card.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
     declarations: [HeaderComponent, HomeComponent, LandingPageComponent, InfoCardComponent, CardComponent],
     exports: [
         CardComponent
     ],
-    imports: [
-        CommonModule,
-        RouterModule,
-        MaterialModule
-    ]
+  imports: [
+    CommonModule,
+    RouterModule,
+    MaterialModule,
+    FormsModule
+  ]
 })
 export class LayoutModule { }

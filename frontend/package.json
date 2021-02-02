@@ -34,6 +34,8 @@
     "bingmaps": "^2.0.3",
     "ngx-mqtt": "^6.13.3",
     "ngx-useful-swiper": "^10.0.1",
+    "nominatim-browser": "^2.1.0",
+    "nominatim-geocoder": "^0.1.4",
     "ol": "^6.3.1",
     "rxjs": "~6.6.0",
     "swiper": "^6.4.5",

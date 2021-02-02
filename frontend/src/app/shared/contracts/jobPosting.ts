@@ -6,7 +6,6 @@ export interface IJobPosting{
     jobTitle: string;
     postingDate: Date;
     timespan: string;
-    // companyId: ICompany;
     companyId: number;
     fieldOfWork: FieldOfWork;
 }

@@ -9,19 +9,23 @@ import {CompanyInfoCardComponent} from './companies/company-profile-page/company
 import {CompanyJobAdsSwiperComponent} from './companies/company-profile-page/company-job-ads-swiper/company-job-ads-swiper.component';
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import {LayoutModule} from '../layout/layout.module';
-import { MapComponent } from './companies/company-profile-page/map/map.component';
 import {RouterModule} from '@angular/router';
-
+import { CompanyMapComponent } from './companies/company-profile-page/company-map/company-map.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterStudentComponent } from './login/register-student/register-student.component';
+import { RegisterCompanyComponent } from './login/register-company/register-company.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [StudentComponent, CompaniesComponent, CompanySearchListComponent, CompanyProfilePageComponent,
-    CompanyInfoCardComponent, CompanyJobAdsSwiperComponent, MapComponent],
+    CompanyInfoCardComponent, CompanyJobAdsSwiperComponent, CompanyMapComponent, LoginComponent, RegisterStudentComponent, RegisterCompanyComponent],
     imports: [
         CommonModule,
         MaterialModule,
         NgxUsefulSwiperModule,
         LayoutModule,
         RouterModule,
+        FormsModule,
     ]
 })
 export class PrakticomModule {
