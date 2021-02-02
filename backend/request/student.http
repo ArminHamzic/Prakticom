@@ -3,14 +3,14 @@ POST http://localhost:8080/api/student
 Content-Type: application/json
 
   {
-    "birthDate": "2001-01-10",
-    "email": "elias1@gmail.com",
-    "firstName": "Elias",
-    "lastName": "Röbl",
-    "phoneNumber": "066048865816",
+    "birthDate": "2001-12-02",
+    "email": "elias2@gmail.com",
+    "firstName": "Alexander",
+    "lastName": "Kirchmair",
+    "phoneNumber": "06601234567",
     "school": "HTBLA Leonding",
-    "userName": "eliasroebl10",
-    "description": "Ich bin ein super Schüler"
+    "userName": "kirchi123",
+    "description": "Hallo. Mein Name ist Alex Kirchi und ich bin 20 Jahre alt. Ich bin schon seit ich klein bin ein sogenannter Tech Freak. Ich will deshalb mehr und mehr im Bereich IT lernen. Der erste Schritt auf dieser Reise war das Absolvieren der HTBLA Leonding. Nun will ich den Weg weitergehen und praktische Erfahrung bei ihrem Unternehmen sammeln."
   }
 
 ###
