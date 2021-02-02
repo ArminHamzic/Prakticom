@@ -31,3 +31,8 @@ services:
       - "8180:8080"
     depends_on:
       - postgres
+  nginx:
+    build: ../src/main/resources .
+    ports:
+      - 8081:80
+    image: image-nginx
