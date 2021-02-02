@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, Validators, ReactiveFormsModule} from '@angular/forms';
 import {getErrorMessage} from 'codelyzer/templateAccessibilityElementsContentRule';
 import {FieldOfWork, IJobPosting} from '../../../shared/contracts/jobPosting';
 import {ICompany} from '../../../shared/contracts/company';
@@ -43,5 +43,13 @@ export class RegisterCompanyComponent implements OnInit {
   onRegisterButtonClicked(): void {
     this.location.streetName = this.mainAddress;
     this.location.city = this.city;
+    this.location.zipCode = this.postCode;
+
+    this.company.name = this.companyName;
+    this.company.locations.push(this.location);
+    this.company.contactName = this.contactName;
+    this.company.contactPhoneNumber = this.phoneNumber;
+
+    this.companyService.save(this.company);
   }
 }

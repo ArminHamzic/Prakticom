@@ -8,11 +8,11 @@
         <mat-card-content>
           <div class="row">
             <mat-form-field class="example-full-width">
-              <input matInput name="companyName" placeholder="Firmenname" required>
+              <input [ngModelOptions]= "{standalone: true}" matInput name="companyName" placeholder="Firmenname" required [(ngModel)]="companyName">
               <mat-icon matSuffix>home</mat-icon>
             </mat-form-field>
             <mat-form-field class="example-full-width" style="margin-left: 5vw">
-              <input matInput placeholder="Kontaktname">
+              <input [ngModelOptions]= "{standalone: true}" matInput placeholder="Kontaktname" [(ngModel)]="contactName">
               <mat-icon matSuffix>account_circle</mat-icon>
             </mat-form-field>
           </div>
@@ -25,13 +25,13 @@
             <mat-form-field class="example-full-width" style="margin-left: 5vw">
               <mat-label>Telefon</mat-label>
               <span matPrefix>+43 &nbsp;</span>
-              <input type="tel" matInput placeholder="555-555-1234" required>
+              <input type="tel" [ngModelOptions]= "{standalone: true}" matInput placeholder="555-555-1234" required [(ngModel)]="phoneNumber">
               <mat-icon matSuffix>local_phone</mat-icon>
             </mat-form-field>
           </div>
           <mat-form-field style="width: 30vw; margin-top: 0.5vw">
             <mat-label>Beschreibung</mat-label>
-            <textarea matInput required></textarea>
+            <textarea [ngModelOptions]= "{standalone: true}" matInput required [(ngModel)]="description"></textarea>
             <mat-icon matSuffix>mode</mat-icon>
           </mat-form-field>
           <mat-form-field class="example-full-width" style="width: 100%">
@@ -43,7 +43,7 @@
           <p>
             <mat-form-field class="example-full-width">
               <mat-label>Addresse des Hauptstandortes</mat-label>
-              <input matInput required>
+              <input [ngModelOptions]= "{standalone: true}" matInput required [(ngModel)]="mainAddress">
               <mat-icon matSuffix>place</mat-icon>
             </mat-form-field>
             <!--<mat-form-field class="example-full-width" style="margin-left: 5vw">
@@ -56,14 +56,14 @@
               <td>
                 <mat-form-field class="example-full-width">
                   <mat-label>Stadt</mat-label>
-                  <input matInput placeholder="San Francisco">
+                  <input [ngModelOptions]= "{standalone: true}" matInput placeholder="San Francisco" [(ngModel)]="city">
                   <mat-icon matSuffix>place</mat-icon>
                 </mat-form-field>
               </td>
               <td>
                 <mat-form-field class="example-full-width" style="margin-left: 5vw">
                   <mat-label>Postleitzahl</mat-label>
-                  <input matInput #postalCode maxlength="5">
+                  <input [ngModelOptions]= "{standalone: true}" matInput #postalCode maxlength="5" [(ngModel)]="postCode">
                   <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
                   <mat-icon matSuffix>place</mat-icon>
                 </mat-form-field>

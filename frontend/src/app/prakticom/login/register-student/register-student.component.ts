@@ -56,10 +56,12 @@ export class RegisterStudentComponent implements OnInit {
 
   onSubmit(): void {}
 
+  // tslint:disable-next-line:typedef
   onSkillDelete(id) {
 
   }
 
+  // tslint:disable-next-line:typedef
   onSkillEdit(element) {
 
   }
