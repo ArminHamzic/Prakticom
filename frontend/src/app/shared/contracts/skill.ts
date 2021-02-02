@@ -1,9 +1,10 @@
 import {IStudent} from './student';
+import {IRating} from './rating';
 
 export interface ISkill{
   id: number;
-  skill: string;
-  student: IStudent;
+  name: string;
+  rating: IRating;
 }
 
 

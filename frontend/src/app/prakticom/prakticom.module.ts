@@ -15,10 +15,11 @@ import { LoginComponent } from './login/login.component';
 import { RegisterStudentComponent } from './login/register-student/register-student.component';
 import { RegisterCompanyComponent } from './login/register-company/register-company.component';
 import {FormsModule} from "@angular/forms";
+import { AddSkillComponent } from './login/register-student/add-skill/add-skill.component';
 
 @NgModule({
   declarations: [StudentComponent, CompaniesComponent, CompanySearchListComponent, CompanyProfilePageComponent,
-    CompanyInfoCardComponent, CompanyJobAdsSwiperComponent, CompanyMapComponent, LoginComponent, RegisterStudentComponent, RegisterCompanyComponent],
+    CompanyInfoCardComponent, CompanyJobAdsSwiperComponent, CompanyMapComponent, LoginComponent, RegisterStudentComponent, RegisterCompanyComponent, AddSkillComponent],
     imports: [
         CommonModule,
         MaterialModule,
