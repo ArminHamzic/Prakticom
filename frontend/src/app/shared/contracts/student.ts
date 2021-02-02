@@ -11,4 +11,5 @@ export interface IStudent{
     school: string;
     skills: ISkill[];
     description: string;
+    password: string;
 }

@@ -15,7 +15,7 @@ export class RegisterStudentComponent implements OnInit {
               private snackBar: MatSnackBar,
               private router: Router) { }
 
-  student: IStudent;
+  student: IStudent = {} as IStudent;
 
   /*
   async onSubmit(): Promise<void> {
@@ -29,7 +29,6 @@ export class RegisterStudentComponent implements OnInit {
     }
   }
    */
-  employee: any; // TODO: Property 'employee' does not exist on type 'RegisterStudentComponent' : register-student.component.html:34:135
 
 
   ngOnInit(): void {
@@ -40,7 +39,6 @@ export class RegisterStudentComponent implements OnInit {
     this.router.navigate(['/home/login']);
   }
 
-  onSubmit(): void {
-    // TODO: Property 'onSubmit' does not exist on type 'RegisterStudentComponent' : register-student.component.html:40:124
-  }
+  onSubmit(): void {}
+
 }

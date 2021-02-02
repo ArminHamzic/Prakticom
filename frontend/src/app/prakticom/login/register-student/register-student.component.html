@@ -1,37 +1,37 @@
 <form class="formstyle" action="" #form>
-  <h2 class="field">Neuer Mitarbeiter</h2>
-  <mat-form-field class="field">
-    <input id="userName" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Username" [(ngModel)]="student.userName">
-    <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
-  </mat-form-field>
+  <h2 class="field">Neues Schüler-Profil erstellen</h2>
+  <div class="place-left">
+    <mat-form-field class="field">
+      <input id="firstName" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Vorname" [(ngModel)]="student.firstName">
+      <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+    </mat-form-field>
+    <mat-form-field class="field">
+      <input id="lastName" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Nachname" [(ngModel)]="student.lastName">
+      <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="place-left">
+    <mat-form-field class="field">
+      <input id="userName" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Username" [(ngModel)]="student.userName">
+      <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+    </mat-form-field>
+    <mat-form-field class="field">
+      <input id="email" type="email" required [ngModelOptions] ="{standalone: true}" matInput placeholder="E-Mail" [(ngModel)]="student.email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" >
+      <mat-error>Ungültige E-Mail-Adresse!</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="place-left">
+    <mat-form-field class="field">
+      <input id="school" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Derzeitige Schule" [(ngModel)]="student.school">
+      <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+    </mat-form-field>
+    <mat-form-field class="field">
+      <input id="phoneNumber" type="text" [ngModelOptions] ="{standalone: true}" matInput placeholder="Telefonnummer (optional)" [(ngModel)]="student.phoneNumber" >
+    </mat-form-field>
+  </div>
   <br>
   <mat-form-field class="field">
-    <input id="firstName" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Vorname" [(ngModel)]="student.firstName">
-    <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
-  </mat-form-field>
-  <br>
-  <mat-form-field class="field">
-    <input id="lastName" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Nachname" [(ngModel)]="student.lastName">
-    <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
-  </mat-form-field>
-  <br>
-  <mat-form-field class="field">
-    <input id="email" type="email" required [ngModelOptions] ="{standalone: true}" matInput placeholder="E-Mail" [(ngModel)]="student.email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" >
-    <mat-error>Ungültige E-Mail-Adresse!</mat-error>
-  </mat-form-field>
-  <br>
-  <mat-form-field class="field">
-    <input id="phoneNumber" type="text" required [ngModelOptions] ="{standalone: true}" matInput placeholder="Telefonnummer" [(ngModel)]="student.phoneNumber" >
-    <mat-error>Ungültige E-Mail-Adresse!</mat-error>
-  </mat-form-field>
-
-
-
-
-
-  <br>
-  <mat-form-field class="field">
-    <input id="password" type="password" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Passwort" [(ngModel)]="employee.password">
+    <input id="password" type="password" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Passwort" [(ngModel)]="student.password">
     <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
   </mat-form-field>
   <br>
