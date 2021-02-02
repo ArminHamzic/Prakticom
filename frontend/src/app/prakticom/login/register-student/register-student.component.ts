@@ -15,7 +15,7 @@ export class RegisterStudentComponent implements OnInit {
               private snackBar: MatSnackBar,
               private router: Router) { }
 
-  student: IStudent;
+  student: IStudent = {} as IStudent;
 
   /*
   async onSubmit(): Promise<void> {
