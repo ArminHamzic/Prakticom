@@ -3,6 +3,8 @@ import {IStudent} from '../../../shared/contracts/student';
 import {StudentService} from '../../../shared/services/StudentService';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
+import {AddSkillComponent} from './add-skill/add-skill.component';
 
 @Component({
   selector: 'app-register-student',
@@ -11,11 +13,15 @@ import {Router} from '@angular/router';
 })
 export class RegisterStudentComponent implements OnInit {
 
+  student: IStudent = {} as IStudent;
+  displayedColumns: string[] = ['skill', 'rating', 'settings'];
+  passwordSafe = '';
+  startDate = new Date(1995, 1, 1);
+
   constructor(private studentService: StudentService,
               private snackBar: MatSnackBar,
-              private router: Router) { }
-
-  student: IStudent;
+              private router: Router,
+              public dialog: MatDialog) { }
 
   /*
   async onSubmit(): Promise<void> {
@@ -39,6 +45,22 @@ export class RegisterStudentComponent implements OnInit {
     this.router.navigate(['/home/login']);
   }
 
+  onAddingSkill(): void {
+    const dialogRef = this.dialog.open(AddSkillComponent, {autoFocus: true, width: '20%', disableClose: true});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result.data);
+      this.student.skills?.push(result.data);
+      console.log(this.student.skills);
+    });
+  }
+
   onSubmit(): void {}
 
+  onSkillDelete(id) {
+
+  }
+
+  onSkillEdit(element) {
+
+  }
 }
