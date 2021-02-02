@@ -11,6 +11,8 @@ import {Router} from '@angular/router';
 })
 export class RegisterStudentComponent implements OnInit {
 
+  displayedColumns: string[] = ['username', 'firstName', 'lastName', 'groups', 'email', 'settings'];
+
   constructor(private studentService: StudentService,
               private snackBar: MatSnackBar,
               private router: Router) { }
