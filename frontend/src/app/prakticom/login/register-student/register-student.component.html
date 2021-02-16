@@ -44,7 +44,7 @@
 
   <div style="width: 63.5%; margin: 20px; margin-top: 30px">
     <div class="mat-elevation-z8" style="margin-bottom: 3%">
-      <table mat-table [dataSource]="student.skills" matSort >
+      <table mat-table [dataSource]="matSkills" matSort >
 
         <!-- Position Column -->
 
@@ -55,16 +55,15 @@
 
         <ng-container matColumnDef="rating">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Rating </th>
-          <td mat-cell *matCellDef="let element"> {{element.rating}} </td>
+          <td mat-cell *matCellDef="let element"> {{rating[element.rating]}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="settings">
+        <ng-container matColumnDef="settings" >
           <th mat-header-cell *matHeaderCellDef width="3%">
             <button class="iconBut" color="accent" mat-icon-button (click)="onAddingSkill()"><mat-icon>add</mat-icon></button>
           </th>
           <td mat-cell *matCellDef="let element">
-            <button class="iconBut" mat-icon-button (click)="onSkillEdit(element)"><mat-icon>edit</mat-icon></button>
-            <button class="iconBut" mat-icon-button color="warn" (click)="onSkillDelete(element.id)"><mat-icon>delete_outline</mat-icon></button>
+            <button class="iconBut" mat-icon-button color="warn" (click)="onSkillDelete(element)"><mat-icon>delete_outline</mat-icon></button>
           </td>
         </ng-container>
 

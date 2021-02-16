@@ -1,16 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators, ReactiveFormsModule} from '@angular/forms';
-import {getErrorMessage} from 'codelyzer/templateAccessibilityElementsContentRule';
-import {FieldOfWork, IJobPosting} from '../../../shared/contracts/jobPosting';
 import {ICompany} from '../../../shared/contracts/company';
 import {CompanyService} from '../../../shared/services/CompanyService';
-import {ILocation} from '../../../shared/contracts/location';
-import {IStudent} from "../../../shared/contracts/student";
-import {StudentService} from "../../../shared/services/StudentService";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {Router} from "@angular/router";
-import {MatDialog} from "@angular/material/dialog";
-import {AddSkillComponent} from "../register-student/add-skill/add-skill.component";
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register-company',
@@ -39,7 +32,6 @@ export class RegisterCompanyComponent implements OnInit {
     }
   }
    */
-
 
   ngOnInit(): void {
     this.companyService.getAll();
