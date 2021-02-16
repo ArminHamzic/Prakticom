@@ -6,16 +6,18 @@
     <mat-grid-tile>
       <div>
         <div class="vertical-center">
-          <input id="skillName" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Skill" [(ngModel)]="skill.name">
-          <mat-icon matSuffix>grade</mat-icon>
-          <mat-error></mat-error>
+          <mat-form-field class="field">
+            <input id="skill" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Skill" [(ngModel)]="skill.name">
+            <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+          </mat-form-field>
         </div>
-        <br>
         <div class="vertical-center">
           <mat-form-field class="field">
-            <mat-label>Product</mat-label>
+            <mat-label>Wertung</mat-label>
             <mat-select id="skillRating" [ngModelOptions] ="{standalone: true}" required [(ngModel)]="skill.rating">
-              <mat-option *ngFor="let rating of ratings" [value]="rating">{{rating.name}}</mat-option>
+              <mat-option [value]="0">Amateur</mat-option>
+              <mat-option [value]="1">Fortgeschritten</mat-option>
+              <mat-option [value]="2">Profi</mat-option>
             </mat-select>
             <mat-error></mat-error>
           </mat-form-field>

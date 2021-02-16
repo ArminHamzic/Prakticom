@@ -3,7 +3,7 @@ import {MatDialogRef} from '@angular/material/dialog';
 import {RegisterStudentComponent} from '../register-student.component';
 import {ISkill} from '../../../../shared/contracts/skill';
 import {StudentService} from '../../../../shared/services/StudentService';
-import {IRating} from '../../../../shared/contracts/rating';
+import {Rating} from '../../../../shared/contracts/rating';
 
 @Component({
   selector: 'app-add-skill',
@@ -13,7 +13,7 @@ import {IRating} from '../../../../shared/contracts/rating';
 export class AddSkillComponent implements OnInit {
 
   skill: ISkill = {} as ISkill;
-  ratings: IRating[] = [];
+  ratings: any[];
 
 
   constructor(public dialogRef: MatDialogRef<RegisterStudentComponent>,

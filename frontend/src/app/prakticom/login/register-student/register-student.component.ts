@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {IStudent} from '../../../shared/contracts/student';
 import {StudentService} from '../../../shared/services/StudentService';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {AddSkillComponent} from './add-skill/add-skill.component';
 import {ISkill} from '../../../shared/contracts/skill';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from "@angular/material/paginator";
+import {Rating} from "../../../shared/contracts/rating";
 
 @Component({
   selector: 'app-register-student',
@@ -14,16 +17,21 @@ import {ISkill} from '../../../shared/contracts/skill';
 })
 export class RegisterStudentComponent implements OnInit {
 
-  student: IStudent = {} as IStudent;
-  skills: ISkill[];
+  student: IStudent;
+  matSkills: MatTableDataSource<ISkill> = new MatTableDataSource<ISkill>();
   displayedColumns: string[] = ['skill', 'rating', 'settings'];
   passwordSafe = '';
-  startDate = new Date(1995, 1, 1);
+  startDate = new Date(2000, 1, 1);
 
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private studentService: StudentService,
               private snackBar: MatSnackBar,
               private router: Router,
-              public dialog: MatDialog) { }
+              private route: ActivatedRoute,
+              public dialog: MatDialog) {
+    this.student = {} as IStudent;
+    this.matSkills.paginator = this.paginator;
+  }
 
   /*
   async onSubmit(): Promise<void> {
@@ -40,7 +48,6 @@ export class RegisterStudentComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.studentService.getAll();
   }
 
   onClose(): void {
@@ -50,20 +57,30 @@ export class RegisterStudentComponent implements OnInit {
   onAddingSkill(): void {
     const dialogRef = this.dialog.open(AddSkillComponent, {autoFocus: true, width: '20%', disableClose: true});
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result.data);
-      this.skills?.push(result.data);
+      this.matSkills.data.push(result.data);
+      this.matSkills.data = this.matSkills.data;
     });
   }
 
-  onSubmit(): void {}
-
-  // tslint:disable-next-line:typedef
-  onSkillDelete(id) {
-
+  onSubmit(): void {
+    if (this.student != null) {
+      this.student.skills = this.matSkills.data;
+      console.log(this.student);
+      this.studentService.save(this.student).subscribe( (response) => {
+        this.snackBar.open('Schülerprofil wurde erfolgreich angelegt!', 'X', {
+          duration: 8000
+        });
+        this.router.navigate(['/home/login']);
+      });
+    }
   }
 
-  // tslint:disable-next-line:typedef
-  onSkillEdit(element) {
+  onSkillDelete(skill: ISkill): void {
+    this.matSkills.data.splice(this.matSkills.data.indexOf(skill), 1);
+    this.matSkills.data = this.matSkills.data;
+  }
 
+  public get rating(): typeof Rating {
+    return Rating;
   }
 }
