@@ -15,7 +15,7 @@ export class StudentComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private studentService: StudentService) { }
 
   studentId: number;
-  student: IStudent;
+  student: IStudent = {} as IStudent;
 
   async ngOnInit(): Promise<void> {
     this.studentId = +this.activatedRoute.snapshot.paramMap.get('id');

@@ -1,6 +1,6 @@
 package com.prakti.model;
-
-enum Skill {
+//Deprecated
+enum SkillValue {
     JAVA("Java"),
     CSHARP("C#"),
     C("C"),
@@ -14,7 +14,7 @@ enum Skill {
     SWIFT("Swift");
 
     private final String value;
-    Skill(String value)
+    SkillValue(String value)
     {
         this.value = value;
     }
