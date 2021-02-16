@@ -1,88 +1,58 @@
-<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
-  <mat-card class="box">
-    <div>
-      <mat-card-header>
-        <mat-card-title>Bitte Registrieren Sie Ihre Firma</mat-card-title>
-      </mat-card-header>
-      <form class="example-form">
-        <mat-card-content>
-          <div class="row">
-            <mat-form-field class="example-full-width">
-              <input [ngModelOptions]= "{standalone: true}" matInput name="companyName" placeholder="Firmenname" required [(ngModel)]="companyName">
-              <mat-icon matSuffix>home</mat-icon>
-            </mat-form-field>
-            <mat-form-field class="example-full-width" style="margin-left: 5vw">
-              <input [ngModelOptions]= "{standalone: true}" matInput placeholder="Kontaktname" [(ngModel)]="contactName">
-              <mat-icon matSuffix>account_circle</mat-icon>
-            </mat-form-field>
-          </div>
-          <div class="row">
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Email" [formControl]="email" required>
-              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-              <mat-icon matSuffix>email</mat-icon>
-            </mat-form-field>
-            <mat-form-field class="example-full-width" style="margin-left: 5vw">
-              <mat-label>Telefon</mat-label>
-              <span matPrefix>+43 &nbsp;</span>
-              <input type="tel" [ngModelOptions]= "{standalone: true}" matInput placeholder="555-555-1234" required [(ngModel)]="phoneNumber">
-              <mat-icon matSuffix>local_phone</mat-icon>
-            </mat-form-field>
-          </div>
-          <mat-form-field style="width: 35vw; margin-top: 0.5vw">
-            <mat-label>Beschreibung</mat-label>
-            <textarea [ngModelOptions]= "{standalone: true}" matInput required [(ngModel)]="description"></textarea>
-            <mat-icon matSuffix>mode</mat-icon>
-          </mat-form-field>
-          <mat-form-field class="example-full-width" style="width: 35vw">
-            <mat-label>In folgende Branchen tätig</mat-label>
-            <mat-select [formControl]="workingField" multiple required>
-              <mat-option *ngFor="let fieldOfWork of workingFields" [value]="fieldOfWork">{{fieldOfWork}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <p>
-            <mat-form-field class="example-full-width">
-              <mat-label>Addresse des Hauptstandortes</mat-label>
-              <input [ngModelOptions]= "{standalone: true}" matInput required [(ngModel)]="mainAddress">
-              <mat-icon matSuffix>place</mat-icon>
-            </mat-form-field>
-            <!--<mat-form-field class="example-full-width" style="margin-left: 5vw">
-              <mat-label>Addresse 2</mat-label>
-              <input matInput>
-            </mat-form-field>-->
-          </p>
-          <table class="example-full-width" cellspacing="0">
-            <tr>
-              <td>
-                <mat-form-field class="example-full-width">
-                  <mat-label>Stadt</mat-label>
-                  <input [ngModelOptions]= "{standalone: true}" matInput placeholder="San Francisco" [(ngModel)]="city">
-                  <mat-icon matSuffix>place</mat-icon>
-                </mat-form-field>
-              </td>
-              <td>
-                <mat-form-field class="example-full-width" style="margin-left: 5vw">
-                  <mat-label>Postleitzahl</mat-label>
-                  <input [ngModelOptions]= "{standalone: true}" matInput #postalCode maxlength="5" [(ngModel)]="postCode">
-                  <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-                  <mat-icon matSuffix>place</mat-icon>
-                </mat-form-field>
-              </td>
-            </tr>
-          </table>
-          <div class="row" style="margin-top: 1.5vw; text-align: center">
-            <mat-form-field class="example-full-width">
-              <mat-label>Enter your password</mat-label>
-              <input matInput [type]="hide ? 'password' : 'text'" required>
-              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                      [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-              </button>
-            </mat-form-field>
-            <button mat-raised-button color="accent" style="margin-left: 5vw" (click)="onRegisterButtonClicked()">Register</button>
-          </div>
-        </mat-card-content>
-      </form>
-    </div>
-  </mat-card>
-</div>
+<form class="formstyle" action="" #form>
+  <h2 class="field">Neues Unternehmensprofil erstellen</h2>
+  <div class="place-left">
+    <mat-form-field class="field">
+      <input id="companyName" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Name des Unternehmens" [(ngModel)]="company.name">
+      <mat-icon matSuffix>business</mat-icon>
+      <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+    </mat-form-field>
+    <mat-form-field class="field">
+      <input id="url" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="URL der Website" [(ngModel)]="company.url">
+      <mat-icon matSuffix>public</mat-icon>
+      <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="place-left">
+    <mat-form-field class="field">
+      <input id="contactName" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Name der Kontaktperson" [(ngModel)]="company.contactName">
+      <mat-icon matSuffix>person</mat-icon>
+      <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+    </mat-form-field>
+    <mat-form-field class="field">
+      <input id="contactEmail" type="email" required [ngModelOptions] ="{standalone: true}" matInput placeholder="E-Mail der Kontaktperson" [(ngModel)]="company.contactEmail" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" >
+      <mat-icon matSuffix>mail</mat-icon>
+      <mat-error>Ungültige E-Mail-Adresse!</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="place-left">
+    <mat-form-field class="field">
+      <input id="contactPhoneNumber" type="text" [ngModelOptions] ="{standalone: true}" matInput placeholder="Telefonnummer der Kontaktperson (optional)" [(ngModel)]="company.contactPhoneNumber" >
+      <mat-icon matSuffix>phone_enabled</mat-icon>
+    </mat-form-field>
+    <mat-form-field class="field">
+      <input id="username" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Username für den Login" [(ngModel)]="company.userName">
+      <mat-icon matSuffix>person</mat-icon>
+      <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+    </mat-form-field>
+  </div>
+  <mat-form-field class="field">
+    <input id="password" type="password" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Passwort" [(ngModel)]="company.password">
+    <mat-icon matSuffix>vpn_key</mat-icon>
+    <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+  </mat-form-field>
+  <mat-form-field class="field">
+    <input id="passwordSafe" type="passwordSafe" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Passwort bestätigen" [(ngModel)]="passwordSafe">
+    <mat-icon matSuffix>vpn_key</mat-icon>
+    <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+  </mat-form-field>
+  <mat-form-field class="field" style="width: 63.5%">
+            <textarea id="description" type="text" [ngModelOptions] ="{standalone: true}" cdkTextareaAutosize matInput cdkAutosizeMinRows="1"
+                      placeholder="Was zeichnet ihr Unternehmen aus? Auf was sind Sie spezialisiert? " [(ngModel)]="company.description"></textarea>
+  </mat-form-field>
+  <div class="safeButtons">
+    <button class="buttonSelf" mat-raised-button color="warn" type="submit" (click)="onClose()">Zurück</button>
+    <button class="buttonSelf" mat-raised-button color="primary" type="submit" [disabled]="!form.checkValidity()" (click)="onSubmit()">Unternehmensprofil erstellen</button>
+  </div>
+</form>
+
+
