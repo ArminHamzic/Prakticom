@@ -60,8 +60,8 @@ public class Student extends PanacheEntityBase implements Serializable {
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
     public List<JobApplication> jobApplications = new ArrayList<>();
 
-    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
-    public List<StudentSkill> skills = new ArrayList<>();
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public List<Skill> skills = new ArrayList<>();
 
 
 
@@ -82,4 +82,6 @@ public class Student extends PanacheEntityBase implements Serializable {
     public Long getId() {
         return id;
     }
+
+
 }

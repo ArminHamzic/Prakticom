@@ -1,26 +1,33 @@
 package com.prakti.model;
 
-enum Skill {
-    JAVA("Java"),
-    CSHARP("C#"),
-    C("C"),
-    ANGULAR("Angular"),
-    QUARKUS("Quarkus"),
-    PYTHON("Python"),
-    DJANGO("Django"),
-    FLASK("Flask"),
-    KOTLIN("Kotlin"),
-    ANDROID("Android"),
-    SWIFT("Swift");
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
-    private final String value;
-    Skill(String value)
-    {
-        this.value = value;
-    }
+import javax.persistence.*;
+import java.io.Serializable;
 
-    public String toString()
-    {
-        return this.value;
+@Entity
+@Table(name = "SKILL", schema = "PRAKTICOM")
+public class Skill extends PanacheEntityBase implements Serializable {
+
+    @Id
+    @SequenceGenerator(
+            name ="skillSequence",
+            sequenceName = "skill_id_seq",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY,
+            generator = "skillSequence"
+    )
+    public Long id;
+
+    @Column
+    public String name;
+
+    @Column
+    public Rating rating;
+
+    public Skill() {
+
     }
 }

@@ -1,12 +1,15 @@
 package com.prakti.control;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import com.prakti.model.Company;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.NotFoundException;
 
@@ -18,6 +21,10 @@ public class CompanyDAO implements PanacheRepository<Company> {
     public Company findCompanyById(Long id){
         Optional<Company> optionalCompany = Company.find("id", id).singleResultOptional();
         return optionalCompany.orElseThrow(NotFoundException::new);
+    }
+
+    public List<Company> findAllCompanies(){
+        return Company.findAll().list();
     }
 
     public Company findCompanyByEmail(String email){
@@ -44,5 +51,42 @@ public class CompanyDAO implements PanacheRepository<Company> {
 
     public void deleteCompany(Long id){
         delete(findCompanyById(id));
+    }
+
+    public List<Company> filterByNameAndLocation(String name, String location){
+        List<Company> companies = findAllCompanies();
+        List<Company> filtered = new ArrayList<Company>();
+        int length = location.length();
+        AtomicBoolean hasGivenLocation = new AtomicBoolean(false);
+        companies.forEach(i -> {
+            if(location.length() != 0){
+                i.locations.forEach(l -> {
+                    if(l.city.toLowerCase().equals(location.toLowerCase())){
+                        hasGivenLocation.set(true);
+                    }
+                });
+            }
+
+            if(i.name.toLowerCase().contains(name.toLowerCase()) && hasGivenLocation.get()){
+                filtered.add(i);
+            }
+            else if(i.name.toLowerCase().contains(name.toLowerCase()) && hasGivenLocation.get() && !location.isEmpty()){
+                filtered.add(i);
+            }
+            else if(i.name.toLowerCase().contains(name.toLowerCase()) && !hasGivenLocation.get() && location.length() == 0){
+                filtered.add(i);
+            }
+        });
+        if(filtered.size() != 0){
+            return filtered;
+        }
+        companies.forEach(c -> {
+            c.jobPostings.forEach(jP -> {
+               if(jP.jobTitle.equals(name)){
+                   filtered.add(c);
+               }
+            });
+        });
+        return filtered;
     }
 }

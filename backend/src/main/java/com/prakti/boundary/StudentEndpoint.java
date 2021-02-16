@@ -1,5 +1,6 @@
 package com.prakti.boundary;
 
+import com.prakti.control.SkillDAO;
 import com.prakti.control.StudentDAO;
 import com.prakti.control.StudentDocumentDAO;
 import com.prakti.model.*;
@@ -54,6 +55,14 @@ public class StudentEndpoint {
     public Response createStudent(@Context UriInfo info, Student student) {
         if (student == null) return Response.noContent().build();
         Student newStudent = new Student();
+        studentRepository.persistStudent(newStudent);
+        student.skills.forEach(s ->{
+            //TODO CopyProperties for Skill
+            Skill skill = new Skill();
+            skill.name = s.name;
+            skill.rating = s.rating;
+            newStudent.skills.add(skill);
+        });
         newStudent.CopyProperties(student);
         Student savedStudent = studentRepository.persistStudent(newStudent);
         URI uri = info.getAbsolutePathBuilder().path("/" + savedStudent.getId()).build();
