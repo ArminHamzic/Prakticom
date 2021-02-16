@@ -5,6 +5,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {AddSkillComponent} from './add-skill/add-skill.component';
+import {ISkill} from '../../../shared/contracts/skill';
 
 @Component({
   selector: 'app-register-student',
@@ -14,6 +15,7 @@ import {AddSkillComponent} from './add-skill/add-skill.component';
 export class RegisterStudentComponent implements OnInit {
 
   student: IStudent = {} as IStudent;
+  skills: ISkill[];
   displayedColumns: string[] = ['skill', 'rating', 'settings'];
   passwordSafe = '';
   startDate = new Date(1995, 1, 1);
@@ -49,8 +51,7 @@ export class RegisterStudentComponent implements OnInit {
     const dialogRef = this.dialog.open(AddSkillComponent, {autoFocus: true, width: '20%', disableClose: true});
     dialogRef.afterClosed().subscribe(result => {
       console.log(result.data);
-      this.student.skills?.push(result.data);
-      console.log(this.student.skills);
+      this.skills?.push(result.data);
     });
   }
 
