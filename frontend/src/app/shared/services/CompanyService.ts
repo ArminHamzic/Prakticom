@@ -24,4 +24,10 @@ export class CompanyService extends GenericHttpService<ICompany, number> {
       return this.http.get<ICompany>(this.base + '/url' + url);
     }
 
+    getFilteredCompanies(name: string, location: string): Observable<ICompany[]>{
+      if (name === undefined){name = ''; }
+      if (location === undefined){location = ''; }
+      return this.http.get<ICompany[]>(this.base + '/filter?name=' + name + '&location=' + location);
+    }
+
 }
