@@ -5,6 +5,12 @@ import {FieldOfWork, IJobPosting} from '../../../shared/contracts/jobPosting';
 import {ICompany} from '../../../shared/contracts/company';
 import {CompanyService} from '../../../shared/services/CompanyService';
 import {ILocation} from '../../../shared/contracts/location';
+import {IStudent} from "../../../shared/contracts/student";
+import {StudentService} from "../../../shared/services/StudentService";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {AddSkillComponent} from "../register-student/add-skill/add-skill.component";
 
 @Component({
   selector: 'app-register-company',
@@ -13,47 +19,35 @@ import {ILocation} from '../../../shared/contracts/location';
 })
 export class RegisterCompanyComponent implements OnInit {
 
-  hide = true;
-  email = new FormControl('', [Validators.required, Validators.email]);
-  workingField = new FormControl();
-  workingFields: string[] = [];
-  company: ICompany;
-  companyName: any;
-  contactName: any;
-  contactEmail: any;
-  phoneNumber: any;
-  description: any;
-  selectedWorkingFields: any;
-  mainAddress: any;
-  city: any;
-  postCode: any;
-  location: ILocation;
+  company: ICompany = {} as ICompany;
+  passwordSafe = '';
 
-  constructor(private companyService: CompanyService) { }
+  constructor(private companyService: CompanyService,
+              private snackBar: MatSnackBar,
+              private router: Router,
+              public dialog: MatDialog) { }
+
+  /*
+  async onSubmit(): Promise<void> {
+    if (this.employee != null) {
+      await this.employeeService.createUser({body: this.employee}).subscribe(  (response) => {
+        this.snackBar.open('Mitarbeiter wurde erfolgreich angelegt!', 'X', {
+          duration: 8000
+        });
+        this.navigation.back();
+      });
+    }
+  }
+   */
+
 
   ngOnInit(): void {
-    this.workingFields = Object.keys(FieldOfWork).filter(o => isNaN(o as any));
+    this.companyService.getAll();
   }
-  getErrorMessage(): string {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+
+  onClose(): void {
+    this.router.navigate(['/home/login']);
   }
-  onRegisterButtonClicked(): void {
-    console.log('test213');
-    this.location.streetName = this.mainAddress;
-    this.location.city = this.city;
-    this.location.zipCode = this.postCode;
 
-    console.log(this.location);
-
-    this.company.name = this.companyName;
-    this.company.locations.push(this.location);
-    this.company.contactName = this.contactName;
-    this.company.contactPhoneNumber = this.phoneNumber;
-
-    console.log(this.company);
-    this.companyService.save(this.company);
-  }
+  onSubmit(): void {}
 }
