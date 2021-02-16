@@ -1,4 +1,5 @@
-export interface IRating {
-  id: number;
-  name: string;
+export enum Rating {
+  Amateur,
+  Fortgeschritten,
+  Profi
 }
