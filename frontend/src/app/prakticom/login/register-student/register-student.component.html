@@ -1,5 +1,5 @@
 <form class="formstyle" action="" #form>
-  <h2 class="field">Neues Schüler-Profil erstellen</h2>
+  <h2 class="field">Neues Schülerprofil erstellen</h2>
   <div class="place-left">
     <mat-form-field class="field">
       <input id="firstName" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Vorname" [(ngModel)]="student.firstName">
@@ -90,6 +90,6 @@
   </mat-form-field>
   <div class="safeButtons">
     <button class="buttonSelf" mat-raised-button color="warn" type="submit" (click)="onClose()">Zurück</button>
-    <button class="buttonSelf" mat-raised-button color="primary" type="submit" [disabled]="!form.checkValidity()" (click)="onSubmit()">Profil erstellen</button>
+    <button class="buttonSelf" mat-raised-button color="primary" type="submit" [disabled]="!form.checkValidity()" (click)="onSubmit()">Schülerprofil erstellen</button>
   </div>
 </form>
