@@ -41,15 +41,19 @@ export class RegisterCompanyComponent implements OnInit {
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
   onRegisterButtonClicked(): void {
+    console.log('test213');
     this.location.streetName = this.mainAddress;
     this.location.city = this.city;
     this.location.zipCode = this.postCode;
+
+    console.log(this.location);
 
     this.company.name = this.companyName;
     this.company.locations.push(this.location);
     this.company.contactName = this.contactName;
     this.company.contactPhoneNumber = this.phoneNumber;
 
+    console.log(this.company);
     this.companyService.save(this.company);
   }
 }
