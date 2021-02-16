@@ -11,4 +11,6 @@ export interface ICompany{
     locations: ILocation[];
     sectors: string[];
     url: string;
+    userName: string;
+    password: string;
 }
