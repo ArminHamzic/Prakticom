@@ -46,6 +46,12 @@ public class CompanyEndpoint {
         return companyRepository.findCompanyById(id);
     }
 
+    @GET
+    @Path("filter")
+    public List<Company> getFilteredObjects(@QueryParam("name")String name, @QueryParam("location")String location){
+        return companyRepository.filterByNameAndLocation(name, location);
+    }
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createCompany(@Context UriInfo info, Company company) {
