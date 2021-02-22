@@ -96,7 +96,27 @@
     </div>
   </div>
 
- 
+  <form *ngIf="location != undefined" action="" ngNativeValidate #form>
+    <div>
+      <mat-form-field class="field">
+        <input id="street" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Straße" [(ngModel)]="location.streetName">
+        <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+      </mat-form-field>
+      <mat-form-field class="field">
+        <input id="city" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Stadt" [(ngModel)]="location.city">
+        <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="field">
+        <input id="zipCode" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="PLZ" [(ngModel)]="location.zipCode">
+        <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+      </mat-form-field>
+      <mat-form-field class="field">
+        <input id="country" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Land" [(ngModel)]="location.country">
+        <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+      </mat-form-field>
+    </div>
 
     <div class="safeButtons">
       <button class="locationButton" mat-raised-button color="warn" type="submit" (click)="onCancel()">Abbrechen</button>
