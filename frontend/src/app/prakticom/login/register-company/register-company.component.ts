@@ -6,7 +6,8 @@ import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {ILocation} from '../../../shared/contracts/location';
 import {MatTableDataSource} from '@angular/material/table';
-import {MatPaginator} from '@angular/material/paginator';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ConfirmValidParentMatcher, CustomValidators, errorMessages, regExps} from '../CustomValidators';
 
 @Component({
   selector: 'app-register-company',
@@ -19,15 +20,19 @@ export class RegisterCompanyComponent implements OnInit {
   location: ILocation = undefined;
   companyLocations: MatTableDataSource<ILocation> = new MatTableDataSource<ILocation>();
   displayedColumns: string[] = ['address', 'city', 'plz', 'country', 'settings'];
-  passwordSafe = '';
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  userRegistrationForm: FormGroup;
+
+  confirmValidParentMatcher = new ConfirmValidParentMatcher();
+
+  errors = errorMessages;
+
   constructor(private companyService: CompanyService,
               private snackBar: MatSnackBar,
+              private formBuilder: FormBuilder,
               private router: Router,
               public dialog: MatDialog) {
-
-    this.companyLocations.paginator = this.paginator;
+    this.createForm();
   }
 
   ngOnInit(): void {
@@ -68,5 +73,17 @@ export class RegisterCompanyComponent implements OnInit {
 
   onNewLocation(): void {
     this.location = {} as ILocation;
+  }
+
+  createForm(): void {
+    this.userRegistrationForm = this.formBuilder.group({
+      passwordGroup: this.formBuilder.group({
+        password: ['', [
+          Validators.required,
+          Validators.pattern(regExps.password)
+        ]],
+        confirmPassword: ['', Validators.required]
+      }, { validator: CustomValidators.childrenEqual})
+    });
   }
 }
