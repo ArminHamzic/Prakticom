@@ -38,6 +38,6 @@ export const errorMessages: { [key: string]: string } = {
   fullName: 'Full name must be between 1 and 128 characters',
   email: 'Email must be a valid email address (username@domain)',
   confirmEmail: 'Email addresses must match',
-  password: 'Password must be between 7 and 15 characters, and contain at least one number and special character',
-  confirmPassword: 'Passwords must match'
+  password: 'Das Passwort muss zwischen 7 und 15 Zeichen lang sein und mindestens eine Zahl und ein Sonderzeichen enthalten!',
+  confirmPassword: 'Passwörter stimmen nicht überein!'
 };

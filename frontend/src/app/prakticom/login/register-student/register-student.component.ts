@@ -7,10 +7,9 @@ import {MatDialog} from '@angular/material/dialog';
 import {AddSkillComponent} from './add-skill/add-skill.component';
 import {ISkill} from '../../../shared/contracts/skill';
 import {MatTableDataSource} from '@angular/material/table';
-import {MatPaginator} from '@angular/material/paginator';
 import {Rating} from '../../../shared/contracts/rating';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ConfirmValidParentMatcher, CustomValidators, errorMessages, regExps} from "../CustomValidators";
+import {ConfirmValidParentMatcher, CustomValidators, errorMessages, regExps} from '../CustomValidators';
 
 @Component({
   selector: 'app-register-student',
