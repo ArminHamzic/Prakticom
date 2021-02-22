@@ -32,7 +32,9 @@ services:
     depends_on:
       - postgres
   nginx:
-    build: ../src/main/resources .
+    build:
+      context: ./..
+      dockerfile: ./docker-files/Dockerfile
     ports:
       - 8081:80
     image: image-nginx
