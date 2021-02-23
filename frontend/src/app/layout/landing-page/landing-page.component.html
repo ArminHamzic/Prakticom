@@ -34,8 +34,9 @@
 
 <div style="margin-bottom: 1%; margin-top: 1%">
   <div class="vertical-center">
+    <mat-icon routerLink="" (click)="carouselLeftCompany()" style="cursor: pointer; font-size: 500%" aria-hidden="false" aria-label="Example home icon">chevron_left</mat-icon>
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
-      <div *ngFor="let company of matCompanies.filteredData">
+      <div *ngFor="let company of shownCompanies">
         <mat-card class="companyCard">
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
@@ -57,6 +58,7 @@
         </mat-card>
       </div>
     </div>
+    <mat-icon routerLink="" (click)="carouselRightCompany()" style="cursor: pointer; font-size: 500%" aria-hidden="false" aria-label="Example home icon">chevron_right</mat-icon>
   </div>
 </div>
 <div class="row" style="margin-bottom: -10px">
@@ -72,8 +74,9 @@
 
 <div style="margin-bottom: 1%; margin-top: 1%">
   <div class="vertical-center">
+    <mat-icon routerLink="" (click)="carouselLeftJob()" style="cursor: pointer; font-size: 500%" aria-hidden="false" aria-label="Example home icon">chevron_left</mat-icon>
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
-      <div *ngFor="let job of matJobPostings.filteredData">
+      <div *ngFor="let job of shownJobs">
         <mat-card class="jobCard">
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
@@ -97,6 +100,7 @@
         </mat-card>
       </div>
     </div>
+    <mat-icon routerLink="" (click)="carouselRightJob()" style="cursor: pointer; font-size: 500%" aria-hidden="false" aria-label="Example home icon">chevron_right</mat-icon>
   </div>
 </div>
 <div class="vertical-center" style="margin-top: 1%">
@@ -142,8 +146,6 @@
 </div>
 <div style="margin-bottom: 2%">
 </div>
-
-
 
 
 <!--
