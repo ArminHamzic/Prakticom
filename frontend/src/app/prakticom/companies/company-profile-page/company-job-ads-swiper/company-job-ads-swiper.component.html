@@ -1,37 +1,36 @@
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Swiper demo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-  <!-- Link Swiper's CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
-</head>
-
-<body>
-<!-- Swiper -->
-<div class="swiper-container">
-  <div class="swiper-wrapper">
+<div style="margin-bottom: 1%; margin-top: 1%">
+  <div class="vertical-center">
+    <mat-icon routerLink="" (click)="carouselLeft()" style="cursor: pointer; font-size: 500%" aria-hidden="false" aria-label="Example home icon">chevron_left</mat-icon>
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
-      <div [fxFlex]="(100/5) +'%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let company of companies">
-        <app-card>
-          <i mat-card-avatar class="example-header-image"></i>
-          <ng-container title>Software Developer</ng-container>
-          <ng-container subtitle>C#, Java</ng-container>
-          <ng-container image><img mat-card-image src='./assets/lp-bg.jpg'></ng-container>
-          <ng-container description>{{company.description}}</ng-container>
-          <ng-container buttons>
-            <button mat-button>WEBSITE</button>
-            <button mat-button>ANSEHEN</button>
-          </ng-container>
-        </app-card>
+      <div *ngFor="let job of shownJobPostings">
+        <mat-card class="jobCard">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{job.jobTitle}}</mat-card-title>
+            <mat-card-subtitle style="margin-top: 10px">Abteilung: {{job.fieldOfWork}}</mat-card-subtitle>
+            <mat-card-subtitle style="margin-top: -15px">Dauer: {{job.timespan}}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src='./assets/job.jpg'>
+          <mat-card-content style="height: 110px">
+            <mat-card-subtitle>Gepostet am: {{job.postingDate}}</mat-card-subtitle>
+            <p>
+              {{job.jobDescription}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <div>
+              <button mat-button>WEBSITE</button>
+              <button mat-button routerLink="/home/company/{{job.companyId}}">ANSEHEN</button>
+            </div>
+          </mat-card-actions>
+        </mat-card>
       </div>
     </div>
-<!--    <div class="swiper-slide" *ngFor="let company of companies">Slide 1</div>-->
+    <mat-icon routerLink="" (click)="carouselRight()" style="cursor: pointer; font-size: 500%" aria-hidden="false" aria-label="Example home icon">chevron_right</mat-icon>
   </div>
-  <div class="swiper-pagination"></div>
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
-  <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 </div>
-</body>
-</html>
+<div class="vertical-center" style="margin-top: 1%">
+  <div style="width: 80%; margin-top: 2vw">
+    <mat-divider></mat-divider>
+  </div>
+</div>
