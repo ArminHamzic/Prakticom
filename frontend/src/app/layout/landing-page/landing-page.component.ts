@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {ICompany} from '../../shared/contracts/company';
 import {CompanyService} from '../../shared/services/CompanyService';
 import {JobPostingService} from '../../shared/services/JobPostingService';
 import {IJobPosting} from '../../shared/contracts/jobPosting';
+import {Rating} from '../../shared/contracts/rating';
+import {forEach} from '@angular-devkit/schematics';
 
 @Component({
   selector: 'app-landing-page',
@@ -16,9 +18,14 @@ export class LandingPageComponent implements OnInit {
   matJobPostings: MatTableDataSource<IJobPosting>;
   companies: ICompany[] = [];
   jobPostings: IJobPosting[] = [];
-
+  filteredCompanies: ICompany[] = [];
   searchInput: string;
   searchInput2: string;
+  lowerBorderCompanies = 0;
+  lowerBorderJobs = 0;
+  shownCompanies: ICompany[] = [];
+  filteredJobs: IJobPosting[] = [];
+  shownJobs: IJobPosting[] = [];
 
 
   constructor(private companyService: CompanyService,
@@ -32,8 +39,10 @@ export class LandingPageComponent implements OnInit {
     const rawJobPostings = await this.jobPostingService.getAll().toPromise();
     this.jobPostings = rawJobPostings;
     this.matJobPostings = new MatTableDataSource<IJobPosting>(rawJobPostings);
+    await this.filterJobs();
 
-    this.matCompanies.filterPredicate = (data, filter: string)  => {
+    // TODO: Ähnlich wie CompanySearchList:25
+    /*this.matCompanies.filterPredicate = (data, filter: string)  => {
       const accumulator = (currentTerm, key) => {
         return this.nestedFilterCheck(currentTerm, data, key);
       };
@@ -41,17 +50,7 @@ export class LandingPageComponent implements OnInit {
       // Transform the filter by converting it to lowercase and removing whitespace.
       const transformedFilter = filter.trim().toLowerCase();
       return dataStr.indexOf(transformedFilter) !== -1;
-    };
-
-    this.matJobPostings.filterPredicate = (data, filter: string)  => {
-      const accumulator = (currentTerm, key) => {
-        return this.nestedFilterCheck(currentTerm, data, key);
-      };
-      const dataStr = Object.keys(data).reduce(accumulator, '').toLowerCase();
-      // Transform the filter by converting it to lowercase and removing whitespace.
-      const transformedFilter = filter.trim().toLowerCase();
-      return dataStr.indexOf(transformedFilter) !== -1;
-    };
+    };*/
   }
 
   // tslint:disable-next-line:typedef
@@ -68,12 +67,63 @@ export class LandingPageComponent implements OnInit {
     return search;
   }
 
-  filterJobs(): void {
-    if (this.searchInput !== null || this.searchInput2 !== null) {
+  async filterJobs(): Promise<void> {
+/*    if (this.searchInput !== null || this.searchInput2 !== null) {
       this.matCompanies.filter = this.searchInput.trim().toLowerCase();
       this.matJobPostings.filter = this.searchInput.trim().toLowerCase();
       this.matJobPostings.filter = this.searchInput2.trim().toLowerCase();
       this.matCompanies.filter = this.searchInput2.trim().toLowerCase();
-    }
+    }*/
+    this.filteredCompanies = await this.companyService.getFilteredCompanies(this.searchInput, this.searchInput2).toPromise();
+    this.filteredJobs = [];
+    this.filteredCompanies.forEach(c => {
+      c.jobPostings.forEach(jP => {
+        this.filteredJobs.push(jP);
+      });
+    });
+    console.log(this.filteredCompanies);
+    this.shownCompanies = this.filteredCompanies.slice(this.lowerBorderCompanies, this.lowerBorderCompanies + 4);
+    this.shownJobs = this.filteredJobs.slice(this.lowerBorderJobs, this.lowerBorderJobs + 4);
+
   }
+
+  // tslint:disable-next-line:typedef
+  carouselLeftCompany() {
+    if (this.lowerBorderCompanies >= 1){
+      this.lowerBorderCompanies -= 1;
+    }
+    this.refreshShownCompanies();
+  }
+  // tslint:disable-next-line:typedef
+  carouselRightCompany() {
+    if (this.lowerBorderCompanies + 4 <= this.filteredCompanies.length - 1){
+      this.lowerBorderCompanies += 1;
+    }
+    this.refreshShownCompanies();
+  }
+  // tslint:disable-next-line:typedef
+  carouselLeftJob() {
+    if (this.lowerBorderJobs >= 1){
+      this.lowerBorderJobs -= 1;
+    }
+    this.refreshShownJobs();
+  }
+
+  // tslint:disable-next-line:typedef
+  carouselRightJob() {
+    if (this.lowerBorderJobs + 4 <= this.filteredJobs.length - 1){
+      this.lowerBorderJobs += 1;
+    }
+    this.refreshShownJobs();
+  }
+
+  private async refreshShownCompanies(): Promise<void> {
+    this.companies = await this.companyService.getFilteredCompanies(this.searchInput, this.searchInput2).toPromise();
+    this.shownCompanies = this.companies.slice(this.lowerBorderCompanies, this.lowerBorderCompanies + 4);
+  }
+
+  private async refreshShownJobs(): Promise<void> {
+    this.shownJobs = this.filteredJobs.slice(this.lowerBorderJobs, this.lowerBorderJobs + 4);
+  }
+
 }

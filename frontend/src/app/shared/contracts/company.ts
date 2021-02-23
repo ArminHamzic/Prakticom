@@ -1,4 +1,5 @@
 import {ILocation} from './location';
+import {IJobPosting} from './jobPosting';
 
 export interface ICompany{
     id: number;
@@ -7,7 +8,7 @@ export interface ICompany{
     contactPhoneNumber: string;
     description: string;
     name: string;
-    jobPostings: string[];
+    jobPostings: IJobPosting[];
     locations: ILocation[];
     sectors: string[];
     url: string;

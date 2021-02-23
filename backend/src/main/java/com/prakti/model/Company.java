@@ -50,11 +50,10 @@ public class Company extends PanacheEntityBase implements Serializable {
     /*@OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
     public List<CompanyDocument> documents = new ArrayList<>();*/
 
-    @Transient
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public List<JobPosting> jobPostings = new ArrayList<>();
 
-    @OneToMany(mappedBy = "company", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public List<Location> locations = new ArrayList<>();
 
 

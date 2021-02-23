@@ -10,6 +10,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {Rating} from '../../../shared/contracts/rating';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ConfirmValidParentMatcher, CustomValidators, errorMessages, regExps} from '../CustomValidators';
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-register-student',
@@ -21,6 +22,8 @@ export class RegisterStudentComponent implements OnInit {
   student: IStudent;
   matSkills: MatTableDataSource<ISkill> = new MatTableDataSource<ISkill>();
   displayedColumns: string[] = ['skill', 'rating', 'settings'];
+
+  birthDate: any;
   startDate = new Date(2000, 1, 1);
 
   userRegistrationForm: FormGroup;
@@ -34,6 +37,7 @@ export class RegisterStudentComponent implements OnInit {
               private snackBar: MatSnackBar,
               private router: Router,
               private route: ActivatedRoute,
+              private datePipe: DatePipe,
               private formBuilder: FormBuilder,
               private dialog: MatDialog) {
     this.createForm();
@@ -58,7 +62,8 @@ export class RegisterStudentComponent implements OnInit {
   onSubmit(): void {
     if (this.student != null) {
       this.student.skills = this.matSkills.data;
-      console.log(this.student);
+      // @ts-ignore
+      this.student.birthDate = this.datePipe.transform(this.birthDate, 'yyyy-MM-dd');
       this.studentService.save(this.student).subscribe( (response) => {
         this.snackBar.open('Schülerprofil wurde erfolgreich angelegt!', 'X', {
           duration: 8000
