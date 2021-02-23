@@ -2,7 +2,7 @@ import {ISkill} from './skill';
 
 export interface IStudent{
     id: number;
-    birthDate: string;
+    birthDate: Date;
     email: string;
     userName: string;
     firstName: string;

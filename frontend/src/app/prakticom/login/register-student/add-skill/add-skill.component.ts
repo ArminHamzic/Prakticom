@@ -3,7 +3,6 @@ import {MatDialogRef} from '@angular/material/dialog';
 import {RegisterStudentComponent} from '../register-student.component';
 import {ISkill} from '../../../../shared/contracts/skill';
 import {StudentService} from '../../../../shared/services/StudentService';
-import {Rating} from '../../../../shared/contracts/rating';
 
 @Component({
   selector: 'app-add-skill',
@@ -17,7 +16,8 @@ export class AddSkillComponent implements OnInit {
 
 
   constructor(public dialogRef: MatDialogRef<RegisterStudentComponent>,
-              public studentService: StudentService) { }
+              public studentService: StudentService) {
+  }
 
   ngOnInit(): void {
   }
