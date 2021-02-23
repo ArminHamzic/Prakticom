@@ -39,9 +39,9 @@
   <div class="place-left">
     <mat-form-field appearance="fill" style="margin-left: 20px">
       <mat-label>Geburtsdatum</mat-label>
-      <input matInput [matDatepicker]="picker">
+      <input matInput [matDatepicker]="picker" [(ngModel)]="birthDate" [ngModelOptions] ="{standalone: true}">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker [(ngModel)]="student.birthDate" #picker startView="year" [startAt]="startDate"></mat-datepicker>
+      <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
     </mat-form-field>
   </div>
 

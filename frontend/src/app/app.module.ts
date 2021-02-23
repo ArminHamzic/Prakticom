@@ -8,6 +8,7 @@ import {LayoutModule} from './layout/layout.module';
 import {PrakticomModule} from './prakticom/prakticom.module';
 import {MaterialModule} from './material.module';
 import {HttpClientModule} from '@angular/common/http';
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
