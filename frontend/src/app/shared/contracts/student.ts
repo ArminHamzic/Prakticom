@@ -9,7 +9,7 @@ export interface IStudent{
     lastName: string;
     phoneNumber: string;
     school: string;
-    skills: ISkill[];
+    skills: any[];
     description: string;
     password: string;
 }

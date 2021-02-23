@@ -19,20 +19,25 @@ services:
   keycloak:
     image: jboss/keycloak:latest
     environment:
-      DB_VENDOR: POSTGRES
-      DB_ADDR: postgres
-      DB_DATABASE: postgres
-      DB_USER: postgres
-      DB_SCHEMA: keycloak
-      DB_PASSWORD: postgres
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: admin
+      - DB_VENDOR=POSTGRES
+      - DB_ADDR=postgres
+      - DB_DATABASE=postgres
+      - DB_USER=postgres
+      - DB_SCHEMA=keycloak
+      - DB_PASSWORD=postgres
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - PROXY_ADDRESS_FORWARDING=true
     ports:
       - "8180:8080"
     depends_on:
       - postgres
   nginx:
-    build: ../src/main/resources .
+    build:
+      context: ./..
+      dockerfile: ./docker-files/Dockerfile
     ports:
-      - 8081:80
+      - 8081:8081
     image: image-nginx
+    depends_on:
+      - keycloak

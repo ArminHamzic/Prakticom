@@ -55,7 +55,6 @@ public class StudentEndpoint {
     public Response createStudent(@Context UriInfo info, Student student) {
         if (student == null) return Response.noContent().build();
         Student newStudent = new Student();
-        studentRepository.persistStudent(newStudent);
         student.skills.forEach(s ->{
             //TODO CopyProperties for Skill
             Skill skill = new Skill();
