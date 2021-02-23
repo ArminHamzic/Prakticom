@@ -7,8 +7,10 @@ import com.prakti.model.FieldOfWork;
 import com.prakti.model.JobApplication;
 import com.prakti.model.JobPosting;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -20,6 +22,8 @@ import java.util.List;
 @Path("/api/jobPosting")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@ApplicationScoped
+@Transactional
 public class JobPostingEndpoint {
 
     @Inject
