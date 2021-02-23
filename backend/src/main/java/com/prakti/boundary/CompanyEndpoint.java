@@ -5,6 +5,7 @@ import com.prakti.control.CompanyDocumentDAO;
 import com.prakti.control.LocationDAO;
 import com.prakti.model.Company;
 import com.prakti.model.DocumentEntities.CompanyDocument;
+import com.prakti.model.JobPosting;
 import com.prakti.model.Location;
 
 import javax.annotation.security.RolesAllowed;
@@ -23,7 +24,8 @@ import java.util.List;
 @Path("/api/company")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-
+@ApplicationScoped
+@Transactional
 public class CompanyEndpoint {
 
     @Inject
@@ -37,19 +39,30 @@ public class CompanyEndpoint {
 
     @GET
     public List<Company> getAllCompanies(){
-        return companyRepository.listAll();
+        List<Company> companies = companyRepository.listAll();
+        companies.forEach(this::doLoader);
+        return companies;
     }
 
     @GET
     @Path("{id}")
     public Company getCompanyById(@PathParam("id")Long id){
-        return companyRepository.findCompanyById(id);
+        var company = companyRepository.findById(id);
+        doLoader(company);
+        return company;
+    }
+
+    private void doLoader(Company company) {
+        List<Location> loadLocations = company.locations;
+        List<JobPosting> loadJobPostings = company.jobPostings;
     }
 
     @GET
     @Path("filter")
     public List<Company> getFilteredObjects(@QueryParam("name")String name, @QueryParam("location")String location){
-        return companyRepository.filterByNameAndLocation(name, location);
+        List<Company> companies =  companyRepository.filterByNameAndLocation(name, location);
+        companies.forEach(this::doLoader);
+        return companies;
     }
 
     @POST
