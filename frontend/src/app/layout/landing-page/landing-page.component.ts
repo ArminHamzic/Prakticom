@@ -5,6 +5,7 @@ import {CompanyService} from '../../shared/services/CompanyService';
 import {JobPostingService} from '../../shared/services/JobPostingService';
 import {IJobPosting} from '../../shared/contracts/jobPosting';
 import {Rating} from '../../shared/contracts/rating';
+import {forEach} from '@angular-devkit/schematics';
 
 @Component({
   selector: 'app-landing-page',
@@ -74,12 +75,13 @@ export class LandingPageComponent implements OnInit {
       this.matCompanies.filter = this.searchInput2.trim().toLowerCase();
     }*/
     this.filteredCompanies = await this.companyService.getFilteredCompanies(this.searchInput, this.searchInput2).toPromise();
+    this.filteredJobs = [];
     this.filteredCompanies.forEach(c => {
-      this.filteredJobs = [];
-      this.jobPostings.forEach(jP => {
+      c.jobPostings.forEach(jP => {
         this.filteredJobs.push(jP);
       });
     });
+    console.log(this.filteredCompanies);
     this.shownCompanies = this.filteredCompanies.slice(this.lowerBorderCompanies, this.lowerBorderCompanies + 4);
     this.shownJobs = this.filteredJobs.slice(this.lowerBorderJobs, this.lowerBorderJobs + 4);
 
@@ -123,4 +125,5 @@ export class LandingPageComponent implements OnInit {
   private async refreshShownJobs(): Promise<void> {
     this.shownJobs = this.filteredJobs.slice(this.lowerBorderJobs, this.lowerBorderJobs + 4);
   }
+
 }
