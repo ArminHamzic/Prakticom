@@ -1,8 +1,8 @@
-<form class="formstyle" action="" #form>
+<form class="formstyle" [formGroup]="userRegistrationForm" action="" #form>
   <h2 class="field">Neues Schülerprofil erstellen</h2>
   <div class="place-left">
     <mat-form-field class="field">
-      <input id="firstName" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Vorname" [(ngModel)]="student.firstName">
+      <input id="firstName" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Vorname" [(ngModel)]="student.firstName" >
       <mat-icon matSuffix>person</mat-icon>
       <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
     </mat-form-field>
@@ -35,26 +35,50 @@
       <mat-icon matSuffix>phone_enabled</mat-icon>
     </mat-form-field>
   </div>
-  <mat-form-field appearance="fill" style="margin-left: 20px">
-    <mat-label>Geburtsdatum</mat-label>
-    <input matInput [matDatepicker]="picker">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker [(ngModel)]="student.birthDate" #picker startView="year" [startAt]="startDate"></mat-datepicker>
+
+  <div class="place-left">
+    <mat-form-field appearance="fill" style="margin-left: 20px">
+      <mat-label>Geburtsdatum</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker [(ngModel)]="student.birthDate" #picker startView="year" [startAt]="startDate"></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+
+  <div formGroupName="passwordGroup">
+    <mat-form-field class="field">
+      <input matInput placeholder="Passwort" required type="password" formControlName="password" [(ngModel)]="student.password">
+      <mat-error>
+        {{errors.password}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="field">
+      <input matInput placeholder="Passwort bestätigen" required type="password" formControlName="confirmPassword" [errorStateMatcher]="confirmValidParentMatcher">
+      <mat-error>
+        {{errors.confirmPassword}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field class="field" style="width: 63.5%">
+              <textarea id="description" type="text" [ngModelOptions] ="{standalone: true}" cdkTextareaAutosize matInput cdkAutosizeMinRows="1"
+                        placeholder="Was zeichnet deine Persönlichkeit aus? Was sind deine Stärken? " [(ngModel)]="student.description"></textarea>
   </mat-form-field>
+
+  <h2 class="field">Kenntnisse (Skills)</h2>
 
   <div style="width: 63.5%; margin: 20px; margin-top: 30px">
     <div class="mat-elevation-z8" style="margin-bottom: 3%">
       <table mat-table [dataSource]="matSkills" matSort >
-
-        <!-- Position Column -->
-
         <ng-container matColumnDef="skill">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Skill </th>
+          <th mat-header-cell *matHeaderCellDef> Skill </th>
           <td mat-cell *matCellDef="let element"> {{element.name}} </td>
         </ng-container>
 
         <ng-container matColumnDef="rating">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Rating </th>
+          <th mat-header-cell *matHeaderCellDef> Rating </th>
           <td mat-cell *matCellDef="let element"> {{rating[element.rating]}} </td>
         </ng-container>
 
@@ -73,20 +97,7 @@
     </div>
   </div>
 
-  <mat-form-field class="field">
-    <input id="password" type="password" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Passwort" [(ngModel)]="student.password">
-    <mat-icon matSuffix>vpn_key</mat-icon>
-    <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
-  </mat-form-field>
-  <mat-form-field class="field">
-    <input id="passwordSafe" type="passwordSafe" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Passwort bestätigen" [(ngModel)]="passwordSafe">
-    <mat-icon matSuffix>vpn_key</mat-icon>
-    <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
-  </mat-form-field>
-  <mat-form-field class="field" style="width: 63.5%">
-            <textarea id="description" type="text" [ngModelOptions] ="{standalone: true}" cdkTextareaAutosize matInput cdkAutosizeMinRows="1"
-                      placeholder="Was zeichnet deine Persönlichkeit aus? Was sind deine Stärken? " [(ngModel)]="student.description"></textarea>
-  </mat-form-field>
+
   <div class="safeButtons">
     <button class="buttonSelf" mat-raised-button color="warn" type="submit" (click)="onClose()">Zurück</button>
     <button class="buttonSelf" mat-raised-button color="primary" type="submit" [disabled]="!form.checkValidity()" (click)="onSubmit()">Schülerprofil erstellen</button>

@@ -1,4 +1,4 @@
-<form class="formstyle" action="" #form>
+<form class="formstyle" [formGroup]="userRegistrationForm" action="" #form>
   <h2 class="field">Neues Unternehmensprofil erstellen</h2>
   <div class="place-left">
     <mat-form-field class="field">
@@ -35,20 +35,95 @@
       <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
     </mat-form-field>
   </div>
-  <mat-form-field class="field">
-    <input id="password" type="password" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Passwort" [(ngModel)]="company.password">
-    <mat-icon matSuffix>vpn_key</mat-icon>
-    <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
-  </mat-form-field>
-  <mat-form-field class="field">
-    <input id="passwordSafe" type="passwordSafe" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Passwort bestätigen" [(ngModel)]="passwordSafe">
-    <mat-icon matSuffix>vpn_key</mat-icon>
-    <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
-  </mat-form-field>
+  <div formGroupName="passwordGroup">
+    <mat-form-field class="field">
+      <input matInput placeholder="Passwort" required type="password" formControlName="password" [(ngModel)]="company.password">
+      <mat-error>
+        {{errors.password}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="field">
+      <input matInput placeholder="Passwort bestätigen" required type="password" formControlName="confirmPassword" [errorStateMatcher]="confirmValidParentMatcher">
+      <mat-error>
+        {{errors.confirmPassword}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
   <mat-form-field class="field" style="width: 63.5%">
             <textarea id="description" type="text" [ngModelOptions] ="{standalone: true}" cdkTextareaAutosize matInput cdkAutosizeMinRows="1"
                       placeholder="Was zeichnet ihr Unternehmen aus? Auf was sind Sie spezialisiert? " [(ngModel)]="company.description"></textarea>
   </mat-form-field>
+
+  <h2 class="field">Unternehmensstandorte</h2>
+
+  <div style="width: 64%; margin: 20px; margin-top: 30px">
+    <div class="mat-elevation-z8" style="margin-bottom: 3%">
+      <table mat-table [dataSource]="companyLocations" matSort >
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef> Adresse </th>
+          <td mat-cell *matCellDef="let element"> {{element.streetName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="city">
+          <th mat-header-cell *matHeaderCellDef> Stadt </th>
+          <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="plz">
+          <th mat-header-cell *matHeaderCellDef> PLZ </th>
+          <td mat-cell *matCellDef="let element"> {{element.zipCode}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="country">
+          <th mat-header-cell *matHeaderCellDef> Land </th>
+          <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="settings" >
+          <th mat-header-cell *matHeaderCellDef width="3%">
+            <button class="iconBut" color="accent" mat-icon-button (click)="onNewLocation()"><mat-icon>add</mat-icon></button>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <button class="iconBut" mat-icon-button color="warn" (click)="onLocationDelete(element)"><mat-icon>delete_outline</mat-icon></button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
+
+  <form *ngIf="location != undefined" action="" ngNativeValidate #form>
+    <div>
+      <mat-form-field class="field">
+        <input id="street" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Straße" [(ngModel)]="location.streetName">
+        <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+      </mat-form-field>
+      <mat-form-field class="field">
+        <input id="city" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Stadt" [(ngModel)]="location.city">
+        <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="field">
+        <input id="zipCode" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="PLZ" [(ngModel)]="location.zipCode">
+        <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+      </mat-form-field>
+      <mat-form-field class="field">
+        <input id="country" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Land" [(ngModel)]="location.country">
+        <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="safeButtons">
+      <button class="locationButton" mat-raised-button color="warn" type="submit" (click)="onCancel()">Abbrechen</button>
+      <button class="locationButton" mat-raised-button color="primary" type="submit" [disabled]="!form.checkValidity()" (click)="onAddingLocation()">Standort hinzufügen</button>
+    </div>
+  </form>
+
   <div class="safeButtons">
     <button class="buttonSelf" mat-raised-button color="warn" type="submit" (click)="onClose()">Zurück</button>
     <button class="buttonSelf" mat-raised-button color="primary" type="submit" [disabled]="!form.checkValidity()" (click)="onSubmit()">Unternehmensprofil erstellen</button>

@@ -7,8 +7,9 @@ import {MatDialog} from '@angular/material/dialog';
 import {AddSkillComponent} from './add-skill/add-skill.component';
 import {ISkill} from '../../../shared/contracts/skill';
 import {MatTableDataSource} from '@angular/material/table';
-import {MatPaginator} from "@angular/material/paginator";
-import {Rating} from "../../../shared/contracts/rating";
+import {Rating} from '../../../shared/contracts/rating';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ConfirmValidParentMatcher, CustomValidators, errorMessages, regExps} from '../CustomValidators';
 
 @Component({
   selector: 'app-register-student',
@@ -20,34 +21,26 @@ export class RegisterStudentComponent implements OnInit {
   student: IStudent;
   matSkills: MatTableDataSource<ISkill> = new MatTableDataSource<ISkill>();
   displayedColumns: string[] = ['skill', 'rating', 'settings'];
-  passwordSafe = '';
   startDate = new Date(2000, 1, 1);
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  userRegistrationForm: FormGroup;
+
+  confirmValidParentMatcher = new ConfirmValidParentMatcher();
+
+  errors = errorMessages;
+
+
   constructor(private studentService: StudentService,
               private snackBar: MatSnackBar,
               private router: Router,
               private route: ActivatedRoute,
-              public dialog: MatDialog) {
-    this.student = {} as IStudent;
-    this.matSkills.paginator = this.paginator;
+              private formBuilder: FormBuilder,
+              private dialog: MatDialog) {
+    this.createForm();
   }
-
-  /*
-  async onSubmit(): Promise<void> {
-    if (this.employee != null) {
-      await this.employeeService.createUser({body: this.employee}).subscribe(  (response) => {
-        this.snackBar.open('Mitarbeiter wurde erfolgreich angelegt!', 'X', {
-          duration: 8000
-        });
-        this.navigation.back();
-      });
-    }
-  }
-   */
-
 
   ngOnInit(): void {
+    this.student = {} as IStudent;
   }
 
   onClose(): void {
@@ -82,5 +75,17 @@ export class RegisterStudentComponent implements OnInit {
 
   public get rating(): typeof Rating {
     return Rating;
+  }
+
+  createForm(): void {
+    this.userRegistrationForm = this.formBuilder.group({
+      passwordGroup: this.formBuilder.group({
+        password: ['', [
+          Validators.required,
+          Validators.pattern(regExps.password)
+        ]],
+        confirmPassword: ['', Validators.required]
+      }, { validator: CustomValidators.childrenEqual})
+    });
   }
 }
