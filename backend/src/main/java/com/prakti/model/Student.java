@@ -70,6 +70,7 @@ public class Student extends PanacheEntityBase implements Serializable {
         if (other.firstName != null) this.firstName = other.firstName;
         if (other.lastName != null) this.lastName = other.lastName;
         if (other.email != null) this.email = other.email;
+        if (other.password != null) this.password = other.password;
         if (other.phoneNumber != null) this.phoneNumber = other.phoneNumber;
         if (other.birthDate != null) this.birthDate = other.birthDate;
         if (other.school != null) this.school = other.school;
