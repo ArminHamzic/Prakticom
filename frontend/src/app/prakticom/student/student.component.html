@@ -1,112 +1,82 @@
+<html>
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
 
-
-
-<!--<ng-container>
-  <div *ngFor="let skill of skills">
-    <button mat-flat-button
-            color="primary"
-            style="border-radius: 20px"
-            matTooltip="Remove this skill"
-            matTooltipPosition="above"
-            (click)="onClick(skill)"
-    >{{skill}}
-    </button>
-  </div>
-</ng-container>
-<ng-container>
-  <mat-form-field class="example-full-width">
-    <mat-label>Skill</mat-label>
-    <input #input matInput placeholder="Java"(keyup.enter)="onEnter(input)">
-  </mat-form-field>
-</ng-container>-->
-
-<mat-list>
-  <mat-list-item>
-      <h1>User Profile</h1>
-  </mat-list-item>
-  <mat-divider style="margin-bottom: 2%"></mat-divider>
-</mat-list>
-
-
-<div class="content">
-  <div fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%">
-
-      <mat-card class="mat-elevation-z4" >
-        <img mat-card-image src="assets/kindpng_2855863.png" class="rounded">
-
-        <div class="b">
-
-            <mat-card-header>
-              <mat-card-title>{{student.firstName}} {{student.lastName}}</mat-card-title>
-            </mat-card-header>
-
-
-
-
-            <mat-card-content>
-              <mat-card-header>
-                <h2>Email:</h2>
-                <a>{{student.email}}</a>
-              </mat-card-header>
-              <mat-card-header>
-                <h2>Schule</h2>
-                <a>{{student.school}}:</a>
-              </mat-card-header>
-              <mat-card-header>
-                <h2>Geburtsdatum:</h2>
-                <a>{{student.birthDate | date}}</a>
-              </mat-card-header>
-            </mat-card-content>
-
-            <mat-card-actions>
-            </mat-card-actions>
-
+<div class="row">
+  <mat-card class="student-info-card">
+    <div class="row">
+      <div style="margin-right: 4vw">
+        <img class="profile-picture" mat-card-image src='./assets/kindpng_2855863.png'>
+        <h3 style="margin-left: 3vw">Max Mustermann</h3>
       </div>
-
-      </mat-card>
+      <mat-card-content>
+        <mat-form-field>
+          <mat-icon matPrefix>person</mat-icon>
+          <mat-label>Max Mustermann</mat-label>
+          <input matInput [readonly]="true"/>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-icon matPrefix>location_on</mat-icon>
+          <mat-label>Linz</mat-label>
+          <input matInput [readonly]="true"/>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-icon matPrefix>school</mat-icon>
+          <mat-label>Htl Leonding</mat-label>
+          <input matInput [readonly]="true"/>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-icon matPrefix>email</mat-icon>
+          <mat-label>mustermann@gmail.com</mat-label>
+          <input matInput [readonly]="true"/>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-icon matPrefix>phone</mat-icon>
+          <mat-label>05232 81502</mat-label>
+          <input matInput [readonly]="true"/>
+        </mat-form-field>
+      </mat-card-content>
     </div>
-
-    <div fxFlex="75%" fxFlex.xs="100%" fxFlex.sm="33%">
-      <mat-card class="mat-elevation-z4" >
-
-        <mat-card-header>
-          <mat-card-title >Beschreibung</mat-card-title>
-
-        </mat-card-header>
-
-        <p>
-          {{student.description}}
-        </p>
-
-        <mat-card-header>
-          <mat-card-title >Skills</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            <div>
-              <div>
-                <button *ngFor="let skill of student.skills" mat-flat-button color="primary" style="border-radius: 20px; margin: 0.5vw">
-                  {{skill.skill | titlecase}}
-                </button>
-              </div>
-              <a> </a>
-              <button (click)="openTab('http://localhost:8081/Lebenslauf1920.pdf')" style="margin: 1vw" mat-raised-button>Lebenslauf</button>
-            </div>
-        </mat-card-content>
-        <mat-card-actions>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-
+    <mat-card-footer class="card-info-footer">
+      <div class="social-icons">
+        <a href="https://twitter.com" class="icon-button twitter"><i class="icon-twitter"></i><span>
+            <img mat-card-image></span></a>
+        <a href="https://facebook.com" class="icon-button facebook"><i class="icon-facebook"></i><span></span></a>
+        <a href="https://plus.google.com" class="icon-button google-plus"><i
+          class="icon-google-plus"></i><span></span></a>
+      </div>
+    </mat-card-footer>
+  </mat-card>
+  <div>
+    <mat-card class="about-me">
+      <h2>About me</h2>
+      <p>This is a short description about myself</p>
+    </mat-card>
+    <mat-tab-group class="tab-group" backgroundColor="primary" mat-align-tabs="center" color="primary">
+      <mat-tab label="Skills">
+        <div class="list">
+          <mat-action-list>
+            <mat-list-item>C#</mat-list-item>
+            <mat-list-item>Angular</mat-list-item>
+            <mat-list-item>C</mat-list-item>
+            <mat-list-item>Java</mat-list-item>
+          </mat-action-list>
+        </div>
+      </mat-tab>
+      <mat-tab label="Dokumente">
+        <div class="extra_margin"></div>
+        <div class="list">
+          <!--<a href="/images/myw3schoolsimage.jpg" download>
+            <img src="/images/myw3schoolsimage.jpg" alt="Lebenslauf" style="font-size: 20px">
+          </a>-->
+          <button (click)="openTab('http://localhost:8081/Lebenslauf1920.pdf')" style="margin: 1vw" mat-raised-button>
+            Lebenslauf
+          </button>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
   </div>
-  </div>
-
-
-
-
-
-
-
+</div>
+<button mat-raised-button color="primary">Schüler jetzt kontaktieren</button></html>
 
 
 

@@ -38,6 +38,7 @@
   <div formGroupName="passwordGroup">
     <mat-form-field class="field">
       <input matInput placeholder="Passwort" required type="password" formControlName="password" [(ngModel)]="company.password">
+      <mat-icon matSuffix>lock</mat-icon>
       <mat-error>
         {{errors.password}}
       </mat-error>
@@ -45,6 +46,7 @@
 
     <mat-form-field class="field">
       <input matInput placeholder="Passwort bestätigen" required type="password" formControlName="confirmPassword" [errorStateMatcher]="confirmValidParentMatcher">
+      <mat-icon matSuffix>lock</mat-icon>
       <mat-error>
         {{errors.confirmPassword}}
       </mat-error>

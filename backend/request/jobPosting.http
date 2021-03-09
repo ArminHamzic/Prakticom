@@ -1,4 +1,4 @@
-POST localhost:8080/api/jobPosting/9
+POST localhost:8080/api/jobPosting/3
 Content-Type: application/json
 
 
@@ -12,7 +12,7 @@ Content-Type: application/json
 
 ###
 
-POST localhost:8080/api/jobPosting/10
+POST localhost:8080/api/jobPosting/1
 Content-Type: application/json
 
 
@@ -26,7 +26,7 @@ Content-Type: application/json
 
 ###
 
-POST localhost:8080/api/jobPosting/10
+POST localhost:8080/api/jobPosting/2
 Content-Type: application/json
 
 
