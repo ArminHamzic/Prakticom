@@ -2,10 +2,7 @@ package com.prakti.boundary;
 
 import com.prakti.control.CompanyDAO;
 import com.prakti.control.JobPostingDAO;
-import com.prakti.model.Company;
-import com.prakti.model.FieldOfWork;
-import com.prakti.model.JobApplication;
-import com.prakti.model.JobPosting;
+import com.prakti.model.*;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -34,25 +31,41 @@ public class JobPostingEndpoint {
 
     @GET
     public List<JobPosting> getAllJobPostings(){
-        return jobPostingRepository.findAllJobPostings();
+
+        List<JobPosting> jobPostings = jobPostingRepository.findAllJobPostings();
+        jobPostings.forEach(this::doLoader);
+        return jobPostings;
     }
 
     @GET
     @Path("{id}")
     public JobPosting getJobPostingById(@PathParam("id")Long id){
-        return jobPostingRepository.findJobPostingById(id);
+        JobPosting jobPosting = jobPostingRepository.findJobPostingById(id);
+        doLoader(jobPosting);
+        return jobPosting;
     }
 
     @GET
     @Path("/company/{company_id}")
     public List<JobPosting> getJobPostingByCompanyId(@PathParam("company_id") Long companyId){
-        return jobPostingRepository.findJobPostingByCompanyId(companyId);
+
+        List<JobPosting> jobPostings = jobPostingRepository.findJobPostingByCompanyId(companyId);
+        jobPostings.forEach(this::doLoader);
+        return jobPostings;
     }
 
     @GET
     @Path("/{fieldOfWork}")
     public List<JobPosting> getJobPostingsByFieldOfWork(@QueryParam("fieldOfWork")FieldOfWork fieldOfWork){
-        return jobPostingRepository.findJobPostingsByFieldOfWork(fieldOfWork);
+        List<JobPosting> jobPostings = jobPostingRepository.findJobPostingsByFieldOfWork(fieldOfWork);
+        jobPostings.forEach(this::doLoader);
+        return jobPostings;
+    }
+
+    private void doLoader(JobPosting jobPosting) {
+        Company loadCompany = jobPosting.company;
+        List<Location> loadLocations = loadCompany.locations;
+        List<JobPosting> loadJobPostings = loadCompany.jobPostings;
     }
 
     @POST
