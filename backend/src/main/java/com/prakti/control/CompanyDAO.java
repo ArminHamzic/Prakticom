@@ -82,8 +82,8 @@ public class CompanyDAO implements PanacheRepository<Company> {
         }
         companies.forEach(c -> {
             c.jobPostings.forEach(jP -> {
-               if(jP.jobTitle.equals(name)){
-                   filtered.add(c);
+               if(jP.jobTitle.startsWith(name)){
+                   filtered.add (c);
                }
             });
         });
