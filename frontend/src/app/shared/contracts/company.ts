@@ -14,4 +14,5 @@ export interface ICompany{
     url: string;
     userName: string;
     password: string;
+    logoUrl: string;
 }
