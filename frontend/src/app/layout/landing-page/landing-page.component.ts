@@ -68,12 +68,6 @@ export class LandingPageComponent implements OnInit {
   }
 
   async filterJobs(): Promise<void> {
-/*    if (this.searchInput !== null || this.searchInput2 !== null) {
-      this.matCompanies.filter = this.searchInput.trim().toLowerCase();
-      this.matJobPostings.filter = this.searchInput.trim().toLowerCase();
-      this.matJobPostings.filter = this.searchInput2.trim().toLowerCase();
-      this.matCompanies.filter = this.searchInput2.trim().toLowerCase();
-    }*/
     this.filteredCompanies = await this.companyService.getFilteredCompanies(this.searchInput, this.searchInput2).toPromise();
     this.filteredJobs = [];
     this.filteredCompanies.forEach(c => {
@@ -81,7 +75,6 @@ export class LandingPageComponent implements OnInit {
         this.filteredJobs.push(jP);
       });
     });
-    console.log(this.filteredCompanies);
     this.shownCompanies = this.filteredCompanies.slice(this.lowerBorderCompanies, this.lowerBorderCompanies + 4);
     this.shownJobs = this.filteredJobs.slice(this.lowerBorderJobs, this.lowerBorderJobs + 4);
 

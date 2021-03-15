@@ -1,6 +1,6 @@
 <div style="margin-bottom: 1%; margin-top: 1%">
   <div class="vertical-center">
-    <mat-icon routerLink="" (click)="carouselLeft()" style="cursor: pointer; font-size: 500%" aria-hidden="false" aria-label="Example home icon">chevron_left</mat-icon>
+    <mat-icon routerLink="/home/company/{{company.id}}" (click)="carouselLeft()" style="cursor: pointer; font-size: 500%" aria-hidden="false" aria-label="Example home icon">chevron_left</mat-icon>
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
       <div *ngFor="let job of shownJobPostings">
         <mat-card class="jobCard">
@@ -19,14 +19,13 @@
           </mat-card-content>
           <mat-card-actions align="end">
             <div>
-              <button mat-button>WEBSITE</button>
-              <button mat-button routerLink="/home/company/{{job.companyId}}">ANSEHEN</button>
+              <button style="margin-right: 1.5vw" mat-button>BEWERBEN</button>
             </div>
           </mat-card-actions>
         </mat-card>
       </div>
     </div>
-    <mat-icon routerLink="" (click)="carouselRight()" style="cursor: pointer; font-size: 500%" aria-hidden="false" aria-label="Example home icon">chevron_right</mat-icon>
+    <mat-icon routerLink="/home/company/{{company.id}}" (click)="carouselRight()" style="cursor: pointer; font-size: 500%" aria-hidden="false" aria-label="Example home icon">chevron_right</mat-icon>
   </div>
 </div>
 <div class="vertical-center" style="margin-top: 1%">
