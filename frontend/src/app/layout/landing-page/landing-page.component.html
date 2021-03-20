@@ -43,7 +43,11 @@
             <mat-card-title>{{company.name}}</mat-card-title>
             <mat-card-subtitle>{{company.contactEmail}}</mat-card-subtitle>
           </mat-card-header>
-          <img mat-card-image src='./assets/lp-bg.jpg'>
+          <img *ngIf="company.logoUrl != null; else defaultPicture" style="height: 10.4vw; width: 16.5vw" mat-card-image src='{{company.logoUrl}}'>
+          <ng-template #defaultPicture>
+            <img mat-card-image src='assets/lp-bg.jpg' alt="">
+          </ng-template>
+
           <mat-card-content style="height: 70px">
             <p>
               {{company.description}}

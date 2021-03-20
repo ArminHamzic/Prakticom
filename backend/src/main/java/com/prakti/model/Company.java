@@ -44,6 +44,8 @@ public class Company extends PanacheEntityBase implements Serializable {
     public String userName;
     @Column(name = "PASSWORD")
     public String password;
+    @Column(name = "LOGO_URL")
+    public String logoUrl;
 
 
 
@@ -67,6 +69,7 @@ public class Company extends PanacheEntityBase implements Serializable {
         if(other.url != null)this.url = other.url;
         if(other.userName != null)this.userName = userName;
         if(other.password != null)this.password = password;
+        if(other.logoUrl != null)this.logoUrl = logoUrl;
     }
 
     public Long getId() {

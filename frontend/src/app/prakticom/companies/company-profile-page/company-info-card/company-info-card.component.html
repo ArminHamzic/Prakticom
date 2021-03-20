@@ -7,7 +7,10 @@
         <mat-card-header>
           <!--<div mat-card-avatar class="example-header-image"></div>-->
           <div class="company-logo">
-            <img mat-card-image src="assets/logo.png">
+            <img *ngIf="company.logoUrl != null; else defaultPicture" style="width: 15vw" mat-card-image src="{{company.logoUrl}}">
+            <ng-template #defaultPicture>
+              <img mat-card-image src="assets/logo.png">
+            </ng-template>
           </div>
           <div class="company-description">
             <mat-card-title>{{company.name}}</mat-card-title>

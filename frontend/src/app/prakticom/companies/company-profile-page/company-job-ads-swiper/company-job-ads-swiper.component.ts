@@ -21,8 +21,9 @@ export class CompanyJobAdsSwiperComponent implements OnInit {
   constructor(private companyService: CompanyService, private jobPostingService: JobPostingService) { }
 
   async ngOnInit(): Promise<void> {
-    const rawJobPostings = await this.jobPostingService.getAll().toPromise();
+    const rawJobPostings = await this.jobPostingService.getByCompanyId(this.company.id).toPromise();
     this.jobPostings = rawJobPostings;
+    console.log(this.jobPostings);
 
     this.shownJobPostings = this.jobPostings.slice(this.lowerBorder, this.lowerBorder + 4);
     console.log(this.shownJobPostings);
@@ -34,13 +35,14 @@ export class CompanyJobAdsSwiperComponent implements OnInit {
     this.refreshShownJobPostings();
   }
   carouselRight(): void {
-    if (this.lowerBorder + 4 <= this.shownJobPostings.length - 1){
+    if (this.lowerBorder + 4 <= this.jobPostings.length - 1){
       this.lowerBorder += 1;
     }
     this.refreshShownJobPostings();
   }
   private async refreshShownJobPostings(): Promise<void> {
     this.shownJobPostings = this.jobPostings.slice(this.lowerBorder, this.lowerBorder + 4);
+    console.log(this.shownJobPostings);
   }
 
 }

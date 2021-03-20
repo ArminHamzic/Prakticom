@@ -6,6 +6,7 @@ import {GenericHttpService} from './GenericHttpService/GenericHttpService';
 import {IJobPosting} from '../contracts/jobPosting';
 import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
+import {ICompany} from '../contracts/company';
 
 
 @Injectable({
@@ -17,5 +18,7 @@ export class JobPostingService extends GenericHttpService<IJobPosting, number> {
         super(http, `${environment.api.baseUrl}/jobPosting`);
     }
 
-    // TODO: JobPosting POST
+    getByCompanyId(id: number): Observable<IJobPosting[]> {
+      return this.http.get<IJobPosting[]>(this.base + '/company/' + id);
+    }
 }
