@@ -35,6 +35,12 @@
       <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
     </mat-form-field>
   </div>
+  <div class="place-left">
+    <mat-form-field class="field">
+      <input id="picUrl" type="text" matInput placeholder="Logo Url" >
+      <mat-icon matSuffix>link</mat-icon>
+    </mat-form-field>
+  </div>
   <div formGroupName="passwordGroup">
     <mat-form-field class="field">
       <input matInput placeholder="Passwort" required type="password" formControlName="password" [(ngModel)]="company.password">
@@ -101,22 +107,18 @@
   <form *ngIf="location != undefined" action="" ngNativeValidate #form>
     <div>
       <mat-form-field class="field">
-        <input id="street" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Straße" [(ngModel)]="location.streetName">
-        <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+        <input id="street" type="text" [ngModelOptions] ="{standalone: true}" matInput placeholder="Straße" [(ngModel)]="location.streetName">
       </mat-form-field>
       <mat-form-field class="field">
-        <input id="city" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Stadt" [(ngModel)]="location.city">
-        <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+        <input id="city" type="text" [ngModelOptions] ="{standalone: true}" matInput placeholder="Stadt" [(ngModel)]="location.city">
       </mat-form-field>
     </div>
     <div>
       <mat-form-field class="field">
-        <input id="zipCode" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="PLZ" [(ngModel)]="location.zipCode">
-        <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+        <input id="zipCode" type="text" [ngModelOptions] ="{standalone: true}" matInput placeholder="PLZ" [(ngModel)]="location.zipCode">
       </mat-form-field>
       <mat-form-field class="field">
-        <input id="country" type="text" [ngModelOptions] ="{standalone: true}" required matInput placeholder="Land" [(ngModel)]="location.country">
-        <mat-error>Dieses Feld muss ausgefüllt werden!</mat-error>
+        <input id="country" type="text" [ngModelOptions] ="{standalone: true}" matInput placeholder="Land" [(ngModel)]="location.country">
       </mat-form-field>
     </div>
 
